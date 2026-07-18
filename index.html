@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Sukoon | Luxury Fragrances</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Didot', 'Playfair Display', 'Georgia', serif;
+        }
+        body {
+            background-color: #fdfcf9;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        header {
+            background: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #f0ede6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-container {
+            margin-bottom: 15px;
+        }
+        .logo-img {
+            max-width: 180px;
+            height: auto;
+            border-radius: 50%;
+        }
+        header h1 {
+            font-size: 28px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: #111;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #555;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Segoe UI', sans-serif;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #c5a880;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #f5f2eb;
+            border-bottom: 1px solid #e8e2d5;
+        }
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            font-style: italic;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-family: 'Segoe UI', sans-serif;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c5a880;
+        }
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 400;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #f0ede6;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+        .card .img-wrapper {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background-color: #faf8f5;
+        }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        .card .tag {
+            font-size: 12px;
+            color: #8c8273;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .card .price {
+            font-weight: 600;
+            font-size: 18px;
+            color: #111;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .story-content {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.8;
+        }
+        .contact-info {
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        footer {
+            background: #1a1a1a;
+            color: #b5ae9e;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="House of Sukoon Logo" class="logo-img">
+        </div>
+        <h1>House of Sukoon</h1>
+        <nav>
+            <a href="#collection">Collection</a>
+            <a href="#story">Our Story</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Inspired by Ancient Wisdom.<br>Crafted for Modern Living.</h2>
+        <p>Luxury fragrances inspired by emotion, intention and timeless perfumery traditions.</p>
+        <a href="#collection" class="btn">Explore Collection</a>
+    </section>
+
+    <section id="collection" class="section">
+        <h2>Signature Collection</h2>
+        <div class="grid">
+            <!-- Product 1 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="shukra.jpg" alt="Shukra Udgam">
+                </div>
+                <h3>Shukra Udgam</h3>
+                <div class="tag">Attraction • Elegance • Prosperity</div>
+                <div class="price">₹1099</div>
+            </div>
+            <!-- Product 2 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="mann.jpg" alt="Mann Shanti">
+                </div>
+                <h3>Mann Shanti</h3>
+                <div class="tag">Peace • Clarity • Calmness</div>
+                <div class="price">₹1099</div>
+            </div>
+            <!-- Product 3 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="surya.jpg" alt="Surya Tej">
+                </div>
+                <h3>Surya Tej</h3>
+                <div class="tag">Confidence • Success • Leadership</div>
+                <div class="price">₹1099</div>
+            </div>
+            <!-- Product 4 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="aura.jpg" alt="Aura Shuddhi">
+                </div>
+                <h3>Aura Shuddhi</h3>
+                <div class="tag">Protection • Balance • Energy</div>
+                <div class="price">₹1099</div>
+            </div>
+            <!-- Product 5 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="kismat.jpg" alt="Kismat Connection">
+                </div>
+                <h3>Kismat Connection</h3>
+                <div class="tag">Growth • Opportunity • Expansion</div>
+                <div class="price">₹1099</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #f5f2eb;">
+        <h2>Discovery Collection</h2>
+        <div class="grid" style="grid-template-columns: 1fr; max-width: 650px; margin: 0 auto;">
+            <div class="card">
+                <div class="img-wrapper" style="height: 350px;">
+                    <img src="discovery.jpg" alt="Discovery Set">
+                </div>
+                <h3>5 x 10ml Premium Discovery Set</h3>
+                <p style="font-size: 14px; color: #666; margin: 10px 0; font-family: 'Segoe UI', sans-serif;">Includes all five fragrances, energy cards, weekly guide, and premium gift packaging.</p>
+                <div class="price" style="font-size: 22px;">₹2099</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="section">
+        <h2>Our Story</h2>
+        <div class="story-content">
+            <p>Thousands of years ago, fragrance was created from flowers, woods, herbs and precious oils to enrich rituals, beauty and personal expression. Modern science now confirms what ancient cultures understood — scent has a powerful influence on memory, emotion and perception.</p>
+            <br>
+            <p>House of Sukoon reimagines this timeless tradition through luxury perfumes inspired by energy, intention and inner balance.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="background: #f0ede6;">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p>📱 +91 88714 93221</p>
+            <p>✉️ 25houseofsukoon@gmail.com</p>
+            <p>📷 @House_Of_Sukoon</p>
+            <p>🚀 Launch Date: 25 August 2026</p>
+            <br><br>
+            <a href="https://wa.me/918871493221" class="btn" style="background: #25D366; color: white;" target="_blank">Chat on WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 House of Sukoon • All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
