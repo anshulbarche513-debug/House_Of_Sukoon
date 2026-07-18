@@ -12,34 +12,35 @@
             font-family: 'Didot', 'Playfair Display', 'Georgia', serif;
         }
         body {
-            background-color: #fdfcf9;
-            color: #1a1a1a;
+            background-color: #0a1128; /* Deep Royal Blue Background */
+            color: #f4ebd0; /* Soft Luxury Cream/Gold Text */
             line-height: 1.6;
         }
-        /* Fixed Header Scrolling Issue */
         header {
-            background: #ffffff;
-            padding: 15px 20px;
+            background: #001f54; /* Royal Navy Blue Header */
+            padding: 20px;
             text-align: center;
-            border-bottom: 1px solid #f0ede6;
-            position: relative; /* Fixed: Ab yeh aadhi screen block nahi karega */
+            border-bottom: 2px solid #d4af37; /* Metallic Gold Border */
+            position: relative;
             z-index: 100;
         }
         .logo-container {
             margin-bottom: 5px;
         }
-        /* Logo design standard size */
         .logo-img {
             max-width: 120px;
             height: auto;
             display: inline-block;
+            border: 1px solid #d4af37; /* Gold border around logo */
+            border-radius: 50%;
+            padding: 2px;
         }
         header h1 {
-            font-size: 22px;
-            letter-spacing: 3px;
+            font-size: 24px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 400;
-            color: #111;
+            color: #d4af37; /* Metallic Gold */
             margin-top: 5px;
         }
         nav {
@@ -48,7 +49,7 @@
         nav a {
             margin: 0 15px;
             text-decoration: none;
-            color: #555;
+            color: #f4ebd0;
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -56,76 +57,88 @@
             transition: color 0.3s;
         }
         nav a:hover {
-            color: #c5a880;
+            color: #d4af37; /* Gold hover effect */
         }
+        /* Luxury Hero Section */
         .hero {
             text-align: center;
-            padding: 80px 20px;
-            background-color: #f5f2eb;
-            border-bottom: 1px solid #e8e2d5;
+            padding: 90px 20px;
+            background: radial-gradient(circle, #001f54 0%, #0a1128 100%);
+            border-bottom: 1px solid #2a3439;
         }
         .hero h2 {
-            font-size: 36px;
+            font-size: 38px;
             margin-bottom: 15px;
             font-weight: 300;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            color: #d4af37; /* Gold text */
         }
         .hero p {
             font-size: 16px;
-            color: #666;
+            color: #f4ebd0;
             max-width: 650px;
             margin: 0 auto 25px;
             font-style: italic;
+            opacity: 0.9;
         }
+        /* Royal Golden Button */
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background: #1a1a1a;
-            color: #fff;
+            background: #d4af37; /* Gold Background */
+            color: #0a1128; /* Deep Blue Text */
             text-decoration: none;
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: 2px;
             font-family: 'Segoe UI', sans-serif;
-            transition: background 0.3s;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 1px solid #d4af37;
         }
         .btn:hover {
-            background: #c5a880;
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
         }
         .section {
-            padding: 60px 20px;
+            padding: 70px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
         .section h2 {
             text-align: center;
-            font-size: 28px;
-            margin-bottom: 40px;
+            font-size: 30px;
+            margin-bottom: 45px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             font-weight: 400;
+            color: #d4af37;
         }
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 35px;
         }
+        /* Luxury Product Card */
         .card {
-            background: #ffffff;
-            border: 1px solid #f0ede6;
+            background: #001f54; /* Royal Blue Card */
+            border: 1px solid #d4af37; /* Gold Border */
             padding: 20px;
             text-align: center;
-            transition: transform 0.4s;
+            transition: transform 0.4s, box-shadow 0.4s;
         }
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2); /* Soft Gold Glow */
         }
         .card .img-wrapper {
             width: 100%;
             height: 300px;
             overflow: hidden;
             margin-bottom: 15px;
-            background-color: #faf8f5;
+            background-color: #0a1128;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         .card img {
             width: 100%;
@@ -136,10 +149,11 @@
             font-size: 20px;
             margin-bottom: 5px;
             font-weight: 400;
+            color: #f4ebd0;
         }
         .card .tag {
             font-size: 11px;
-            color: #8c8273;
+            color: #d4af37; /* Gold Tags */
             text-transform: uppercase;
             margin-bottom: 12px;
             letter-spacing: 1px;
@@ -147,16 +161,17 @@
         }
         .card .price {
             font-weight: 600;
-            font-size: 16px;
-            color: #111;
+            font-size: 18px;
+            color: #d4af37;
             font-family: 'Segoe UI', sans-serif;
         }
         .story-content {
             max-width: 750px;
             margin: 0 auto;
             text-align: center;
-            font-size: 16px;
-            color: #444;
+            font-size: 17px;
+            color: #f4ebd0;
+            opacity: 0.9;
         }
         .contact-info {
             text-align: center;
@@ -164,23 +179,25 @@
         }
         .contact-info p {
             margin: 12px 0;
-            font-size: 15px;
+            font-size: 16px;
+            color: #f4ebd0;
         }
         footer {
-            background: #1a1a1a;
-            color: #b5ae9e;
+            background: #001f54;
+            color: #f4ebd0;
             text-align: center;
             padding: 25px 20px;
             margin-top: 50px;
             font-size: 12px;
             font-family: 'Segoe UI', sans-serif;
+            border-top: 1px solid #d4af37;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- Logo Image updated to sukoon-logo.png -->
         <div class="logo-container">
             <img src="sukoon-logo.png" alt="House of Sukoon Logo" class="logo-img">
         </div>
@@ -249,15 +266,15 @@
         </div>
     </section>
 
-    <section class="section" style="background: #f5f2eb;">
+    <section class="section" style="background: #001f54; border-top: 1px solid #d4af37; border-bottom: 1px solid #d4af37;">
         <h2>Discovery Collection</h2>
         <div class="grid" style="grid-template-columns: 1fr; max-width: 650px; margin: 0 auto;">
-            <div class="card">
+            <div class="card" style="background: #0a1128;">
                 <div class="img-wrapper" style="height: 350px;">
                     <img src="discovery.jpg" alt="Discovery Set">
                 </div>
                 <h3>5 x 10ml Premium Discovery Set</h3>
-                <p style="font-size: 14px; color: #666; margin: 10px 0; font-family: 'Segoe UI', sans-serif;">Includes all five fragrances, energy cards, weekly guide, and premium gift packaging.</p>
+                <p style="font-size: 14px; color: #f4ebd0; margin: 10px 0; font-family: 'Segoe UI', sans-serif; opacity: 0.8;">Includes all five fragrances, energy cards, weekly guide, and premium gift packaging.</p>
                 <div class="price" style="font-size: 22px;">₹2099</div>
             </div>
         </div>
@@ -272,7 +289,7 @@
         </div>
     </section>
 
-    <section id="contact" class="section" style="background: #f0ede6;">
+    <section id="contact" class="section" style="background: #001f54; border-top: 1px solid #d4af37;">
         <h2>Contact Us</h2>
         <div class="contact-info">
             <p>📱 +91 88714 93221</p>
@@ -280,7 +297,7 @@
             <p>📷 @House_Of_Sukoon</p>
             <p>🚀 Launch Date: 25 August 2026</p>
             <br><br>
-            <a href="https://wa.me/918871493221" class="btn" style="background: #25D366; color: white;" target="_blank">Chat on WhatsApp</a>
+            <a href="https://wa.me/918871493221" class="btn" style="background: #25D366; color: white; border-color: #25D366;" target="_blank">Chat on WhatsApp</a>
         </div>
     </section>
 
