@@ -12,15 +12,15 @@
             font-family: 'Didot', 'Playfair Display', 'Georgia', serif;
         }
         body {
-            background-color: #0a1128; /* Deep Royal Blue Background */
-            color: #f4ebd0; /* Soft Luxury Cream/Gold Text */
+            background-color: #0a1128; /* Deep Royal Blue */
+            color: #f4ebd0; /* Luxury Gold/Cream Text */
             line-height: 1.6;
         }
         header {
-            background: #001f54; /* Royal Navy Blue Header */
+            background: #001f54; /* Royal Navy Blue */
             padding: 20px;
             text-align: center;
-            border-bottom: 2px solid #d4af37; /* Metallic Gold Border */
+            border-bottom: 2px solid #d4af37; /* Gold Border */
             position: relative;
             z-index: 100;
         }
@@ -31,7 +31,7 @@
             max-width: 120px;
             height: auto;
             display: inline-block;
-            border: 1px solid #d4af37; /* Gold border around logo */
+            border: 1px solid #d4af37;
             border-radius: 50%;
             padding: 2px;
         }
@@ -40,38 +40,38 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 400;
-            color: #d4af37; /* Metallic Gold */
+            color: #d4af37;
             margin-top: 5px;
         }
         nav {
             margin-top: 12px;
         }
         nav a {
-            margin: 0 15px;
+            margin: 0 12px;
             text-decoration: none;
             color: #f4ebd0;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-family: 'Segoe UI', sans-serif;
             transition: color 0.3s;
         }
         nav a:hover {
-            color: #d4af37; /* Gold hover effect */
+            color: #d4af37;
         }
-        /* Luxury Hero Section */
+        /* 1. Hero Banner */
         .hero {
             text-align: center;
             padding: 90px 20px;
             background: radial-gradient(circle, #001f54 0%, #0a1128 100%);
-            border-bottom: 1px solid #2a3439;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
         .hero h2 {
             font-size: 38px;
             margin-bottom: 15px;
             font-weight: 300;
             letter-spacing: 2px;
-            color: #d4af37; /* Gold text */
+            color: #d4af37;
         }
         .hero p {
             font-size: 16px;
@@ -81,12 +81,11 @@
             font-style: italic;
             opacity: 0.9;
         }
-        /* Royal Golden Button */
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background: #d4af37; /* Gold Background */
-            color: #0a1128; /* Deep Blue Text */
+            background: #d4af37;
+            color: #0a1128;
             text-decoration: none;
             text-transform: uppercase;
             font-size: 12px;
@@ -99,7 +98,6 @@
         .btn:hover {
             background: transparent;
             color: #d4af37;
-            border: 1px solid #d4af37;
         }
         .section {
             padding: 70px 20px;
@@ -109,28 +107,66 @@
         .section h2 {
             text-align: center;
             font-size: 30px;
-            margin-bottom: 45px;
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-weight: 400;
             color: #d4af37;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #f4ebd0;
+            opacity: 0.8;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        /* Feature Blocks for Guide & Cards */
+        .feature-block {
+            background: #001f54;
+            border: 1px solid #d4af37;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        .feature-text h3 {
+            font-size: 24px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        .feature-img-wrapper {
+            width: 100%;
+            height: 300px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: #0a1128;
+        }
+        .feature-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 35px;
         }
-        /* Luxury Product Card */
         .card {
-            background: #001f54; /* Royal Blue Card */
-            border: 1px solid #d4af37; /* Gold Border */
+            background: #001f54;
+            border: 1px solid #d4af37;
             padding: 20px;
             text-align: center;
-            transition: transform 0.4s, box-shadow 0.4s;
+            transition: transform 0.4s;
         }
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2); /* Soft Gold Glow */
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
         }
         .card .img-wrapper {
             width: 100%;
@@ -149,11 +185,10 @@
             font-size: 20px;
             margin-bottom: 5px;
             font-weight: 400;
-            color: #f4ebd0;
         }
         .card .tag {
             font-size: 11px;
-            color: #d4af37; /* Gold Tags */
+            color: #d4af37;
             text-transform: uppercase;
             margin-bottom: 12px;
             letter-spacing: 1px;
@@ -165,12 +200,29 @@
             color: #d4af37;
             font-family: 'Segoe UI', sans-serif;
         }
+        /* Fragrance Finder Form */
+        .finder-box {
+            background: #001f54;
+            border: 1px solid #d4af37;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .finder-box select {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0 25px;
+            background: #0a1128;
+            border: 1px solid #d4af37;
+            color: #f4ebd0;
+            font-family: 'Segoe UI', sans-serif;
+        }
         .story-content {
             max-width: 750px;
             margin: 0 auto;
             text-align: center;
             font-size: 17px;
-            color: #f4ebd0;
             opacity: 0.9;
         }
         .contact-info {
@@ -180,7 +232,6 @@
         .contact-info p {
             margin: 12px 0;
             font-size: 16px;
-            color: #f4ebd0;
         }
         footer {
             background: #001f54;
@@ -203,62 +254,76 @@
         </div>
         <h1>House of Sukoon</h1>
         <nav>
-            <a href="#collection">Collection</a>
+            <a href="#finder">Fragrance Finder</a>
+            <a href="#collection">Signature Perfumes</a>
+            <a href="#discovery">Discovery Set</a>
             <a href="#story">Our Story</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
+    <!-- 1. Hero Banner -->
     <section class="hero">
         <h2>Inspired by Ancient Wisdom.<br>Crafted for Modern Living.</h2>
         <p>Luxury fragrances inspired by emotion, intention and timeless perfumery traditions.</p>
-        <a href="#collection" class="btn">Explore Collection</a>
+        <a href="#finder" class="btn">Find Your Scent</a>
     </section>
 
-    <section id="collection" class="section">
-        <h2>Signature Collection</h2>
+    <!-- 2. Fragrance Finder -->
+    <section id="finder" class="section">
+        <h2>Fragrance Finder</h2>
+        <p class="section-subtitle">Choose your intention to discover your signature match</p>
+        <div class="finder-box">
+            <p style="font-family: 'Segoe UI', sans-serif;">What energy or vibe do you want to invite today?</p>
+            <select id="vibeSelect">
+                <option value="">-- Select Your Intention --</option>
+                <option value="shukra">Attraction, Elegance & Prosperity</option>
+                <option value="mann">Peace, Clarity & Calmness</option>
+                <option value="surya">Confidence, Success & Leadership</option>
+                <option value="aura">Protection, Balance & Energy</option>
+                <option value="kismat">Growth, Opportunity & Expansion</option>
+            </select>
+            <button class="btn" onclick="findFragrance()">Reveal Match</button>
+            <p id="finderResult" style="margin-top: 20px; font-weight: bold; color: #d4af37; font-family: 'Segoe UI', sans-serif;"></p>
+        </div>
+    </section>
+
+    <!-- 3. 5 Signature Perfumes -->
+    <section id="collection" class="section" style="border-top: 1px solid rgba(212, 175, 55, 0.2);">
+        <h2>5 Signature Perfumes</h2>
+        <p class="section-subtitle">Our core line crafted with premium ancient botanical oils</p>
         <div class="grid">
             <!-- Product 1 -->
             <div class="card">
-                <div class="img-wrapper">
-                    <img src="shukra.jpg" alt="Shukra Udgam">
-                </div>
+                <div class="img-wrapper"><img src="shukra.jpg" alt="Shukra Udgam"></div>
                 <h3>Shukra Udgam</h3>
                 <div class="tag">Attraction • Elegance • Prosperity</div>
                 <div class="price">₹1099</div>
             </div>
             <!-- Product 2 -->
             <div class="card">
-                <div class="img-wrapper">
-                    <img src="mann.jpg" alt="Mann Shanti">
-                </div>
+                <div class="img-wrapper"><img src="mann.jpg" alt="Mann Shanti"></div>
                 <h3>Mann Shanti</h3>
                 <div class="tag">Peace • Clarity • Calmness</div>
                 <div class="price">₹1099</div>
             </div>
             <!-- Product 3 -->
             <div class="card">
-                <div class="img-wrapper">
-                    <img src="surya.jpg" alt="Surya Tej">
-                </div>
+                <div class="img-wrapper"><img src="surya.jpg" alt="Surya Tej"></div>
                 <h3>Surya Tej</h3>
                 <div class="tag">Confidence • Success • Leadership</div>
                 <div class="price">₹1099</div>
             </div>
             <!-- Product 4 -->
             <div class="card">
-                <div class="img-wrapper">
-                    <img src="aura.jpg" alt="Aura Shuddhi">
-                </div>
+                <div class="img-wrapper"><img src="aura.jpg" alt="Aura Shuddhi"></div>
                 <h3>Aura Shuddhi</h3>
                 <div class="tag">Protection • Balance • Energy</div>
                 <div class="price">₹1099</div>
             </div>
             <!-- Product 5 -->
             <div class="card">
-                <div class="img-wrapper">
-                    <img src="kismat.jpg" alt="Kismat Connection">
-                </div>
+                <div class="img-wrapper"><img src="kismat.jpg" alt="Kismat Connection"></div>
                 <h3>Kismat Connection</h3>
                 <div class="tag">Growth • Opportunity • Expansion</div>
                 <div class="price">₹1099</div>
@@ -266,21 +331,54 @@
         </div>
     </section>
 
-    <section class="section" style="background: #001f54; border-top: 1px solid #d4af37; border-bottom: 1px solid #d4af37;">
-        <h2>Discovery Collection</h2>
+    <!-- 4. Discovery Set -->
+    <section id="discovery" class="section" style="background: #001f54; border-top: 1px solid #d4af37; border-bottom: 1px solid #d4af37;">
+        <h2>Discovery Set</h2>
+        <p class="section-subtitle">Experience the complete collection before committing</p>
         <div class="grid" style="grid-template-columns: 1fr; max-width: 650px; margin: 0 auto;">
             <div class="card" style="background: #0a1128;">
-                <div class="img-wrapper" style="height: 350px;">
-                    <img src="discovery.jpg" alt="Discovery Set">
-                </div>
+                <div class="img-wrapper" style="height: 350px;"><img src="discovery.jpg" alt="Discovery Set"></div>
                 <h3>5 x 10ml Premium Discovery Set</h3>
-                <p style="font-size: 14px; color: #f4ebd0; margin: 10px 0; font-family: 'Segoe UI', sans-serif; opacity: 0.8;">Includes all five fragrances, energy cards, weekly guide, and premium gift packaging.</p>
+                <p style="font-size: 14px; color: #f4ebd0; margin: 10px 0; font-family: 'Segoe UI', sans-serif; opacity: 0.8;">Sample all five signature blends. Includes premium packaging and testing cards.</p>
                 <div class="price" style="font-size: 22px;">₹2099</div>
             </div>
         </div>
     </section>
 
-    <section id="story" class="section">
+    <!-- 5. Weekly Ritual Guide & 6. Energy Cards -->
+    <section class="section">
+        <h2>Rituals & Extras</h2>
+        <p class="section-subtitle">Enhancing your sensory experience beyond the bottle</p>
+        
+        <!-- Weekly Ritual Guide -->
+        <div class="feature-block">
+            <div class="feature-grid">
+                <div class="feature-text">
+                    <h3>Weekly Ritual Guide</h3>
+                    <p style="font-family: 'Segoe UI', sans-serif; color: #f4ebd0; opacity: 0.9;">A curated step-by-step roadmap to pairing your premium fragrances with daily mindset, alignment methods, and optimal time applications for absolute well-being.</p>
+                </div>
+                <div class="feature-img-wrapper">
+                    <img src="guide.jpg" alt="Weekly Ritual Guide">
+                </div>
+            </div>
+        </div>
+
+        <!-- Energy Cards -->
+        <div class="feature-block" style="margin-bottom: 0;">
+            <div class="feature-grid">
+                <div class="feature-img-wrapper">
+                    <img src="cards.jpg" alt="Energy Cards">
+                </div>
+                <div class="feature-text">
+                    <h3>Premium Energy Cards</h3>
+                    <p style="font-family: 'Segoe UI', sans-serif; color: #f4ebd0; opacity: 0.9;">Every box comes embedded with highly detailed custom intent cards representing each fragrance archetype, outlining cosmic properties and meditative focal points.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Our Story -->
+    <section id="story" class="section" style="border-top: 1px solid rgba(212, 175, 55, 0.2);">
         <h2>Our Story</h2>
         <div class="story-content">
             <p>Thousands of years ago, fragrance was created from flowers, woods, herbs and precious oils to enrich rituals, beauty and personal expression. Modern science now confirms what ancient cultures understood — scent has a powerful influence on memory, emotion and perception.</p>
@@ -289,6 +387,7 @@
         </div>
     </section>
 
+    <!-- 8. Contact -->
     <section id="contact" class="section" style="background: #001f54; border-top: 1px solid #d4af37;">
         <h2>Contact Us</h2>
         <div class="contact-info">
@@ -305,5 +404,18 @@
         <p>&copy; 2026 House of Sukoon • All Rights Reserved</p>
     </footer>
 
+    <!-- Interactive Fragrance Finder Script -->
+    <script>
+        function findFragrance() {
+            var vibe = document.getElementById("vibeSelect").value;
+            var result = document.getElementById("finderResult");
+            if(vibe === "shukra") { result.innerText = "Your Match: Shukra Udgam (Attraction & Prosperity)"; }
+            else if(vibe === "mann") { result.innerText = "Your Match: Mann Shanti (Peace & Calmness)"; }
+            else if(vibe === "surya") { result.innerText = "Your Match: Surya Tej (Confidence & Leadership)"; }
+            else if(vibe === "aura") { result.innerText = "Your Match: Aura Shuddhi (Protection & Balance)"; }
+            else if(vibe === "kismat") { result.innerText = "Your Match: Kismat Connection (Growth & Expansion)"; }
+            else { result.innerText = "Please select an intention first!"; }
+        }
+    </script>
 </body>
 </html>
