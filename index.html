@@ -16,40 +16,42 @@
             color: #1a1a1a;
             line-height: 1.6;
         }
+        /* Fixed Header Scrolling Issue */
         header {
             background: #ffffff;
-            padding: 30px 20px;
+            padding: 15px 20px;
             text-align: center;
             border-bottom: 1px solid #f0ede6;
-            position: sticky;
-            top: 0;
+            position: relative; /* Fixed: Ab yeh aadhi screen block nahi karega */
             z-index: 100;
         }
         .logo-container {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
+        /* Logo design standard size */
         .logo-img {
-            max-width: 180px;
+            max-width: 120px;
             height: auto;
-            border-radius: 50%;
+            display: inline-block;
         }
         header h1 {
-            font-size: 28px;
-            letter-spacing: 4px;
+            font-size: 22px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 400;
             color: #111;
+            margin-top: 5px;
         }
         nav {
-            margin-top: 15px;
+            margin-top: 12px;
         }
         nav a {
-            margin: 0 20px;
+            margin: 0 15px;
             text-decoration: none;
             color: #555;
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             font-family: 'Segoe UI', sans-serif;
             transition: color 0.3s;
         }
@@ -58,31 +60,31 @@
         }
         .hero {
             text-align: center;
-            padding: 100px 20px;
+            padding: 80px 20px;
             background-color: #f5f2eb;
             border-bottom: 1px solid #e8e2d5;
         }
         .hero h2 {
-            font-size: 42px;
-            margin-bottom: 20px;
+            font-size: 36px;
+            margin-bottom: 15px;
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
         .hero p {
-            font-size: 18px;
+            font-size: 16px;
             color: #666;
             max-width: 650px;
-            margin: 0 auto 30px;
+            margin: 0 auto 25px;
             font-style: italic;
         }
         .btn {
             display: inline-block;
-            padding: 14px 35px;
+            padding: 12px 30px;
             background: #1a1a1a;
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 2px;
             font-family: 'Segoe UI', sans-serif;
             transition: background 0.3s;
@@ -91,39 +93,38 @@
             background: #c5a880;
         }
         .section {
-            padding: 80px 20px;
+            padding: 60px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
         .section h2 {
             text-align: center;
-            font-size: 32px;
-            margin-bottom: 50px;
+            font-size: 28px;
+            margin-bottom: 40px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-weight: 400;
         }
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
         .card {
             background: #ffffff;
             border: 1px solid #f0ede6;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
-            transition: transform 0.4s, box-shadow 0.4s;
+            transition: transform 0.4s;
         }
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            transform: translateY(-5px);
         }
         .card .img-wrapper {
             width: 100%;
             height: 300px;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background-color: #faf8f5;
         }
         .card img {
@@ -132,22 +133,21 @@
             object-fit: cover;
         }
         .card h3 {
-            font-size: 22px;
-            margin-bottom: 8px;
+            font-size: 20px;
+            margin-bottom: 5px;
             font-weight: 400;
-            letter-spacing: 1px;
         }
         .card .tag {
-            font-size: 12px;
+            font-size: 11px;
             color: #8c8273;
             text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
             font-family: 'Segoe UI', sans-serif;
         }
         .card .price {
             font-weight: 600;
-            font-size: 18px;
+            font-size: 16px;
             color: #111;
             font-family: 'Segoe UI', sans-serif;
         }
@@ -155,27 +155,24 @@
             max-width: 750px;
             margin: 0 auto;
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             color: #444;
-            line-height: 1.8;
         }
         .contact-info {
             text-align: center;
             font-family: 'Segoe UI', sans-serif;
         }
         .contact-info p {
-            margin: 15px 0;
-            font-size: 16px;
-            letter-spacing: 1px;
+            margin: 12px 0;
+            font-size: 15px;
         }
         footer {
             background: #1a1a1a;
             color: #b5ae9e;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-            font-size: 13px;
-            letter-spacing: 1px;
+            padding: 25px 20px;
+            margin-top: 50px;
+            font-size: 12px;
             font-family: 'Segoe UI', sans-serif;
         }
     </style>
@@ -183,8 +180,9 @@
 <body>
 
     <header>
+        <!-- Logo Image updated to sukoon-logo.png -->
         <div class="logo-container">
-            <img src="logo.jpg" alt="House of Sukoon Logo" class="logo-img">
+            <img src="sukoon-logo.png" alt="House of Sukoon Logo" class="logo-img">
         </div>
         <h1>House of Sukoon</h1>
         <nav>
