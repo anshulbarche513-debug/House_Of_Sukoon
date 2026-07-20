@@ -59,7 +59,8 @@
         nav a:hover {
             color: #d4af37;
         }
-        /* 1. Hero Banner */
+        
+        /* Hero Banner */
         .hero {
             text-align: center;
             padding: 90px 20px;
@@ -121,37 +122,8 @@
             margin-bottom: 40px;
             font-style: italic;
         }
-        /* Feature Blocks for Guide & Cards */
-        .feature-block {
-            background: #001f54;
-            border: 1px solid #d4af37;
-            padding: 40px;
-            margin-bottom: 40px;
-            border-radius: 4px;
-        }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            align-items: center;
-        }
-        .feature-text h3 {
-            font-size: 24px;
-            color: #d4af37;
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-        .feature-img-wrapper {
-            width: 100%;
-            height: 300px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            background: #0a1128;
-        }
-        .feature-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+
+        /* Grids & Cards */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -162,7 +134,9 @@
             border: 1px solid #d4af37;
             padding: 20px;
             text-align: center;
-            transition: transform 0.4s;
+            transition: transform 0.4s, box-shadow 0.4s;
+            display: flex;
+            flex-direction: column;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -170,7 +144,7 @@
         }
         .card .img-wrapper {
             width: 100%;
-            height: 300px;
+            height: 280px;
             overflow: hidden;
             margin-bottom: 15px;
             background-color: #0a1128;
@@ -183,8 +157,16 @@
         }
         .card h3 {
             font-size: 20px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 400;
+            color: #d4af37;
+        }
+        .card p {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 13px;
+            color: #f4ebd0;
+            opacity: 0.85;
+            line-height: 1.5;
         }
         .card .tag {
             font-size: 11px;
@@ -199,8 +181,27 @@
             font-size: 18px;
             color: #d4af37;
             font-family: 'Segoe UI', sans-serif;
+            margin-top: auto;
+            padding-top: 10px;
         }
-        /* Fragrance Finder Form */
+
+        /* Badge Styling for Ritual Cards */
+        .badge {
+            display: inline-block;
+            background: #d4af37;
+            color: #0a1128;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 3px 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            margin-bottom: 10px;
+            border-radius: 2px;
+            align-self: center;
+        }
+
+        /* Fragrance Finder */
         .finder-box {
             background: #001f54;
             border: 1px solid #d4af37;
@@ -257,6 +258,8 @@
             <a href="#finder">Fragrance Finder</a>
             <a href="#collection">Signature Perfumes</a>
             <a href="#discovery">Discovery Set</a>
+            <a href="#rituals">Weekly Rituals</a>
+            <a href="#energy-cards">Energy Cards</a>
             <a href="#story">Our Story</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -293,35 +296,30 @@
         <h2>5 Signature Perfumes</h2>
         <p class="section-subtitle">Our core line crafted with premium ancient botanical oils</p>
         <div class="grid">
-            <!-- Product 1 -->
             <div class="card">
                 <div class="img-wrapper"><img src="shukra.jpg" alt="Shukra Udgam"></div>
                 <h3>Shukra Udgam</h3>
                 <div class="tag">Attraction • Elegance • Prosperity</div>
                 <div class="price">₹1099</div>
             </div>
-            <!-- Product 2 -->
             <div class="card">
                 <div class="img-wrapper"><img src="mann.jpg" alt="Mann Shanti"></div>
                 <h3>Mann Shanti</h3>
                 <div class="tag">Peace • Clarity • Calmness</div>
                 <div class="price">₹1099</div>
             </div>
-            <!-- Product 3 -->
             <div class="card">
                 <div class="img-wrapper"><img src="surya.jpg" alt="Surya Tej"></div>
                 <h3>Surya Tej</h3>
                 <div class="tag">Confidence • Success • Leadership</div>
                 <div class="price">₹1099</div>
             </div>
-            <!-- Product 4 -->
             <div class="card">
                 <div class="img-wrapper"><img src="aura.jpg" alt="Aura Shuddhi"></div>
                 <h3>Aura Shuddhi</h3>
                 <div class="tag">Protection • Balance • Energy</div>
                 <div class="price">₹1099</div>
             </div>
-            <!-- Product 5 -->
             <div class="card">
                 <div class="img-wrapper"><img src="kismat.jpg" alt="Kismat Connection"></div>
                 <h3>Kismat Connection</h3>
@@ -339,40 +337,64 @@
             <div class="card" style="background: #0a1128;">
                 <div class="img-wrapper" style="height: 350px;"><img src="discovery.jpg" alt="Discovery Set"></div>
                 <h3>5 x 10ml Premium Discovery Set</h3>
-                <p style="font-size: 14px; color: #f4ebd0; margin: 10px 0; font-family: 'Segoe UI', sans-serif; opacity: 0.8;">Sample all five signature blends. Includes premium packaging and testing cards.</p>
+                <p style="margin: 10px 0;">Sample all five signature blends. Includes premium packaging and testing cards.</p>
                 <div class="price" style="font-size: 22px;">₹2099</div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Weekly Ritual Guide & 6. Energy Cards -->
-    <section class="section">
-        <h2>Rituals & Extras</h2>
-        <p class="section-subtitle">Enhancing your sensory experience beyond the bottle</p>
-        
-        <!-- Weekly Ritual Guide -->
-        <div class="feature-block">
-            <div class="feature-grid">
-                <div class="feature-text">
-                    <h3>Weekly Ritual Guide</h3>
-                    <p style="font-family: 'Segoe UI', sans-serif; color: #f4ebd0; opacity: 0.9;">A curated step-by-step roadmap to pairing your premium fragrances with daily mindset, alignment methods, and optimal time applications for absolute well-being.</p>
-                </div>
-                <div class="feature-img-wrapper">
-                    <img src="guide.jpg" alt="Weekly Ritual Guide">
-                </div>
+    <!-- 5. Weekly Ritual Guide Cards -->
+    <section id="rituals" class="section">
+        <h2>Weekly Ritual Guide</h2>
+        <p class="section-subtitle">Step-by-step roadmap to align your mind, body & fragrance</p>
+        <div class="grid">
+            <div class="card">
+                <span class="badge">Monday Ritual</span>
+                <div class="img-wrapper"><img src="ritual-mon.jpg" alt="Mindful Start"></div>
+                <h3>Mindful Intention</h3>
+                <p>Start your week by setting clear goals. Apply <i>Mann Shanti</i> to pulse points for quiet breathing and focus.</p>
+            </div>
+
+            <div class="card">
+                <span class="badge">Wednesday Ritual</span>
+                <div class="img-wrapper"><img src="ritual-wed.jpg" alt="Mid-Week Boost"></div>
+                <h3>Mid-Week Renewal</h3>
+                <p>Recharge your inner drive with <i>Surya Tej</i>. Take a short walk and reconnect with your inner confidence.</p>
+            </div>
+
+            <div class="card">
+                <span class="badge">Sunday Ritual</span>
+                <div class="img-wrapper"><img src="ritual-sun.jpg" alt="Gratitude & Self Care"></div>
+                <h3>Gratitude & Unwind</h3>
+                <p>Reflect upon the week's growth. Pair <i>Aura Shuddhi</i> with journaling and a relaxing evening routine.</p>
             </div>
         </div>
+    </section>
 
-        <!-- Energy Cards -->
-        <div class="feature-block" style="margin-bottom: 0;">
-            <div class="feature-grid">
-                <div class="feature-img-wrapper">
-                    <img src="cards.jpg" alt="Energy Cards">
-                </div>
-                <div class="feature-text">
-                    <h3>Premium Energy Cards</h3>
-                    <p style="font-family: 'Segoe UI', sans-serif; color: #f4ebd0; opacity: 0.9;">Every box comes embedded with highly detailed custom intent cards representing each fragrance archetype, outlining cosmic properties and meditative focal points.</p>
-                </div>
+    <!-- 6. Custom Intent Energy Cards -->
+    <section id="energy-cards" class="section" style="border-top: 1px solid rgba(212, 175, 55, 0.2);">
+        <h2>Custom Energy Cards</h2>
+        <p class="section-subtitle">Embedded in every box to guide your meditative focal points</p>
+        <div class="grid">
+            <div class="card">
+                <div class="img-wrapper"><img src="card-shukra.jpg" alt="Shukra Energy Card"></div>
+                <h3>Shukra Card</h3>
+                <div class="tag">Archetype: Attraction</div>
+                <p>Outlines cosmic properties, Venusian frequencies, and focal mantras for prosperity and luxury.</p>
+            </div>
+
+            <div class="card">
+                <div class="img-wrapper"><img src="card-surya.jpg" alt="Surya Energy Card"></div>
+                <h3>Surya Card</h3>
+                <div class="tag">Archetype: Leadership</div>
+                <p>Solar energy focal points to enhance vitality, presence, and unwavering willpower in daily tasks.</p>
+            </div>
+
+            <div class="card">
+                <div class="img-wrapper"><img src="card-aura.jpg" alt="Aura Energy Card"></div>
+                <h3>Aura Card</h3>
+                <div class="tag">Archetype: Protection</div>
+                <p>Centering techniques and grounding symbols to keep your energetic field pure and protected.</p>
             </div>
         </div>
     </section>
