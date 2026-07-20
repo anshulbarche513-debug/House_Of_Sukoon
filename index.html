@@ -246,25 +246,64 @@
             flex-wrap: wrap;
         }
 
+        /* Automatic Slider Styles */
         .hero-visual {
             position: relative;
             z-index: 2;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-slider-wrapper {
+            position: relative;
+            width: 320px;
+            height: 380px;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
-        .floating-bottle {
-            width: 320px;
-            height: auto;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.7));
+        .hero-slide-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            transform: scale(0.95);
             animation: float 5s ease-in-out infinite;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
+        .hero-slide-img.active {
+            opacity: 1;
+            transform: scale(1);
         }
 
-        /* Countdown Bar (Placed Right Below Hero) */
+        .slider-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-primary);
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dot.active {
+            background: var(--gold-primary);
+            box-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        /* Countdown Bar */
         .countdown-section {
             background: var(--bg-surface);
             border-top: 1px solid var(--border-gold);
@@ -687,7 +726,7 @@
                 padding-top: 130px;
             }
             .hero-title { font-size: 2.2rem; }
-            .floating-bottle { width: 220px; margin-top: 30px; }
+            .hero-slider-wrapper { width: 250px; height: 300px; margin-top: 30px; }
             .hero-btns { justify-content: center; }
             .custom-cursor, .cursor-follower { display: none; }
         }
@@ -741,12 +780,27 @@
                 <a href="#finder" class="btn-outline">Fragrance Quiz</a>
             </div>
         </div>
+
+        <!-- Hero Automatic 5 Perfume Images Slider -->
         <div class="hero-visual reveal">
-            <img src="shukra.jpg" alt="Luxury Bottle" class="floating-bottle">
+            <div class="hero-slider-wrapper">
+                <img src="shukra.jpg" alt="Shukra Udgam" class="hero-slide-img active">
+                <img src="mann.jpg" alt="Mann Shanti" class="hero-slide-img">
+                <img src="surya.jpg" alt="Surya Tej" class="hero-slide-img">
+                <img src="aura.jpg" alt="Aura Shuddhi" class="hero-slide-img">
+                <img src="kismat.jpg" alt="Kismat Connection" class="hero-slide-img">
+            </div>
+            <div class="slider-dots">
+                <span class="dot active" onclick="setSlide(0)"></span>
+                <span class="dot" onclick="setSlide(1)"></span>
+                <span class="dot" onclick="setSlide(2)"></span>
+                <span class="dot" onclick="setSlide(3)"></span>
+                <span class="dot" onclick="setSlide(4)"></span>
+            </div>
         </div>
     </section>
 
-    <!-- Launch Countdown (Positioned Right Below Hero) -->
+    <!-- Launch Countdown -->
     <div class="countdown-section">
         <h3 class="serif" style="color: var(--gold-primary); font-size: 1rem;">OFFICIAL GRAND LAUNCH</h3>
         <div class="countdown-container">
@@ -856,7 +910,6 @@
         </div>
         <div class="energy-grid">
 
-            <!-- Card 1: Shukra Udgam -->
             <div class="flip-container reveal">
                 <div class="flip-inner">
                     <div class="flip-front">
@@ -870,7 +923,6 @@
                 </div>
             </div>
 
-            <!-- Card 2: Mann Shanti (Updated Image Source to card-mann.jpg) -->
             <div class="flip-container reveal">
                 <div class="flip-inner">
                     <div class="flip-front">
@@ -884,7 +936,6 @@
                 </div>
             </div>
 
-            <!-- Card 3: Surya Tej -->
             <div class="flip-container reveal">
                 <div class="flip-inner">
                     <div class="flip-front">
@@ -898,7 +949,6 @@
                 </div>
             </div>
 
-            <!-- Card 4: Aura Shuddhi -->
             <div class="flip-container reveal">
                 <div class="flip-inner">
                     <div class="flip-front">
@@ -912,7 +962,6 @@
                 </div>
             </div>
 
-            <!-- Card 5: Kismat Connection -->
             <div class="flip-container reveal">
                 <div class="flip-inner">
                     <div class="flip-front">
@@ -1052,6 +1101,26 @@
             mouseGlow.style.left = e.clientX + 'px';
             mouseGlow.style.top = e.clientY + 'px';
         });
+
+        // Hero Automatic Slider Logic
+        let currentHeroSlide = 0;
+        const heroSlides = document.querySelectorAll('.hero-slide-img');
+        const heroDots = document.querySelectorAll('.slider-dots .dot');
+
+        function setSlide(index) {
+            heroSlides[currentHeroSlide].classList.remove('active');
+            heroDots[currentHeroSlide].classList.remove('active');
+            
+            currentHeroSlide = index;
+            
+            heroSlides[currentHeroSlide].classList.add('active');
+            heroDots[currentHeroSlide].classList.add('active');
+        }
+
+        setInterval(() => {
+            let nextSlide = (currentHeroSlide + 1) % heroSlides.length;
+            setSlide(nextSlide);
+        }, 3000); // 3 seconds per slide
 
         // Scroll Progress
         window.addEventListener('scroll', () => {
