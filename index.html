@@ -131,7 +131,7 @@
             font-size: 0.95rem;
         }
 
-        /* OUR STORY SECTION (OPTION 2 EMBEDDED) */
+        /* OUR STORY SECTION */
         .story-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -203,7 +203,18 @@
             margin-bottom: 15px;
         }
 
-        /* POPUP MODAL (QUICK VIEW WITH FRAGRANCE NOTES) */
+        .tag-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 12px;
+        }
+
+        /* POPUP MODAL (QUICK VIEW) */
         .modal {
             display: none;
             position: fixed;
@@ -253,16 +264,29 @@
             border-radius: 6px;
         }
 
+        .occasion-box {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px dashed var(--gold);
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+        }
+
+        .occasion-box strong {
+            color: var(--gold-light);
+        }
+
         .notes-box {
             background: #111;
-            padding: 15px;
+            padding: 12px;
             border-radius: 6px;
-            margin-top: 15px;
+            margin-top: 12px;
             font-size: 0.85rem;
         }
 
         .notes-box div {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .notes-box strong {
@@ -298,7 +322,7 @@
         <a href="#collection" class="btn">Explore Collection</a>
     </section>
 
-    <!-- OUR STORY SECTION (OPTION 2 SCRIPT) -->
+    <!-- OUR STORY SECTION (OPTION 2) -->
     <section id="story">
         <div class="section-header">
             <h2>Our Ancient Heritage</h2>
@@ -321,12 +345,13 @@
     <section id="collection">
         <div class="section-header">
             <h2>Luxury Collection</h2>
-            <p>Discover Your Signature Aura</p>
+            <p>Discover Your Signature Aura & Ideal Occasion</p>
         </div>
         <div class="product-grid">
 
             <!-- Product 1 -->
             <div class="product-card">
+                <div class="tag-badge">Best For: Business & Interviews</div>
                 <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80" alt="Royal Oud">
                 <h3>Royal Oud Alchemy</h3>
                 <p class="price">₹2,499</p>
@@ -334,7 +359,8 @@
                     'Royal Oud Alchemy',
                     '₹2,499',
                     'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80',
-                    'A deep, majestic oud crafted to align inner power and confidence.',
+                    'A deep, majestic oud crafted to project authority, confidence, and focus.',
+                    'Important Business Meetings, Job Interviews, Corporate Events & Evening Galas',
                     'Cambodian Agarwood, Saffron',
                     'Damask Rose, Amber Resin',
                     'Aged Oud, Vetiver, Dark Musk'
@@ -343,6 +369,7 @@
 
             <!-- Product 2 -->
             <div class="product-card">
+                <div class="tag-badge">Best For: Date Night & Intimate Evenings</div>
                 <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=80" alt="Vedic Mogra">
                 <h3>Vedic Mogra Bliss</h3>
                 <p class="price">₹1,999</p>
@@ -350,7 +377,8 @@
                     'Vedic Mogra Bliss',
                     '₹1,999',
                     'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=80',
-                    'Inspired by ancient temple flora to bring tranquility and heart clarity.',
+                    'Inspired by ancient romantic rituals to evoke warmth, charm, and emotional connection.',
+                    'Romantic Dates, Evening Outings, Weddings & Special Celebrations',
                     'Indian Jasmine, Neroli',
                     'White Mogra Blossom, Gardenia',
                     'Sandalwood, Creamy Vanilla'
@@ -359,6 +387,7 @@
 
             <!-- Product 3 -->
             <div class="product-card">
+                <div class="tag-badge">Best For: Meditation & Daily Harmony</div>
                 <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80" alt="Mystic Amber">
                 <h3>Mystic Amber Aura</h3>
                 <p class="price">₹2,199</p>
@@ -366,7 +395,8 @@
                     'Mystic Amber Aura',
                     '₹2,199',
                     'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80',
-                    'Warm resinous notes to shield your aura and ground your mind.',
+                    'Warm resinous notes that ground your mind and shield your energetic aura.',
+                    'Daily Wear, Morning Meditation, Spiritual Rituals & Calm Workdays',
                     'Bergamot, Cardamom',
                     'Golden Amber, Patchouli',
                     'Cedarwood, Benzoin, Frankincense'
@@ -386,14 +416,20 @@
             <div>
                 <h3 id="modalTitle" class="serif">Product Name</h3>
                 <p id="modalPrice" style="color: var(--gold); margin: 5px 0 10px; font-weight:600;"></p>
-                <p id="modalDesc" style="font-size:0.9rem; color:#bbb;"></p>
+                <p id="modalDesc" style="font-size:0.85rem; color:#bbb;"></p>
+
+                <!-- SPECIFICATION / OCCASION SECTION -->
+                <div class="occasion-box">
+                    <strong>✨ Best Used For / Wear Before:</strong>
+                    <p id="modalOccasion" style="color: #eee; margin-top: 3px;"></p>
+                </div>
 
                 <!-- FRAGRANCE NOTES POPUP SECTION -->
                 <div class="notes-box">
-                    <h4 style="color:var(--gold-light); margin-bottom: 8px;">Olfactory Pyramid (Notes)</h4>
-                    <div><strong>Top Notes:</strong> <span id="topNotes">-</span></div>
-                    <div><strong>Heart Notes:</strong> <span id="heartNotes">-</span></div>
-                    <div><strong>Base Notes:</strong> <span id="baseNotes">-</span></div>
+                    <h4 style="color:var(--gold-light); margin-bottom: 6px; font-size: 0.9rem;">Olfactory Notes</h4>
+                    <div><strong>Top:</strong> <span id="topNotes">-</span></div>
+                    <div><strong>Heart:</strong> <span id="heartNotes">-</span></div>
+                    <div><strong>Base:</strong> <span id="baseNotes">-</span></div>
                 </div>
 
                 <br>
@@ -409,13 +445,14 @@
 
     <!-- JAVASCRIPT FOR QUICK VIEW POPUP -->
     <script>
-        function openModal(title, price, imgSrc, desc, top, heart, base) {
+        function openModal(title, price, imgSrc, desc, occasion, top, heart, base) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalPrice').innerText = price;
             document.getElementById('modalImg').src = imgSrc;
             document.getElementById('modalDesc').innerText = desc;
             
-            // Setting Fragrance Notes
+            // Setting Occasion & Notes
+            document.getElementById('modalOccasion').innerText = occasion;
             document.getElementById('topNotes').innerText = top;
             document.getElementById('heartNotes').innerText = heart;
             document.getElementById('baseNotes').innerText = base;
