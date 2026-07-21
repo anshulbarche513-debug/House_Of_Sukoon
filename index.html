@@ -37,12 +37,7 @@
             color: var(--text-light);
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            cursor: default;
         }
-
-        /* Custom Cursor */
-        .custom-cursor { width: 12px; height: 12px; background: var(--gold-primary); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s ease; }
-        .cursor-follower { width: 36px; height: 36px; border: 1px solid var(--gold-primary); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.15s ease-out; }
 
         /* Mouse Glow Follower */
         .mouse-glow { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%); pointer-events: none; transform: translate(-50%, -50%); z-index: 1; }
@@ -58,7 +53,7 @@
         .loader-spin { width: 60px; height: 60px; border: 2px solid var(--border-gold); border-top: 2px solid var(--gold-primary); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* Glass Navigation */
+        /* Header & Navigation */
         header { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-gold); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
         .logo-container { display: flex; align-items: center; gap: 12px; }
         .logo-img { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--gold-primary); object-fit: cover; }
@@ -83,14 +78,14 @@
         .hero-title span { color: var(--gold-primary); display: block; }
         .hero-subtitle { color: var(--text-muted); margin-bottom: 35px; font-size: 0.95rem; line-height: 1.6; }
         .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+        
         .hero-visual { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .hero-slider-wrapper { position: relative; width: 320px; height: 380px; display: flex; justify-content: center; align-items: center; }
-        .hero-slide-img { position: absolute; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); opacity: 0; transition: opacity 1s ease-in-out, transform 1s ease-in-out; transform: scale(0.95); animation: float 5s ease-in-out infinite; }
-        .hero-slide-img.active { opacity: 1; transform: scale(1); }
+        .hero-slider-wrapper { position: relative; width: 280px; height: 350px; display: flex; justify-content: center; align-items: center; }
+        .hero-slide-img { position: absolute; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); opacity: 0; transition: opacity 1s ease-in-out; }
+        .hero-slide-img.active { opacity: 1; }
         .slider-dots { display: flex; gap: 8px; margin-top: 15px; }
         .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--gold-primary); background: transparent; cursor: pointer; transition: 0.3s; }
         .dot.active { background: var(--gold-primary); box-shadow: 0 0 10px var(--gold-glow); }
-        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }
 
         /* Countdown Bar */
         .countdown-section { background: var(--bg-surface); border-top: 1px solid var(--border-gold); border-bottom: 1px solid var(--border-gold); padding: 30px 5%; text-align: center; }
@@ -100,13 +95,13 @@
         .flip-label { font-size: 0.65rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-top: 4px; }
 
         /* Global Sections */
-        section { padding: 90px 8%; position: relative; }
-        .section-header { text-align: center; margin-bottom: 60px; }
+        section { padding: 80px 8%; position: relative; }
+        .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 2.3rem; color: var(--gold-primary); margin-bottom: 10px; }
         .section-header p { color: var(--text-muted); font-style: italic; font-size: 0.95rem; }
 
         /* Products Grid */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         
         .product-card { 
             background: var(--bg-glass); 
@@ -115,101 +110,86 @@
             padding: 20px; 
             border-radius: 6px; 
             position: relative; 
-            transition: all 0.4s ease; 
-            overflow: hidden; 
+            transition: all 0.3s ease; 
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .product-card:hover { transform: translateY(-10px); border-color: var(--gold-primary); box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px var(--gold-glow); }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .product-badge { position: absolute; top: 15px; left: 15px; background: var(--gold-primary); color: #000; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; text-transform: uppercase; z-index: 3; border-radius: 2px; }
         .wishlist-btn { position: absolute; top: 15px; right: 15px; color: var(--text-muted); cursor: pointer; z-index: 3; transition: 0.3s; }
         .wishlist-btn.active, .wishlist-btn:hover { color: #e11d48; }
         
-        /* Fixed & Uniform Image Container for All Products */
+        /* Clean Natural Image Display (No Fixed Height Bugs) */
         .p-img-box { 
             width: 100%; 
-            height: 280px; 
-            overflow: hidden; 
-            position: relative; 
             margin-bottom: 15px; 
             border: 1px solid rgba(212, 175, 55, 0.2); 
             border-radius: 4px;
-            background: rgba(3, 7, 18, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: rgba(3, 7, 18, 0.6);
             padding: 10px;
+            text-align: center;
         }
         
         .p-img-box img { 
             width: 100%; 
-            height: 100%; 
-            object-fit: contain; 
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); 
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+            max-width: 100%;
+            height: auto; 
+            display: block;
+            border-radius: 2px;
         }
-        
-        .product-card:hover .p-img-box img { transform: scale(1.08); }
         
         .product-info-box { flex-grow: 1; display: flex; flex-direction: column; }
         .product-card h3 { font-size: 1.1rem; color: var(--gold-primary); margin-bottom: 5px; }
-        .product-card .desc { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 15px; }
+        .product-card .desc { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; }
         
         .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; }
         .price { font-size: 1.2rem; font-weight: 700; color: #fff; }
 
         /* Quick View Button */
         .btn-quick-view { display: block; width: 100%; text-align: center; padding: 10px; background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.4s; margin-top: 15px; }
-        .btn-quick-view:hover { background: rgba(212, 175, 55, 0.15); box-shadow: 0 0 10px var(--gold-glow); }
+        .btn-quick-view:hover { background: rgba(212, 175, 55, 0.15); }
 
-        /* Sukoon AuraMatch Quiz Custom Styling */
-        .auramatch-card { max-width: 650px; margin: 0 auto; background: var(--bg-glass); border: 1px solid var(--border-gold); padding: 35px; border-radius: 8px; text-align: center; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        /* Sukoon AuraMatch Quiz */
+        .auramatch-card { max-width: 650px; margin: 0 auto; background: var(--bg-glass); border: 1px solid var(--border-gold); padding: 35px; border-radius: 8px; text-align: center; backdrop-filter: blur(12px); }
         .quiz-step { display: none; text-align: left; }
         .quiz-step.active { display: block; }
         .quiz-input { width: 100%; padding: 14px; background: var(--bg-deep); border: 1px solid var(--border-gold); color: #fff; border-radius: 4px; margin-top: 10px; margin-bottom: 20px; font-size: 0.9rem; outline: none; }
-        .quiz-input:focus { border-color: var(--gold-primary); box-shadow: 0 0 8px var(--gold-glow); }
         .quiz-option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px; }
         .quiz-opt-btn { padding: 14px; background: var(--bg-surface); border: 1px solid var(--border-gold); color: var(--text-light); text-align: center; cursor: pointer; transition: 0.3s; font-size: 0.85rem; border-radius: 4px; }
         .quiz-opt-btn:hover { border-color: var(--gold-primary); background: rgba(212, 175, 55, 0.2); }
         
-        /* Loading Screen Analysis */
         .analysis-box { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 0; }
         .pulse-orb { width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, var(--gold-primary) 0%, transparent 70%); animation: pulse 1.5s infinite; margin-bottom: 20px; }
         @keyframes pulse { 0% { transform: scale(0.8); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(0.8); opacity: 0.5; } }
 
-        /* Identity Badge Result Popup / Container */
-        .identity-result-card { border: 1px solid var(--gold-primary); background: linear-gradient(145deg, #0a1128, #030712); padding: 30px; border-radius: 8px; text-align: center; position: relative; overflow: hidden; margin-top: 20px; }
+        .identity-result-card { border: 1px solid var(--gold-primary); background: linear-gradient(145deg, #0a1128, #030712); padding: 30px; border-radius: 8px; text-align: center; margin-top: 20px; }
         .identity-tag { display: inline-block; background: var(--gold-primary); color: #000; font-weight: 700; font-size: 0.7rem; padding: 4px 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; border-radius: 20px; }
         .match-score { color: #10b981; font-weight: 700; font-size: 1.1rem; margin: 10px 0; }
         .coupon-box { border: 1px dashed var(--gold-primary); background: rgba(212, 175, 55, 0.1); padding: 10px 20px; border-radius: 4px; display: inline-block; margin: 15px 0; color: var(--gold-light); font-weight: 700; letter-spacing: 3px; }
 
         /* 5 Energy Cards Grid */
-        .energy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 25px; }
-        .flip-container { perspective: 1000px; height: 360px; }
-        .flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; cursor: pointer; }
-        .flip-container:hover .flip-inner { transform: rotateY(180deg); }
-        .flip-front, .flip-back { position: absolute; inset: 0; backface-visibility: hidden; border: 1px solid var(--border-gold); padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--bg-surface); border-radius: 6px; }
-        .flip-front img { width: 100%; height: 80%; object-fit: contain; margin-bottom: 12px; border: 1px solid var(--border-gold); border-radius: 4px; background: rgba(3, 7, 18, 0.5); }
-        .flip-back { background: linear-gradient(145deg, #0e1a38, #050a18); transform: rotateY(180deg); }
-        .flip-back h4 { color: var(--gold-primary); margin-bottom: 10px; font-size: 1rem; }
-        .flip-back p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+        .energy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .energy-card-box { background: var(--bg-surface); border: 1px solid var(--border-gold); padding: 15px; border-radius: 6px; text-align: center; transition: 0.3s; }
+        .energy-card-box:hover { border-color: var(--gold-primary); transform: translateY(-5px); }
+        .energy-card-box img { width: 100%; height: auto; border-radius: 4px; margin-bottom: 12px; }
+        .energy-card-box h4 { color: var(--gold-primary); margin-bottom: 6px; font-size: 1rem; }
+        .energy-card-box p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
 
-        /* Single Page Weekly Ritual Section */
+        /* Weekly Ritual Section */
         .single-ritual-container { max-width: 900px; margin: 0 auto; text-align: center; }
-        .ritual-image-box { width: 100%; border: 1px solid var(--border-gold); background: var(--bg-surface); padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 6px; }
-        .ritual-image-box img { width: 100%; height: auto; display: block; border: 1px solid rgba(212, 175, 55, 0.2); object-fit: contain; }
+        .ritual-image-box { width: 100%; border: 1px solid var(--border-gold); background: var(--bg-surface); padding: 15px; border-radius: 6px; }
+        .ritual-image-box img { width: 100%; height: auto; display: block; border-radius: 4px; }
 
-        /* Instagram Gallery Masonry */
+        /* Instagram Gallery */
         .insta-masonry { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-        .insta-item { position: relative; height: 220px; overflow: hidden; border: 1px solid var(--border-gold); border-radius: 4px; }
-        .insta-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .insta-item { position: relative; overflow: hidden; border: 1px solid var(--border-gold); border-radius: 4px; }
+        .insta-item img { width: 100%; height: auto; display: block; transition: 0.5s; }
         .insta-overlay { position: absolute; inset: 0; background: rgba(7, 13, 30, 0.7); display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; color: var(--gold-primary); font-size: 1.5rem; }
         .insta-item:hover .insta-overlay { opacity: 1; }
-        .insta-item:hover img { transform: scale(1.1); }
 
-        /* Quick View Modal POPUP Structure */
+        /* Quick View Modal POPUP */
         .quick-view-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 20000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.4s; visibility: hidden; }
         .quick-view-modal.active { opacity: 1; pointer-events: auto; visibility: visible; }
         
@@ -217,69 +197,60 @@
             background: var(--bg-surface);
             border: 1px solid var(--border-gold);
             width: 90%;
-            max-width: 900px;
+            max-width: 800px;
             max-height: 85vh;
             position: relative;
             display: flex;
-            gap: 0;
-            overflow: hidden;
+            gap: 20px;
+            padding: 30px;
+            overflow-y: auto;
             border-radius: 6px;
-            transform: scale(0.9);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        .quick-view-modal.active .qv-modal-content { transform: scale(1); }
-        .qv-modal-close { position: absolute; top: 15px; right: 15px; color: var(--gold-primary); cursor: pointer; font-size: 1.4rem; z-index: 10; transition: 0.3s; }
-        .qv-modal-close:hover { transform: rotate(90deg); color: #fff; }
+        .qv-modal-close { position: absolute; top: 15px; right: 15px; color: var(--gold-primary); cursor: pointer; font-size: 1.5rem; z-index: 10; }
 
-        .qv-media-side { flex: 0 0 50%; height: auto; position: relative; border-right: 1px solid var(--border-gold); background: #000; display: flex; align-items: center; justify-content: center; padding: 30px; }
-        .qv-main-img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6)); }
+        .qv-media-side { flex: 0 0 45%; }
+        .qv-main-img { width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--border-gold); }
 
-        .qv-details-side { flex: 1; padding: 40px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-        .qv-title { font-size: 1.8rem; color: var(--gold-primary); line-height: 1.2; }
-        .qv-subtitle { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 10px; }
-        .qv-price { font-size: 1.5rem; font-weight: 700; color: #fff; }
-        .qv-desc { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin: 10px 0; }
+        .qv-details-side { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+        .qv-title { font-size: 1.6rem; color: var(--gold-primary); }
+        .qv-subtitle { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .qv-price { font-size: 1.4rem; font-weight: 700; color: #fff; }
+        .qv-desc { font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); }
 
-        .qv-notes-box { border: 1px solid var(--border-gold); background: rgba(3, 7, 18, 0.5); padding: 15px; margin: 15px 0; border-radius: 4px; }
-        .qv-notes-title { font-size: 0.8rem; text-transform: uppercase; color: var(--gold-light); letter-spacing: 2px; margin-bottom: 10px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 5px; }
-        .qv-notes-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .qv-notes-list li { font-size: 0.85rem; color: var(--text-muted); }
-        .qv-notes-list li strong { color: var(--gold-primary); margin-right: 5px; }
+        .qv-notes-box { border: 1px solid var(--border-gold); background: rgba(3, 7, 18, 0.5); padding: 12px; border-radius: 4px; }
+        .qv-notes-title { font-size: 0.8rem; text-transform: uppercase; color: var(--gold-light); letter-spacing: 1px; margin-bottom: 8px; }
+        .qv-notes-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .qv-notes-list li { font-size: 0.8rem; color: var(--text-muted); }
+        .qv-notes-list li strong { color: var(--gold-primary); }
 
         /* Floating Quick Action Buttons */
         .floating-actions { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
         .float-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border-gold); color: var(--gold-primary); display: flex; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s; }
-        .float-btn:hover { transform: scale(1.1); background: var(--gold-primary); color: #000; }
+        .float-btn:hover { background: var(--gold-primary); color: #000; }
 
         /* Footer */
-        footer { background: #02040a; border-top: 1px solid var(--border-gold); padding: 80px 8% 30px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
-        .footer-col h4 { color: var(--gold-primary); margin-bottom: 20px; font-size: 1rem; }
+        footer { background: #02040a; border-top: 1px solid var(--border-gold); padding: 60px 8% 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--gold-primary); margin-bottom: 15px; font-size: 1rem; }
         .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 10px; }
+        .footer-col li { margin-bottom: 8px; }
         .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
         .footer-col a:hover { color: var(--gold-primary); }
         .newsletter-box { display: flex; margin-top: 15px; }
         .newsletter-box input { padding: 10px; background: var(--bg-deep); border: 1px solid var(--border-gold); color: #fff; outline: none; width: 70%; }
         .gold-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-gold), transparent); margin: 30px 0; }
 
-        /* Reveal Animations */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
         /* Mobile Adjustments */
         @media (max-width: 768px) {
             .hamburger { display: block; }
-            nav ul { position: fixed; top: 75px; right: -100%; width: 70%; height: 100vh; background: var(--bg-surface); flex-direction: column; padding: 40px; transition: 0.4s; border-left: 1px solid var(--border-gold); }
+            nav ul { position: fixed; top: 70px; right: -100%; width: 70%; height: 100vh; background: var(--bg-surface); flex-direction: column; padding: 40px; transition: 0.4s; border-left: 1px solid var(--border-gold); }
             nav ul.active { right: 0; }
-            .hero { flex-direction: column; text-align: center; padding-top: 130px; }
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
             .hero-title { font-size: 2.2rem; }
-            .hero-slider-wrapper { width: 250px; height: 300px; margin-top: 30px; }
+            .hero-slider-wrapper { width: 220px; height: 280px; margin-top: 25px; }
             .hero-btns { justify-content: center; }
-            .custom-cursor, .cursor-follower { display: none; }
-            .qv-modal-content { flex-direction: column; max-height: 90vh; }
-            .qv-media-side { flex: 0 0 40%; border-right: none; border-bottom: 1px solid var(--border-gold); padding: 20px; }
-            .qv-details-side { padding: 25px; }
+            .qv-modal-content { flex-direction: column; padding: 20px; }
+            .qv-media-side { flex: 1; }
         }
     </style>
 </head>
@@ -290,10 +261,6 @@
 
     <!-- Mouse Glow Effect -->
     <div class="mouse-glow" id="mouseGlow"></div>
-
-    <!-- Custom Cursor -->
-    <div class="custom-cursor" id="cursor"></div>
-    <div class="cursor-follower" id="follower"></div>
 
     <!-- Preloader -->
     <div id="loader">
@@ -325,7 +292,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
-        <div class="hero-content reveal">
+        <div class="hero-content">
             <h1 class="hero-title">Aura of Elegance <span>House of Sukoon Official</span></h1>
             <p class="hero-subtitle">Handcrafted fragrances infused with Vedic planetary vibrations, luxurious botanical oils, and deep spiritual intentions.</p>
             <div class="hero-btns">
@@ -335,7 +302,7 @@
         </div>
 
         <!-- Hero Automatic Slider -->
-        <div class="hero-visual reveal">
+        <div class="hero-visual">
             <div class="hero-slider-wrapper">
                 <img src="shukra.jpg" alt="Shukra Udgam" class="hero-slide-img active">
                 <img src="mann.jpg" alt="Mann Shanti" class="hero-slide-img">
@@ -366,22 +333,23 @@
 
     <!-- Products Collection -->
     <section id="products">
-        <div class="section-header reveal">
+        <div class="section-header">
             <h2>Signature Collection</h2>
             <p>5 Intention-Based Luxurious Formulations</p>
         </div>
         <div class="product-grid">
 
             <!-- Discovery Pack Product Card -->
-            <div class="product-card reveal">
-                <span class="product-badge" style="background: var(--gold-light);">Premium</span>
+            <div class="product-card">
+                <span class="product-badge">Premium</span>
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
+                    <!-- Filename check: discoverpack.jpg or discoverpack.png -->
                     <img src="discoverpack.jpg" alt="Discovery Pack" loading="lazy" onerror="this.onerror=null; this.src='discoverpack.png';">
                 </div>
                 <div class="product-info-box">
                     <h3>Discovery Pack</h3>
-                    <p class="desc">5 x 10ml Energy Editions</p>
+                    <p class="desc">5 x 10ml Energy Editions Set</p>
                     <div class="price-row">
                         <span class="price">₹1,999</span>
                     </div>
@@ -389,8 +357,8 @@
                 <button class="btn-quick-view" onclick="openPopup('Discovery Pack')">View Details</button>
             </div>
 
-            <!-- Product 2 -->
-            <div class="product-card reveal">
+            <!-- Shukra Udgam -->
+            <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
                     <img src="shukra.jpg" alt="Shukra Udgam" loading="lazy">
@@ -405,8 +373,8 @@
                 <button class="btn-quick-view" onclick="openPopup('Shukra Udgam')">View Details</button>
             </div>
 
-            <!-- Product 3 -->
-            <div class="product-card reveal">
+            <!-- Mann Shanti -->
+            <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
                     <img src="mann.jpg" alt="Mann Shanti" loading="lazy">
@@ -421,8 +389,8 @@
                 <button class="btn-quick-view" onclick="openPopup('Mann Shanti')">View Details</button>
             </div>
 
-            <!-- Product 4 -->
-            <div class="product-card reveal">
+            <!-- Surya Tej -->
+            <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
                     <img src="surya.jpg" alt="Surya Tej" loading="lazy">
@@ -437,8 +405,8 @@
                 <button class="btn-quick-view" onclick="openPopup('Surya Tej')">View Details</button>
             </div>
 
-            <!-- Product 5 -->
-            <div class="product-card reveal">
+            <!-- Aura Shuddhi -->
+            <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
                     <img src="aura.jpg" alt="Aura Shuddhi" loading="lazy">
@@ -453,8 +421,8 @@
                 <button class="btn-quick-view" onclick="openPopup('Aura Shuddhi')">View Details</button>
             </div>
 
-            <!-- Product 6 -->
-            <div class="product-card reveal">
+            <!-- Kismat Connection -->
+            <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
                     <img src="kismat.jpg" alt="Kismat Connection" loading="lazy">
@@ -472,16 +440,14 @@
         </div>
     </section>
 
-    <!-- Sukoon AuraMatch™ Retail & Online Guided Quiz Section -->
+    <!-- Sukoon AuraMatch Quiz Section -->
     <section id="auramatch" style="background: var(--bg-surface);">
-        <div class="section-header reveal">
+        <div class="section-header">
             <h2>Sukoon AuraMatch™</h2>
             <p>Find Your Signature Cosmic Energy Profile in 60 Seconds</p>
         </div>
 
-        <div class="auramatch-card reveal">
-            
-            <!-- STEP 1: Welcome -->
+        <div class="auramatch-card">
             <div class="quiz-step active" id="step-1">
                 <h3 class="serif" style="color: var(--gold-primary); text-align: center; margin-bottom: 10px;">Find Your Signature Sukoon Fragrance</h3>
                 <p style="color: var(--text-muted); text-align: center; font-size: 0.85rem; margin-bottom: 25px;">Luxury recommendation based on your personality, energy goals, and lifestyle.</p>
@@ -490,16 +456,13 @@
                 </div>
             </div>
 
-            <!-- STEP 2: Customer Login / Verification -->
             <div class="quiz-step" id="step-2">
                 <h3 class="serif" style="color: var(--gold-primary); margin-bottom: 15px;">Enter Your Details</h3>
-                <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 15px;">Unlock your personalized Fragrance Energy Card</p>
                 <input type="text" id="custName" class="quiz-input" placeholder="Full Name" required>
-                <input type="tel" id="custPhone" class="quiz-input" placeholder="Mobile Number (For WhatsApp Result & Discount)" required>
-                <button class="btn-gold" style="width: 100%;" onclick="nextStep(3)">Continue & Answer Questions</button>
+                <input type="tel" id="custPhone" class="quiz-input" placeholder="Mobile Number" required>
+                <button class="btn-gold" style="width: 100%;" onclick="nextStep(3)">Continue</button>
             </div>
 
-            <!-- STEP 3: Smell Preference -->
             <div class="quiz-step" id="step-3">
                 <h4 style="color: var(--gold-light);">1. Aapko kis type ki smell sabse zyada pasand hai?</h4>
                 <div class="quiz-option-grid">
@@ -510,29 +473,26 @@
                 </div>
             </div>
 
-            <!-- STEP 4: Usage Occasion -->
             <div class="quiz-step" id="step-4">
                 <h4 style="color: var(--gold-light);">2. Aap perfume kab sabse zyada use karte hain?</h4>
                 <div class="quiz-option-grid">
                     <button class="quiz-opt-btn" onclick="selectAnswer('occasion', 'Office', 5)">💼 Office / Business</button>
-                    <button class="quiz-opt-btn" onclick="selectAnswer('occasion', 'Party', 5)">🎉 Parties & Evening Events</button>
-                    <button class="quiz-opt-btn" onclick="selectAnswer('occasion', 'Date', 5)">❤️ Date Nights & Romantics</button>
-                    <button class="quiz-opt-btn" onclick="selectAnswer('occasion', 'Daily', 5)">✨ Daily Ritual & Meditation</button>
+                    <button class="quiz-opt-btn" onclick="selectAnswer('occasion', 'Party', 5)">🎉 Parties & Events</button>
+                    <button class="quiz-opt-btn" onclick="selectAnswer('occasion', 'Date', 5)">❤️ Date Nights</button>
+                    <button class="quiz-opt-btn" onclick="selectAnswer('occasion', 'Daily', 5)">✨ Daily Ritual</button>
                 </div>
             </div>
 
-            <!-- STEP 5: Personality Trait -->
             <div class="quiz-step" id="step-5">
                 <h4 style="color: var(--gold-light);">3. Aapki personality kisse sabse match karti hai?</h4>
                 <div class="quiz-option-grid">
-                    <button class="quiz-opt-btn" onclick="selectAnswer('persona', 'Leader', 6)">👑 Leader / High Energy</button>
+                    <button class="quiz-opt-btn" onclick="selectAnswer('persona', 'Leader', 6)">👑 Leader / Confident</button>
                     <button class="quiz-opt-btn" onclick="selectAnswer('persona', 'Romantic', 6)">🌸 Romantic / Charming</button>
                     <button class="quiz-opt-btn" onclick="selectAnswer('persona', 'Calm', 6)">🧘 Calm / Peaceful</button>
-                    <button class="quiz-opt-btn" onclick="selectAnswer('persona', 'Protective', 6)">🛡️ Focused / Protective</button>
+                    <button class="quiz-opt-btn" onclick="selectAnswer('persona', 'Protective', 6)">🛡️ Focused / Mystic</button>
                 </div>
             </div>
 
-            <!-- STEP 6: Favorite Color Vibe -->
             <div class="quiz-step" id="step-6">
                 <h4 style="color: var(--gold-light);">4. Aapko kis color aura ki attraction mehsoos hoti hai?</h4>
                 <div class="quiz-option-grid">
@@ -543,7 +503,6 @@
                 </div>
             </div>
 
-            <!-- STEP 7: Loading AI Analysis -->
             <div class="quiz-step" id="step-7">
                 <div class="analysis-box">
                     <div class="pulse-orb"></div>
@@ -552,16 +511,15 @@
                 </div>
             </div>
 
-            <!-- STEP 8: Final Match Result -->
             <div class="quiz-step" id="step-8">
-                <div class="identity-result-card" id="resultContainer">
+                <div class="identity-result-card">
                     <span class="identity-tag" id="identityTitle">👑 THE LEADER</span>
                     <h2 class="serif" id="matchedPerfume" style="color: #fff; font-size: 1.8rem;">SURYA TEJ</h2>
                     <div class="match-score">✨ 95% Compatibility Match</div>
                     <p id="matchedDesc" style="color: var(--text-muted); font-size: 0.85rem; margin: 10px 0;">Boosts leadership qualities, courage, and radiant willpower.</p>
                     
                     <div class="coupon-box">
-                        CONGRATS! UNLOCKED 10% OFF: <span>SUKOON10</span>
+                        UNLOCKED 10% OFF: <span>SUKOON10</span>
                     </div>
 
                     <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
@@ -570,43 +528,64 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- 5 Cosmic Energy Cards Section -->
+    <!-- Cosmic Energy Cards Section -->
     <section id="energy">
-        <div class="section-header reveal">
+        <div class="section-header">
             <h2>Cosmic Energy Cards</h2>
-            <p>Hover or Tap to reveal the planetary energy principles</p>
+            <p>Vedic energy principles behind each fragrance</p>
         </div>
         <div class="energy-grid">
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-shukra.jpg" alt="Shukra Card" onerror="this.onerror=null; this.src='shukra.jpg';"><h4 class="serif">Shukra Udgam</h4></div><div class="flip-back"><h4>Venus Energy</h4><p>Invokes beauty, magnetism, prosperity, and pure attraction to elevate your vibe.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-mann.jpg" alt="Mann Shanti Card" onerror="this.onerror=null; this.src='mann.jpg';"><h4 class="serif">Mann Shanti</h4></div><div class="flip-back"><h4>Lunar Peace</h4><p>Calms mental noise, enhances emotional balance, and fosters quiet clarity.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-surya.jpg" alt="Surya Tej Card" onerror="this.onerror=null; this.src='surya.jpg';"><h4 class="serif">Surya Tej</h4></div><div class="flip-back"><h4>Solar Power</h4><p>Activates leadership, courage, focus, and radiant inner strength.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-aura.jpg" alt="Aura Shuddhi Card" onerror="this.onerror=null; this.src='aura.jpg';"><h4 class="serif">Aura Shuddhi</h4></div><div class="flip-back"><h4>Energy Shield</h4><p>Cleanses negative frequencies and creates a protective field around you.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-kismat.jpg" alt="Kismat Connection Card" onerror="this.onerror=null; this.src='kismat.jpg';"><h4 class="serif">Kismat Connection</h4></div><div class="flip-back"><h4>Jupiter Expansion</h4><p>Opens doors to new possibilities, fortune, and synchronicity.</p></div></div></div>
+            <div class="energy-card-box">
+                <img src="card-shukra.jpg" alt="Shukra Card" onerror="this.onerror=null; this.src='shukra.jpg';">
+                <h4 class="serif">Shukra Udgam</h4>
+                <p>Invokes beauty, magnetism, prosperity, and pure attraction to elevate your vibe.</p>
+            </div>
+            <div class="energy-card-box">
+                <img src="card-mann.jpg" alt="Mann Shanti Card" onerror="this.onerror=null; this.src='mann.jpg';">
+                <h4 class="serif">Mann Shanti</h4>
+                <p>Calms mental noise, enhances emotional balance, and fosters quiet clarity.</p>
+            </div>
+            <div class="energy-card-box">
+                <img src="card-surya.jpg" alt="Surya Tej Card" onerror="this.onerror=null; this.src='surya.jpg';">
+                <h4 class="serif">Surya Tej</h4>
+                <p>Activates leadership, courage, focus, and radiant inner strength.</p>
+            </div>
+            <div class="energy-card-box">
+                <img src="card-aura.jpg" alt="Aura Shuddhi Card" onerror="this.onerror=null; this.src='aura.jpg';">
+                <h4 class="serif">Aura Shuddhi</h4>
+                <p>Cleanses negative frequencies and creates a protective field around you.</p>
+            </div>
+            <div class="energy-card-box">
+                <img src="card-kismat.jpg" alt="Kismat Connection Card" onerror="this.onerror=null; this.src='kismat.jpg';">
+                <h4 class="serif">Kismat Connection</h4>
+                <p>Opens doors to new possibilities, fortune, and synchronicity.</p>
+            </div>
         </div>
     </section>
 
     <!-- Weekly Ritual Guide -->
     <section id="rituals" style="background: var(--bg-surface);">
-        <div class="section-header reveal">
+        <div class="section-header">
             <h2>Weekly Ritual Guide</h2>
             <p>Your week-at-a-glance guide for sensory application</p>
         </div>
-        <div class="single-ritual-container reveal">
-            <div class="ritual-image-box"><img src="weekly-ritual.jpg" alt="Weekly Ritual Guide Master Infographic" loading="lazy" onerror="this.onerror=null; this.src='shukra.jpg';"></div>
+        <div class="single-ritual-container">
+            <div class="ritual-image-box">
+                <img src="weekly-ritual.jpg" alt="Weekly Ritual Guide Infographic" loading="lazy" onerror="this.onerror=null; this.src='shukra.jpg';">
+            </div>
         </div>
     </section>
 
     <!-- Instagram Gallery -->
     <section style="background: var(--bg-surface);">
-        <div class="section-header reveal">
+        <div class="section-header">
             <h2>Instagram Gallery</h2>
             <p>@houseofsukoon.official</p>
         </div>
-        <div class="insta-masonry reveal">
+        <div class="insta-masonry">
             <div class="insta-item"><img src="shukra.jpg" alt="Insta Post 1"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
             <div class="insta-item"><img src="discoverpack.jpg" alt="Insta Post 2" onerror="this.onerror=null; this.src='surya.jpg';"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
             <div class="insta-item"><img src="kismat.jpg" alt="Insta Post 3"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
@@ -646,7 +625,7 @@
         <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">&copy; 2026 House of Sukoon Official. All Rights Reserved.</p>
     </footer>
 
-    <!-- Quick View Modal Popup Window -->
+    <!-- Quick View Popup Modal -->
     <div class="quick-view-modal" id="quickViewPopup">
         <div class="qv-modal-content">
             <span class="qv-modal-close" onclick="closePopup()">&times;</span>
@@ -662,14 +641,14 @@
                     <h4 class="qv-notes-title serif">Fragrance Notes</h4>
                     <ul class="qv-notes-list" id="qvNotesList"></ul>
                 </div>
-                <div class="qv-action-row">
+                <div style="margin-top: 10px;">
                     <a href="https://wa.me/918871493221" target="_blank" class="btn-gold">Order on WhatsApp</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Floating Buttons -->
+    <!-- Floating Action Buttons -->
     <div class="floating-actions">
         <a href="https://wa.me/918871493221" class="float-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
         <a href="tel:+918871493221" class="float-btn"><i class="fas fa-phone"></i></a>
@@ -678,20 +657,16 @@
 
     <!-- Scripts -->
     <script>
-        // Loader
+        // Preloader
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             loader.style.opacity = '0';
             setTimeout(() => loader.style.visibility = 'hidden', 800);
         });
 
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        const follower = document.getElementById('follower');
+        // Mouse Glow
         const mouseGlow = document.getElementById('mouseGlow');
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-            follower.style.left = e.clientX + 'px'; follower.style.top = e.clientY + 'px';
             mouseGlow.style.left = e.clientX + 'px'; mouseGlow.style.top = e.clientY + 'px';
         });
 
@@ -712,7 +687,7 @@
             document.getElementById('scroll-progress').style.width = scrolled + '%';
         });
 
-        // Mobile Nav
+        // Mobile Menu Nav
         document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('active'); });
 
         // Countdown Timer
@@ -727,14 +702,7 @@
             }
         }, 1000);
 
-        // Reveal animations
-        const reveals = document.querySelectorAll('.reveal');
-        function revealOnScroll() {
-            reveals.forEach(r => { if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add('active'); });
-        }
-        window.addEventListener('scroll', revealOnScroll); revealOnScroll();
-
-        /* Sukoon AuraMatch™ Quiz Logic */
+        /* Sukoon AuraMatch Quiz Logic */
         let quizAnswers = {};
 
         function nextStep(stepNum) {
@@ -801,9 +769,9 @@
             nextStep(1);
         }
 
-        // Products Data
+        // Product Details Popup Data
         const productData = {
-            'Discovery Pack': { subtitle: '5 x 10ml Bottles', price: '₹1,999', img: 'discoverpack.jpg', desc: 'Experience all 5 cosmic energies in travel size.', notes: { 'Includes': 'Shukra Udgam, Mann Shanti, Surya Tej, Aura Shuddhi, Kismat Connection' } },
+            'Discovery Pack': { subtitle: '5 x 10ml Bottles Set', price: '₹1,999', img: 'discoverpack.jpg', desc: 'Experience all 5 cosmic energies in travel size.', notes: { 'Includes': 'Shukra Udgam, Mann Shanti, Surya Tej, Aura Shuddhi, Kismat Connection' } },
             'Shukra Udgam': { subtitle: '50ml EDP | Attraction', price: '₹1,099', img: 'shukra.jpg', desc: 'A mesmerizing Venusian blend.', notes: { 'Top Notes': 'Damask Rose, Saffron', 'Base Notes': 'White Sandalwood, Musk' } },
             'Mann Shanti': { subtitle: '50ml EDP | Peace', price: '₹1,099', img: 'mann.jpg', desc: 'Calms the mind and enhances emotional composure.', notes: { 'Top Notes': 'Neroli, Water Accord', 'Base Notes': 'White Musk, Cedarwood' } },
             'Surya Tej': { subtitle: '50ml EDP | Confidence', price: '₹1,099', img: 'surya.jpg', desc: 'Boosts leadership, courage, and willpower.', notes: { 'Top Notes': 'Grapefruit, Black Pepper', 'Base Notes': 'Cedarwood, Leather' } },
@@ -811,7 +779,6 @@
             'Kismat Connection': { subtitle: '50ml EDP | Opportunity', price: '₹1,099', img: 'kismat.jpg', desc: 'Opens doors to fortune and expansion.', notes: { 'Top Notes': 'Saffron, Orange', 'Base Notes': 'Oud Wood, Tonka Bean' } }
         };
 
-        // Modal Popup Logic
         const popup = document.getElementById('quickViewPopup');
         function openPopup(productName) {
             const data = productData[productName];
