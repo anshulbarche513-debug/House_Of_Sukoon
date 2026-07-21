@@ -107,17 +107,35 @@
 
         /* Products Grid */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-        .product-card { background: var(--bg-glass); border: 1px solid var(--border-gold); backdrop-filter: blur(8px); padding: 20px; border-radius: 4px; position: relative; transition: all 0.4s ease; overflow: hidden; }
+        
+        .product-card { 
+            background: var(--bg-glass); 
+            border: 1px solid var(--border-gold); 
+            backdrop-filter: blur(8px); 
+            padding: 20px; 
+            border-radius: 4px; 
+            position: relative; 
+            transition: all 0.4s ease; 
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         .product-card:hover { transform: translateY(-10px); border-color: var(--gold-primary); box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px var(--gold-glow); }
         .product-badge { position: absolute; top: 15px; left: 15px; background: var(--gold-primary); color: #000; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; text-transform: uppercase; z-index: 3; }
         .wishlist-btn { position: absolute; top: 15px; right: 15px; color: var(--text-muted); cursor: pointer; z-index: 3; transition: 0.3s; }
         .wishlist-btn.active, .wishlist-btn:hover { color: #e11d48; }
+        
         .p-img-box { width: 100%; height: 260px; overflow: hidden; position: relative; margin-bottom: 15px; border: 1px solid rgba(212, 175, 55, 0.15); }
         .p-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .product-card:hover .p-img-box img { transform: scale(1.1); }
+        
+        .product-info-box { flex-grow: 1; display: flex; flex-direction: column; }
         .product-card h3 { font-size: 1.1rem; color: var(--gold-primary); margin-bottom: 5px; }
         .product-card .desc { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 15px; }
-        .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
+        
+        .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; }
         .price { font-size: 1.2rem; font-weight: 700; color: #fff; }
 
         /* Quick View Button - Popup Trigger */
@@ -333,74 +351,101 @@
         </div>
         <div class="product-grid">
 
-            <!-- Discovery Pack 5x10ml with Quick View Popup Trigger -->
-            <div class="product-card reveal" style="border: 1px solid rgba(243, 229, 171, 0.4); box-shadow: 0 0 15px rgba(243, 229, 171, 0.1);">
+            <!-- Discovery Pack Product Card -->
+            <div class="product-card reveal">
                 <span class="product-badge" style="background: var(--gold-light);">Premium</span>
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="discoverpack.jpg" alt="Discovery Combo Pack" loading="lazy"></div>
-                <h3>Discovery Pack</h3>
-                <p class="desc">5 x 10ml Energy Editions</p>
-                <div class="price-row">
-                    <span class="price">₹1,999</span>
-                    <a href="https://wa.me/918871493221" target="_blank" class="btn-gold" style="padding: 8px 15px; font-size:0.7rem;">Buy Now</a>
+                <div class="p-img-box">
+                    <img src="discoverpack.jpg" alt="Discovery Pack" loading="lazy">
                 </div>
-                <!-- Popup Trigger Button -->
-                <button class="btn-quick-view" onclick="openPopup('Discovery Pack')">View Full Details</button>
+                <div class="product-info-box">
+                    <h3>Discovery Pack</h3>
+                    <p class="desc">5 x 10ml Energy Editions</p>
+                    <div class="price-row">
+                        <span class="price">₹1,999</span>
+                    </div>
+                </div>
+                <button class="btn-quick-view" onclick="openPopup('Discovery Pack')">View Details</button>
             </div>
 
+            <!-- Product 2 -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="shukra.jpg" alt="Shukra Udgam" loading="lazy"></div>
-                <h3>Shukra Udgam</h3>
-                <p class="desc">Attraction • Elegance • Prosperity</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Shukra Udgam')">View Details</button>
+                <div class="p-img-box">
+                    <img src="shukra.jpg" alt="Shukra Udgam" loading="lazy">
                 </div>
+                <div class="product-info-box">
+                    <h3>Shukra Udgam</h3>
+                    <p class="desc">Attraction • Elegance • Prosperity</p>
+                    <div class="price-row">
+                        <span class="price">₹1,099</span>
+                    </div>
+                </div>
+                <button class="btn-quick-view" onclick="openPopup('Shukra Udgam')">View Details</button>
             </div>
 
+            <!-- Product 3 -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="mann.jpg" alt="Mann Shanti" loading="lazy"></div>
-                <h3>Mann Shanti</h3>
-                <p class="desc">Peace • Clarity • Calmness</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Mann Shanti')">View Details</button>
+                <div class="p-img-box">
+                    <img src="mann.jpg" alt="Mann Shanti" loading="lazy">
                 </div>
+                <div class="product-info-box">
+                    <h3>Mann Shanti</h3>
+                    <p class="desc">Peace • Clarity • Calmness</p>
+                    <div class="price-row">
+                        <span class="price">₹1,099</span>
+                    </div>
+                </div>
+                <button class="btn-quick-view" onclick="openPopup('Mann Shanti')">View Details</button>
             </div>
 
+            <!-- Product 4 -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="surya.jpg" alt="Surya Tej" loading="lazy"></div>
-                <h3>Surya Tej</h3>
-                <p class="desc">Confidence • Success • Leadership</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Surya Tej')">View Details</button>
+                <div class="p-img-box">
+                    <img src="surya.jpg" alt="Surya Tej" loading="lazy">
                 </div>
+                <div class="product-info-box">
+                    <h3>Surya Tej</h3>
+                    <p class="desc">Confidence • Success • Leadership</p>
+                    <div class="price-row">
+                        <span class="price">₹1,099</span>
+                    </div>
+                </div>
+                <button class="btn-quick-view" onclick="openPopup('Surya Tej')">View Details</button>
             </div>
 
+            <!-- Product 5 -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="aura.jpg" alt="Aura Shuddhi" loading="lazy"></div>
-                <h3>Aura Shuddhi</h3>
-                <p class="desc">Protection • Balance • Energy</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Aura Shuddhi')">View Details</button>
+                <div class="p-img-box">
+                    <img src="aura.jpg" alt="Aura Shuddhi" loading="lazy">
                 </div>
+                <div class="product-info-box">
+                    <h3>Aura Shuddhi</h3>
+                    <p class="desc">Protection • Balance • Energy</p>
+                    <div class="price-row">
+                        <span class="price">₹1,099</span>
+                    </div>
+                </div>
+                <button class="btn-quick-view" onclick="openPopup('Aura Shuddhi')">View Details</button>
             </div>
 
+            <!-- Product 6 -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="kismat.jpg" alt="Kismat Connection" loading="lazy"></div>
-                <h3>Kismat Connection</h3>
-                <p class="desc">Growth • Opportunity • Expansion</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Kismat Connection')">View Details</button>
+                <div class="p-img-box">
+                    <img src="kismat.jpg" alt="Kismat Connection" loading="lazy">
                 </div>
+                <div class="product-info-box">
+                    <h3>Kismat Connection</h3>
+                    <p class="desc">Growth • Opportunity • Expansion</p>
+                    <div class="price-row">
+                        <span class="price">₹1,099</span>
+                    </div>
+                </div>
+                <button class="btn-quick-view" onclick="openPopup('Kismat Connection')">View Details</button>
             </div>
 
         </div>
@@ -609,7 +654,7 @@
         }
         function resetQuiz() { document.getElementById('quiz-step-1').style.display = 'block'; document.getElementById('quiz-result').style.display = 'none'; }
 
-        // Products Data with Detailed Olfactory Pyramid (Top, Heart, Base Notes)
+        // Products Data with Detailed Olfactory Pyramid
         const productData = {
             'Discovery Pack': {
                 subtitle: 'Discovery Combo Pack | 5 x 10ml Bottles',
@@ -693,7 +738,6 @@
             const notesList = document.getElementById('qvNotesList');
             notesList.innerHTML = ''; 
             
-            // Loop through Top, Heart, and Base Notes dynamically
             for (const [key, value] of Object.entries(data.notes)) {
                 const li = document.createElement('li');
                 li.innerHTML = `<strong>${key}:</strong> ${value}`;
@@ -703,7 +747,7 @@
             popup.classList.add('active');
         }
         function closePopup() { popup.classList.remove('active'); }
-        window.onclick = function(e) { if (e.target == popup) closePopup(); } // Close on background click
+        window.onclick = function(e) { if (e.target == popup) closePopup(); }
 
         // Wishlist
         function toggleWishlist(btn) { btn.classList.toggle('fas'); btn.classList.toggle('far'); btn.classList.toggle('active'); }
