@@ -292,7 +292,7 @@
     <!-- Header Navigation -->
     <header>
         <div class="logo-container">
-            <img src="logo.jpg" alt="House of Sukoon Official Logo" class="logo-img" onerror="this.style.display='none'">
+            <img src="logo.jpg" alt="House of Sukoon Official Logo" class="logo-img" onerror="this.onerror=null; this.src='logo.png';">
             <div class="brand-text-box">
                 <span class="serif brand-title">HOUSE OF SUKOON</span>
                 <span class="brand-tag">OFFICIAL</span>
@@ -325,11 +325,11 @@
         <!-- Hero Automatic Slider -->
         <div class="hero-visual">
             <div class="hero-slider-wrapper">
-                <img src="shukra.jpg" alt="Shukra Udgam" class="hero-slide-img active">
-                <img src="mann.jpg" alt="Mann Shanti" class="hero-slide-img">
-                <img src="surya.jpg" alt="Surya Tej" class="hero-slide-img">
-                <img src="aura.jpg" alt="Aura Shuddhi" class="hero-slide-img">
-                <img src="kismat.jpg" alt="Kismat Connection" class="hero-slide-img">
+                <img src="shukra.jpg" alt="Shukra Udgam" class="hero-slide-img active" onerror="this.onerror=null; this.src='shukra.png';">
+                <img src="mann.jpg" alt="Mann Shanti" class="hero-slide-img" onerror="this.onerror=null; this.src='mann.png';">
+                <img src="surya.jpg" alt="Surya Tej" class="hero-slide-img" onerror="this.onerror=null; this.src='surya.png';">
+                <img src="aura.jpg" alt="Aura Shuddhi" class="hero-slide-img" onerror="this.onerror=null; this.src='aura.png';">
+                <img src="kismat.jpg" alt="Kismat Connection" class="hero-slide-img" onerror="this.onerror=null; this.src='kismat.png';">
             </div>
             <div class="slider-dots">
                 <span class="dot active" onclick="setSlide(0)"></span>
@@ -365,7 +365,7 @@
                 <span class="product-badge">Premium</span>
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
-                    <img src="discoverpack.jpg" alt="Discovery Pack" loading="lazy" onerror="this.onerror=null; this.src='discoverpack.png';">
+                    <img src="discoverpack.jpg" alt="Discovery Pack" loading="lazy" onerror="this.onerror=null; this.src='discoverpack.png'; if(this.src.includes('.png')) { this.onerror=null; this.src='discoverypack.jpg'; }">
                 </div>
                 <div class="product-info-box">
                     <h3>Discovery Pack</h3>
@@ -381,7 +381,7 @@
             <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
-                    <img src="shukra.jpg" alt="Shukra Udgam" loading="lazy">
+                    <img src="shukra.jpg" alt="Shukra Udgam" loading="lazy" onerror="this.onerror=null; this.src='shukra.png';">
                 </div>
                 <div class="product-info-box">
                     <h3>Shukra Udgam</h3>
@@ -397,7 +397,7 @@
             <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
-                    <img src="mann.jpg" alt="Mann Shanti" loading="lazy">
+                    <img src="mann.jpg" alt="Mann Shanti" loading="lazy" onerror="this.onerror=null; this.src='mann.png';">
                 </div>
                 <div class="product-info-box">
                     <h3>Mann Shanti</h3>
@@ -413,7 +413,7 @@
             <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
-                    <img src="surya.jpg" alt="Surya Tej" loading="lazy">
+                    <img src="surya.jpg" alt="Surya Tej" loading="lazy" onerror="this.onerror=null; this.src='surya.png';">
                 </div>
                 <div class="product-info-box">
                     <h3>Surya Tej</h3>
@@ -429,7 +429,7 @@
             <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
-                    <img src="aura.jpg" alt="Aura Shuddhi" loading="lazy">
+                    <img src="aura.jpg" alt="Aura Shuddhi" loading="lazy" onerror="this.onerror=null; this.src='aura.png';">
                 </div>
                 <div class="product-info-box">
                     <h3>Aura Shuddhi</h3>
@@ -445,7 +445,7 @@
             <div class="product-card">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
-                    <img src="kismat.jpg" alt="Kismat Connection" loading="lazy">
+                    <img src="kismat.jpg" alt="Kismat Connection" loading="lazy" onerror="this.onerror=null; this.src='kismat.png';">
                 </div>
                 <div class="product-info-box">
                     <h3>Kismat Connection</h3>
@@ -574,12 +574,12 @@
                 <p>Activates leadership, courage, focus, and radiant inner strength.</p>
             </div>
             <div class="energy-card-box">
-                <img src="card-aura.jpg" alt="Aura Shuddhi Energy Card" onerror="this.onerror=null; this.src='card-aura.png';">
+                <img src="card-aura.jpg" alt="Aura Shuddhi Energy Card" onerror="this.onerror=null; this.src='card-aura.png'; if(this.src.includes('.png')){this.onerror=null; this.src='card-aura.jpeg';}">
                 <h4 class="serif">Aura Shuddhi</h4>
                 <p>Cleanses negative frequencies and creates a protective field around you.</p>
             </div>
             <div class="energy-card-box">
-                <img src="card-kismat.jpg" alt="Kismat Connection Energy Card" onerror="this.onerror=null; this.src='card-kismat.png';">
+                <img src="card-kismat.jpg" alt="Kismat Connection Energy Card" onerror="this.onerror=null; this.src='card-kismat.png'; if(this.src.includes('.png')){this.onerror=null; this.src='card-kismat.jpeg';}">
                 <h4 class="serif">Kismat Connection</h4>
                 <p>Opens doors to new possibilities, fortune, and synchronicity.</p>
             </div>
@@ -606,10 +606,10 @@
             <p>@houseofsukoon.official</p>
         </div>
         <div class="insta-masonry">
-            <div class="insta-item"><img src="shukra.jpg" alt="Insta Post 1"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="shukra.jpg" alt="Insta Post 1" onerror="this.onerror=null; this.src='shukra.png';"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
             <div class="insta-item"><img src="discoverpack.jpg" alt="Insta Post 2" onerror="this.onerror=null; this.src='discoverpack.png';"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="kismat.jpg" alt="Insta Post 3"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="mann.jpg" alt="Insta Post 4"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="kismat.jpg" alt="Insta Post 3" onerror="this.onerror=null; this.src='kismat.png';"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="mann.jpg" alt="Insta Post 4" onerror="this.onerror=null; this.src='mann.png';"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
         </div>
     </section>
 
