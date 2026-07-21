@@ -87,11 +87,33 @@
         .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--gold-primary); background: transparent; cursor: pointer; transition: 0.3s; }
         .dot.active { background: var(--gold-primary); box-shadow: 0 0 10px var(--gold-glow); }
 
-        /* Countdown Bar */
+        /* 3D Countdown Flip Section */
         .countdown-section { background: var(--bg-surface); border-top: 1px solid var(--border-gold); border-bottom: 1px solid var(--border-gold); padding: 30px 5%; text-align: center; }
-        .countdown-container { display: flex; justify-content: center; gap: 20px; margin-top: 15px; }
-        .flip-card { background: var(--bg-deep); border: 1px solid var(--border-gold); padding: 12px 18px; min-width: 75px; border-radius: 6px; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
-        .flip-num { font-size: 1.6rem; font-family: 'Cinzel', serif; color: var(--gold-primary); font-weight: 700; }
+        .countdown-container { display: flex; justify-content: center; gap: 20px; margin-top: 15px; perspective: 1000px; }
+        
+        .flip-card { 
+            background: var(--bg-deep); 
+            border: 1px solid var(--border-gold); 
+            padding: 12px 18px; 
+            min-width: 80px; 
+            border-radius: 6px; 
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 5px 15px rgba(0,0,0,0.5);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+
+        .flip-card.animate-flip {
+            animation: flip3D 0.6s ease-in-out;
+        }
+
+        @keyframes flip3D {
+            0% { transform: rotateX(0deg); }
+            50% { transform: rotateX(-90deg); background: var(--bg-glass); }
+            100% { transform: rotateX(0deg); }
+        }
+
+        .flip-num { font-size: 1.8rem; font-family: 'Cinzel', serif; color: var(--gold-primary); font-weight: 700; text-shadow: 0 0 10px var(--gold-glow); }
         .flip-label { font-size: 0.65rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-top: 4px; }
 
         /* Global Sections */
@@ -121,7 +143,6 @@
         .wishlist-btn { position: absolute; top: 15px; right: 15px; color: var(--text-muted); cursor: pointer; z-index: 3; transition: 0.3s; }
         .wishlist-btn.active, .wishlist-btn:hover { color: #e11d48; }
         
-        /* Clean Natural Image Display (No Fixed Height Bugs) */
         .p-img-box { 
             width: 100%; 
             margin-bottom: 15px; 
@@ -169,17 +190,17 @@
         .match-score { color: #10b981; font-weight: 700; font-size: 1.1rem; margin: 10px 0; }
         .coupon-box { border: 1px dashed var(--gold-primary); background: rgba(212, 175, 55, 0.1); padding: 10px 20px; border-radius: 4px; display: inline-block; margin: 15px 0; color: var(--gold-light); font-weight: 700; letter-spacing: 3px; }
 
-        /* 5 Energy Cards Grid */
+        /* Cosmic Energy Cards Grid */
         .energy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
         .energy-card-box { background: var(--bg-surface); border: 1px solid var(--border-gold); padding: 15px; border-radius: 6px; text-align: center; transition: 0.3s; }
-        .energy-card-box:hover { border-color: var(--gold-primary); transform: translateY(-5px); }
-        .energy-card-box img { width: 100%; height: auto; border-radius: 4px; margin-bottom: 12px; }
+        .energy-card-box:hover { border-color: var(--gold-primary); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
+        .energy-card-box img { width: 100%; height: auto; border-radius: 4px; margin-bottom: 12px; display: block; border: 1px solid var(--border-gold); }
         .energy-card-box h4 { color: var(--gold-primary); margin-bottom: 6px; font-size: 1rem; }
         .energy-card-box p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
 
         /* Weekly Ritual Section */
         .single-ritual-container { max-width: 900px; margin: 0 auto; text-align: center; }
-        .ritual-image-box { width: 100%; border: 1px solid var(--border-gold); background: var(--bg-surface); padding: 15px; border-radius: 6px; }
+        .ritual-image-box { width: 100%; border: 1px solid var(--border-gold); background: var(--bg-surface); padding: 15px; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .ritual-image-box img { width: 100%; height: auto; display: block; border-radius: 4px; }
 
         /* Instagram Gallery */
@@ -320,14 +341,14 @@
         </div>
     </section>
 
-    <!-- Launch Countdown -->
+    <!-- Launch 3D Flip Countdown -->
     <div class="countdown-section">
         <h3 class="serif" style="color: var(--gold-primary); font-size: 1rem;">OFFICIAL GRAND LAUNCH</h3>
         <div class="countdown-container">
-            <div class="flip-card"><div class="flip-num" id="d">00</div><div class="flip-label">Days</div></div>
-            <div class="flip-card"><div class="flip-num" id="h">00</div><div class="flip-label">Hours</div></div>
-            <div class="flip-card"><div class="flip-num" id="m">00</div><div class="flip-label">Mins</div></div>
-            <div class="flip-card"><div class="flip-num" id="s">00</div><div class="flip-label">Secs</div></div>
+            <div class="flip-card" id="card-d"><div class="flip-num" id="d">00</div><div class="flip-label">Days</div></div>
+            <div class="flip-card" id="card-h"><div class="flip-num" id="h">00</div><div class="flip-label">Hours</div></div>
+            <div class="flip-card" id="card-m"><div class="flip-num" id="m">00</div><div class="flip-label">Mins</div></div>
+            <div class="flip-card" id="card-s"><div class="flip-num" id="s">00</div><div class="flip-label">Secs</div></div>
         </div>
     </div>
 
@@ -344,7 +365,6 @@
                 <span class="product-badge">Premium</span>
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
-                    <!-- Filename check: discoverpack.jpg or discoverpack.png -->
                     <img src="discoverpack.jpg" alt="Discovery Pack" loading="lazy" onerror="this.onerror=null; this.src='discoverpack.png';">
                 </div>
                 <div class="product-info-box">
@@ -539,34 +559,34 @@
         </div>
         <div class="energy-grid">
             <div class="energy-card-box">
-                <img src="card-shukra.jpg" alt="Shukra Card" onerror="this.onerror=null; this.src='shukra.jpg';">
+                <img src="card-shukra.jpg" alt="Shukra Energy Card" onerror="this.onerror=null; this.src='card-shukra.png';">
                 <h4 class="serif">Shukra Udgam</h4>
                 <p>Invokes beauty, magnetism, prosperity, and pure attraction to elevate your vibe.</p>
             </div>
             <div class="energy-card-box">
-                <img src="card-mann.jpg" alt="Mann Shanti Card" onerror="this.onerror=null; this.src='mann.jpg';">
+                <img src="card-mann.jpg" alt="Mann Shanti Energy Card" onerror="this.onerror=null; this.src='card-mann.png';">
                 <h4 class="serif">Mann Shanti</h4>
                 <p>Calms mental noise, enhances emotional balance, and fosters quiet clarity.</p>
             </div>
             <div class="energy-card-box">
-                <img src="card-surya.jpg" alt="Surya Tej Card" onerror="this.onerror=null; this.src='surya.jpg';">
+                <img src="card-surya.jpg" alt="Surya Tej Energy Card" onerror="this.onerror=null; this.src='card-surya.png';">
                 <h4 class="serif">Surya Tej</h4>
                 <p>Activates leadership, courage, focus, and radiant inner strength.</p>
             </div>
             <div class="energy-card-box">
-                <img src="card-aura.jpg" alt="Aura Shuddhi Card" onerror="this.onerror=null; this.src='aura.jpg';">
+                <img src="card-aura.jpg" alt="Aura Shuddhi Energy Card" onerror="this.onerror=null; this.src='card-aura.png';">
                 <h4 class="serif">Aura Shuddhi</h4>
                 <p>Cleanses negative frequencies and creates a protective field around you.</p>
             </div>
             <div class="energy-card-box">
-                <img src="card-kismat.jpg" alt="Kismat Connection Card" onerror="this.onerror=null; this.src='kismat.jpg';">
+                <img src="card-kismat.jpg" alt="Kismat Connection Energy Card" onerror="this.onerror=null; this.src='card-kismat.png';">
                 <h4 class="serif">Kismat Connection</h4>
                 <p>Opens doors to new possibilities, fortune, and synchronicity.</p>
             </div>
         </div>
     </section>
 
-    <!-- Weekly Ritual Guide -->
+    <!-- Weekly Ritual Guide Section -->
     <section id="rituals" style="background: var(--bg-surface);">
         <div class="section-header">
             <h2>Weekly Ritual Guide</h2>
@@ -574,7 +594,7 @@
         </div>
         <div class="single-ritual-container">
             <div class="ritual-image-box">
-                <img src="weekly-ritual.jpg" alt="Weekly Ritual Guide Infographic" loading="lazy" onerror="this.onerror=null; this.src='shukra.jpg';">
+                <img src="weekly-ritual.jpg" alt="Weekly Ritual Guide Infographic" loading="lazy" onerror="this.onerror=null; this.src='weekly-ritual.png';">
             </div>
         </div>
     </section>
@@ -587,7 +607,7 @@
         </div>
         <div class="insta-masonry">
             <div class="insta-item"><img src="shukra.jpg" alt="Insta Post 1"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="discoverpack.jpg" alt="Insta Post 2" onerror="this.onerror=null; this.src='surya.jpg';"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="discoverpack.jpg" alt="Insta Post 2" onerror="this.onerror=null; this.src='discoverpack.png';"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
             <div class="insta-item"><img src="kismat.jpg" alt="Insta Post 3"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
             <div class="insta-item"><img src="mann.jpg" alt="Insta Post 4"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
         </div>
@@ -690,15 +710,31 @@
         // Mobile Menu Nav
         document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('active'); });
 
-        // Countdown Timer
+        // Countdown Timer with 3D Flip Animation
         const targetDate = new Date("August 25, 2026 00:00:00").getTime();
+        let lastVals = {};
+
+        function updateFlip(id, val) {
+            const elem = document.getElementById(id);
+            const card = document.getElementById(`card-${id}`);
+            if (lastVals[id] !== val) {
+                lastVals[id] = val;
+                elem.innerText = val;
+                if(card) {
+                    card.classList.remove('animate-flip');
+                    void card.offsetWidth; // Trigger reflow
+                    card.classList.add('animate-flip');
+                }
+            }
+        }
+
         setInterval(() => {
             const now = new Date().getTime(); const diff = targetDate - now;
             if(diff > 0) {
-                document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-                document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                updateFlip('d', Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0'));
+                updateFlip('h', Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0'));
+                updateFlip('m', Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0'));
+                updateFlip('s', Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0'));
             }
         }, 1000);
 
