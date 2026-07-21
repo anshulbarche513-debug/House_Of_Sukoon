@@ -113,7 +113,7 @@
             border: 1px solid var(--border-gold); 
             backdrop-filter: blur(8px); 
             padding: 20px; 
-            border-radius: 4px; 
+            border-radius: 6px; 
             position: relative; 
             transition: all 0.4s ease; 
             overflow: hidden; 
@@ -123,13 +123,35 @@
         }
 
         .product-card:hover { transform: translateY(-10px); border-color: var(--gold-primary); box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px var(--gold-glow); }
-        .product-badge { position: absolute; top: 15px; left: 15px; background: var(--gold-primary); color: #000; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; text-transform: uppercase; z-index: 3; }
+        .product-badge { position: absolute; top: 15px; left: 15px; background: var(--gold-primary); color: #000; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; text-transform: uppercase; z-index: 3; border-radius: 2px; }
         .wishlist-btn { position: absolute; top: 15px; right: 15px; color: var(--text-muted); cursor: pointer; z-index: 3; transition: 0.3s; }
         .wishlist-btn.active, .wishlist-btn:hover { color: #e11d48; }
         
-        .p-img-box { width: 100%; height: 260px; overflow: hidden; position: relative; margin-bottom: 15px; border: 1px solid rgba(212, 175, 55, 0.15); }
-        .p-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .product-card:hover .p-img-box img { transform: scale(1.1); }
+        /* Fixed & Uniform Image Container for All Products */
+        .p-img-box { 
+            width: 100%; 
+            height: 280px; 
+            overflow: hidden; 
+            position: relative; 
+            margin-bottom: 15px; 
+            border: 1px solid rgba(212, 175, 55, 0.2); 
+            border-radius: 4px;
+            background: rgba(3, 7, 18, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .p-img-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+        }
+        
+        .product-card:hover .p-img-box img { transform: scale(1.08); }
         
         .product-info-box { flex-grow: 1; display: flex; flex-direction: column; }
         .product-card h3 { font-size: 1.1rem; color: var(--gold-primary); margin-bottom: 5px; }
@@ -168,8 +190,8 @@
         .flip-container { perspective: 1000px; height: 360px; }
         .flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; cursor: pointer; }
         .flip-container:hover .flip-inner { transform: rotateY(180deg); }
-        .flip-front, .flip-back { position: absolute; inset: 0; backface-visibility: hidden; border: 1px solid var(--border-gold); padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--bg-surface); border-radius: 4px; }
-        .flip-front img { width: 100%; height: 80%; object-fit: cover; margin-bottom: 12px; border: 1px solid var(--border-gold); }
+        .flip-front, .flip-back { position: absolute; inset: 0; backface-visibility: hidden; border: 1px solid var(--border-gold); padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--bg-surface); border-radius: 6px; }
+        .flip-front img { width: 100%; height: 80%; object-fit: contain; margin-bottom: 12px; border: 1px solid var(--border-gold); border-radius: 4px; background: rgba(3, 7, 18, 0.5); }
         .flip-back { background: linear-gradient(145deg, #0e1a38, #050a18); transform: rotateY(180deg); }
         .flip-back h4 { color: var(--gold-primary); margin-bottom: 10px; font-size: 1rem; }
         .flip-back p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
@@ -177,11 +199,11 @@
         /* Single Page Weekly Ritual Section */
         .single-ritual-container { max-width: 900px; margin: 0 auto; text-align: center; }
         .ritual-image-box { width: 100%; border: 1px solid var(--border-gold); background: var(--bg-surface); padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 6px; }
-        .ritual-image-box img { width: 100%; height: auto; display: block; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .ritual-image-box img { width: 100%; height: auto; display: block; border: 1px solid rgba(212, 175, 55, 0.2); object-fit: contain; }
 
         /* Instagram Gallery Masonry */
         .insta-masonry { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-        .insta-item { position: relative; height: 220px; overflow: hidden; border: 1px solid var(--border-gold); }
+        .insta-item { position: relative; height: 220px; overflow: hidden; border: 1px solid var(--border-gold); border-radius: 4px; }
         .insta-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .insta-overlay { position: absolute; inset: 0; background: rgba(7, 13, 30, 0.7); display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; color: var(--gold-primary); font-size: 1.5rem; }
         .insta-item:hover .insta-overlay { opacity: 1; }
@@ -282,7 +304,7 @@
     <!-- Header Navigation -->
     <header>
         <div class="logo-container">
-            <img src="logo.jpg" alt="House of Sukoon Official Logo" class="logo-img">
+            <img src="logo.jpg" alt="House of Sukoon Official Logo" class="logo-img" onerror="this.style.display='none'">
             <div class="brand-text-box">
                 <span class="serif brand-title">HOUSE OF SUKOON</span>
                 <span class="brand-tag">OFFICIAL</span>
@@ -355,7 +377,7 @@
                 <span class="product-badge" style="background: var(--gold-light);">Premium</span>
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box">
-                    <img src="discoverpack.jpg" alt="Discovery Pack" loading="lazy">
+                    <img src="discoverpack.jpg" alt="Discovery Pack" loading="lazy" onerror="this.onerror=null; this.src='discoverpack.png';">
                 </div>
                 <div class="product-info-box">
                     <h3>Discovery Pack</h3>
@@ -559,11 +581,11 @@
             <p>Hover or Tap to reveal the planetary energy principles</p>
         </div>
         <div class="energy-grid">
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-shukra.jpg" alt="Shukra Card"><h4 class="serif">Shukra Udgam</h4></div><div class="flip-back"><h4>Venus Energy</h4><p>Invokes beauty, magnetism, prosperity, and pure attraction to elevate your vibe.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-mann.jpg" alt="Mann Shanti Card"><h4 class="serif">Mann Shanti</h4></div><div class="flip-back"><h4>Lunar Peace</h4><p>Calms mental noise, enhances emotional balance, and fosters quiet clarity.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-surya.jpg" alt="Surya Tej Card"><h4 class="serif">Surya Tej</h4></div><div class="flip-back"><h4>Solar Power</h4><p>Activates leadership, courage, focus, and radiant inner strength.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-aura.jpg" alt="Aura Shuddhi Card"><h4 class="serif">Aura Shuddhi</h4></div><div class="flip-back"><h4>Energy Shield</h4><p>Cleanses negative frequencies and creates a protective field around you.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-kismat.jpg" alt="Kismat Connection Card"><h4 class="serif">Kismat Connection</h4></div><div class="flip-back"><h4>Jupiter Expansion</h4><p>Opens doors to new possibilities, fortune, and synchronicity.</p></div></div></div>
+            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-shukra.jpg" alt="Shukra Card" onerror="this.onerror=null; this.src='shukra.jpg';"><h4 class="serif">Shukra Udgam</h4></div><div class="flip-back"><h4>Venus Energy</h4><p>Invokes beauty, magnetism, prosperity, and pure attraction to elevate your vibe.</p></div></div></div>
+            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-mann.jpg" alt="Mann Shanti Card" onerror="this.onerror=null; this.src='mann.jpg';"><h4 class="serif">Mann Shanti</h4></div><div class="flip-back"><h4>Lunar Peace</h4><p>Calms mental noise, enhances emotional balance, and fosters quiet clarity.</p></div></div></div>
+            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-surya.jpg" alt="Surya Tej Card" onerror="this.onerror=null; this.src='surya.jpg';"><h4 class="serif">Surya Tej</h4></div><div class="flip-back"><h4>Solar Power</h4><p>Activates leadership, courage, focus, and radiant inner strength.</p></div></div></div>
+            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-aura.jpg" alt="Aura Shuddhi Card" onerror="this.onerror=null; this.src='aura.jpg';"><h4 class="serif">Aura Shuddhi</h4></div><div class="flip-back"><h4>Energy Shield</h4><p>Cleanses negative frequencies and creates a protective field around you.</p></div></div></div>
+            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-kismat.jpg" alt="Kismat Connection Card" onerror="this.onerror=null; this.src='kismat.jpg';"><h4 class="serif">Kismat Connection</h4></div><div class="flip-back"><h4>Jupiter Expansion</h4><p>Opens doors to new possibilities, fortune, and synchronicity.</p></div></div></div>
         </div>
     </section>
 
@@ -574,7 +596,7 @@
             <p>Your week-at-a-glance guide for sensory application</p>
         </div>
         <div class="single-ritual-container reveal">
-            <div class="ritual-image-box"><img src="weekly-ritual.jpg" alt="Weekly Ritual Guide Master Infographic" loading="lazy"></div>
+            <div class="ritual-image-box"><img src="weekly-ritual.jpg" alt="Weekly Ritual Guide Master Infographic" loading="lazy" onerror="this.onerror=null; this.src='shukra.jpg';"></div>
         </div>
     </section>
 
@@ -586,7 +608,7 @@
         </div>
         <div class="insta-masonry reveal">
             <div class="insta-item"><img src="shukra.jpg" alt="Insta Post 1"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="discoverpack.jpg" alt="Insta Post 2"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="discoverpack.jpg" alt="Insta Post 2" onerror="this.onerror=null; this.src='surya.jpg';"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
             <div class="insta-item"><img src="kismat.jpg" alt="Insta Post 3"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
             <div class="insta-item"><img src="mann.jpg" alt="Insta Post 4"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
         </div>
