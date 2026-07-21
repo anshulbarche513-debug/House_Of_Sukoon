@@ -337,7 +337,6 @@
             <div class="product-card reveal" style="border: 1px solid rgba(243, 229, 171, 0.4); box-shadow: 0 0 15px rgba(243, 229, 171, 0.1);">
                 <span class="product-badge" style="background: var(--gold-light);">Premium</span>
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <!-- image_1.png has been renamed to discoverpack.jpg for consistency -->
                 <div class="p-img-box"><img src="discoverpack.jpg" alt="Discovery Combo Pack" loading="lazy"></div>
                 <h3>Discovery Pack</h3>
                 <p class="desc">5 x 10ml Energy Editions</p>
@@ -610,67 +609,73 @@
         }
         function resetQuiz() { document.getElementById('quiz-step-1').style.display = 'block'; document.getElementById('quiz-result').style.display = 'none'; }
 
-        // Products Data for Popup
+        // Products Data with Detailed Olfactory Pyramid (Top, Heart, Base Notes)
         const productData = {
             'Discovery Pack': {
                 subtitle: 'Discovery Combo Pack | 5 x 10ml Bottles',
                 price: '₹1,999',
                 img: 'discoverpack.jpg',
                 desc: 'Experience all 5 cosmic energies. Perfect for gifting or discovering your aligned scent. Each 10ml travel spray is handcrafted for portability and spiritual intention.',
-                notes: [
-                    { type: 'Includes', note: 'Shukra Udgam, Mann Shanti, Surya Tej, Aura Shuddhi, Kismat Connection.' },
-                    { type: 'Format', note: '5 x Eau de Parfum Travel Sprays' }
-                ]
+                notes: {
+                    'Includes': 'Shukra Udgam, Mann Shanti, Surya Tej, Aura Shuddhi, Kismat Connection',
+                    'Format': '5 x Eau de Parfum Travel Sprays (10ml each)',
+                    'Vibe': 'Versatile, Luxurious & Ideal for Daily Intention Switching'
+                }
             },
             'Shukra Udgam': {
                 subtitle: '50ml EDP | Attraction & Elegance',
                 price: '₹1,099',
                 img: 'shukra.jpg',
-                desc: 'A mesmerizing Venusian blend designed to invoke love, luxury, and magnetic prosperity. Perfect for special moments and evening wear.',
-                notes: [
-                    { type: 'Key Energy', note: 'Venus Attraction' },
-                    { type: 'Notes', note: 'Exotic Rose, Warm Sandalwood, Deep Musk, Amber' }
-                ]
+                desc: 'A mesmerizing Venusian blend designed to invoke love, luxury, and magnetic prosperity. Perfect for romantic dates, celebrations, and evening wear.',
+                notes: {
+                    'Top Notes': 'Exotic Damask Rose, Saffron Thread, Italian Bergamot',
+                    'Heart Notes': 'Blooming Night Jasmine, Sweet Ylang-Ylang, Royal Amber',
+                    'Base Notes': 'White Sandalwood, Creamy Vanilla, Aged Musk'
+                }
             },
             'Mann Shanti': {
                 subtitle: '50ml EDP | Peace & Clarity',
                 price: '₹1,099',
                 img: 'mann.jpg',
-                desc: 'Calms the mind, enhances focus, and fosters emotional balance. Ideal for meditation, study, or reducing daily stress.',
-                notes: [
-                    { type: 'Key Energy', note: 'Lunar Peace' },
-                    { type: 'Notes', note: 'Crisp Aquatics, Blue Lotus, Jasmine, White Musk' }
-                ]
+                desc: 'Calms the mind, enhances focus, and fosters emotional balance. Ideal for meditation, study, official work, or reducing daily stress.',
+                notes: {
+                    'Top Notes': 'Fresh Water Accord, Neroli Blossom, Bergamot',
+                    'Heart Notes': 'Sacred Blue Lotus, Wild Lavender, White Jasmine',
+                    'Base Notes': 'Clean White Musk, Soft Cedarwood, Ocean Ambergris'
+                }
             },
             'Surya Tej': {
                 subtitle: '50ml EDP | Confidence & Success',
                 price: '₹1,099',
                 img: 'surya.jpg',
-                desc: 'Boosts leadership qualities, courage, and radiant willpower. Commands immediate presence and focus for vital energy.',
-                notes: [
-                    { type: 'Key Energy', note: 'Solar Willpower' },
-                    { type: 'Notes', note: 'Bright Citrus, Black Pepper, Cedarwood, Vetiver' }
-                ]
+                desc: 'Boosts leadership qualities, courage, and radiant willpower. Commands immediate presence and focus for business and interviews.',
+                notes: {
+                    'Top Notes': 'Sun-drenched Grapefruit, Cracked Black Pepper, Cardamom',
+                    'Heart Notes': 'Smoky Vetiver, Nutmeg, Golden Resin',
+                    'Base Notes': 'Atlas Cedarwood, Rich Leather, Warm Amber'
+                }
             },
             'Aura Shuddhi': {
                 subtitle: '50ml EDP | Protection & Balance',
                 price: '₹1,099',
                 img: 'aura.jpg',
-                desc: 'Cleanses environmental negativity and shields your personal aura. Grounding, protective, and spiritually harmonizing.',
-                notes: [
-                    { type: 'Key Energy', note: 'Energy Cleansing' },
-                    { type: 'Notes', note: 'Smoky Lavender, Clary Sage, Palo Santo, Oud' }
-                ]
+                desc: 'Cleanses environmental negativity and shields your personal aura. Grounding, protective, and spiritually harmonizing for everyday wear.',
+                notes: {
+                    'Top Notes': 'Clary Sage, French Lavender, Pink Pepper',
+                    'Heart Notes': 'Holy Palo Santo, Frankincense, Rosemary',
+                    'Base Notes': 'Deep Cambodian Oud, Patchouli, Earthy Vetiver'
+                }
             },
             'Kismat Connection': {
                 subtitle: '50ml EDP | Growth & Opportunity',
                 price: '₹1,099',
                 img: 'kismat.jpg',
                 desc: 'Opens doors to synchronicity, fortune, and professional growth. High-contrast, executive confidence vibe.',
-                notes: [
-                    { type: 'Key Energy', note: 'Jupiter Expansion' },
-                    { type: 'Notes', note: 'Dark Woods, Cinnamon, Saffron, Tobacco Leaf' }
-                ]
+                notes: {
+                    'Top Notes': 'Golden Saffron, Clove Bud, Juicy Orange',
+                    'Heart Notes': 'Cinnamon Bark, Sweet Tobacco Leaf, Myrrh',
+                    'Base Notes': 'Dark Oud Wood, Tonka Bean, Golden Resin'
+                }
             }
         };
 
@@ -687,11 +692,14 @@
             
             const notesList = document.getElementById('qvNotesList');
             notesList.innerHTML = ''; 
-            data.notes.forEach(item => {
+            
+            // Loop through Top, Heart, and Base Notes dynamically
+            for (const [key, value] of Object.entries(data.notes)) {
                 const li = document.createElement('li');
-                li.innerHTML = `<strong>${item.type}:</strong> ${item.note}`;
+                li.innerHTML = `<strong>${key}:</strong> ${value}`;
                 notesList.appendChild(li);
-            });
+            }
+            
             popup.classList.add('active');
         }
         function closePopup() { popup.classList.remove('active'); }
