@@ -3,702 +3,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House of Sukoon Official | Luxury Ancient Perfumery</title>
+    <title>House of Sukoon Official | Luxury Ancient Aromas</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- SEO & Meta Tags -->
-    <meta name="description" content="Discover House of Sukoon Official's luxury handcrafted fragrances inspired by ancient wisdom and planetary energies.">
-    <meta name="keywords" content="Luxury Perfume, House of Sukoon Official, Energy Fragrances, Attar, Premium Scents">
-    <meta property="og:title" content="House of Sukoon Official | Premium Perfumes">
-    <meta property="og:description" content="Elevate your sensory experience with intention-based luxury fragrances.">
-    <meta property="og:image" content="logo.jpg">
-
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         :root {
-            --bg-deep: #030712;
-            --bg-surface: #0a1128;
-            --bg-glass: rgba(14, 26, 56, 0.55);
-            --gold-primary: #d4af37;
+            --primary: #111111;
+            --gold: #d4af37;
             --gold-light: #f3e5ab;
-            --gold-glow: rgba(212, 175, 55, 0.4);
-            --border-gold: rgba(212, 175, 55, 0.3);
-            --text-light: #f8f5ec;
-            --text-muted: #94a3b8;
+            --bg-dark: #0a0a0a;
+            --card-bg: #181818;
+            --text-light: #f5f5f5;
+            --text-muted: #aaaaaa;
         }
 
-        /* Base Settings */
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-light);
             font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            cursor: default;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
         }
 
-        /* Custom Cursor */
-        .custom-cursor { width: 12px; height: 12px; background: var(--gold-primary); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s ease; }
-        .cursor-follower { width: 36px; height: 36px; border: 1px solid var(--gold-primary); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.15s ease-out; }
+        h1, h2, h3, h4, .serif {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
 
-        /* Mouse Glow Follower */
-        .mouse-glow { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%); pointer-events: none; transform: translate(-50%, -50%); z-index: 1; }
-
-        /* Scroll Progress Bar */
-        #scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--gold-primary), var(--gold-light)); z-index: 10000; width: 0%; }
-
-        /* Typography */
-        h1, h2, h3, h4, .serif { font-family: 'Cinzel', serif; letter-spacing: 2px; }
-
-        /* Preloader */
-        #loader { position: fixed; inset: 0; background: var(--bg-deep); z-index: 100000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease, visibility 0.8s; }
-        .loader-spin { width: 60px; height: 60px; border: 2px solid var(--border-gold); border-top: 2px solid var(--gold-primary); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        /* Glass Navigation */
-        header { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-gold); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
-        .logo-container { display: flex; align-items: center; gap: 12px; }
-        .logo-img { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--gold-primary); object-fit: cover; }
-        .brand-text-box { display: flex; flex-direction: column; }
-        .brand-title { font-size: 1.05rem; color: var(--gold-primary); line-height: 1.1; font-weight: 700; }
-        .brand-tag { font-size: 0.6rem; color: var(--gold-light); letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; margin-top: 2px; }
-        nav ul { display: flex; list-style: none; gap: 22px; }
-        nav a { color: var(--text-light); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        nav a:hover { color: var(--gold-primary); text-shadow: 0 0 8px var(--gold-glow); }
-        .hamburger { display: none; font-size: 1.5rem; color: var(--gold-primary); cursor: pointer; }
-
-        /* Buttons */
-        .btn-gold { background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%); color: #000; padding: 12px 28px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: none; border-radius: 2px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.4s ease; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); }
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5); background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 100%); }
-        .btn-outline { border: 1px solid var(--gold-primary); color: var(--gold-primary); padding: 12px 28px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; display: inline-block; transition: 0.4s; background: transparent; }
-        .btn-outline:hover { background: rgba(212, 175, 55, 0.1); box-shadow: 0 0 15px var(--gold-glow); }
-
-        /* Hero Section */
-        .hero { min-height: 90vh; display: flex; align-items: center; justify-content: space-between; padding: 130px 8% 40px; position: relative; background: radial-gradient(circle at 70% 50%, #0e1e42 0%, var(--bg-deep) 70%); overflow: hidden; }
-        .hero-content { max-width: 550px; z-index: 2; }
-        .hero-title { font-size: 3rem; line-height: 1.2; color: var(--text-light); margin-bottom: 20px; }
-        .hero-title span { color: var(--gold-primary); display: block; }
-        .hero-subtitle { color: var(--text-muted); margin-bottom: 35px; font-size: 0.95rem; line-height: 1.6; }
-        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
-        .hero-visual { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .hero-slider-wrapper { position: relative; width: 320px; height: 380px; display: flex; justify-content: center; align-items: center; }
-        .hero-slide-img { position: absolute; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); opacity: 0; transition: opacity 1s ease-in-out, transform 1s ease-in-out; transform: scale(0.95); animation: float 5s ease-in-out infinite; }
-        .hero-slide-img.active { opacity: 1; transform: scale(1); }
-        .slider-dots { display: flex; gap: 8px; margin-top: 15px; }
-        .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--gold-primary); background: transparent; cursor: pointer; transition: 0.3s; }
-        .dot.active { background: var(--gold-primary); box-shadow: 0 0 10px var(--gold-glow); }
-        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }
-
-        /* Countdown Bar */
-        .countdown-section { background: var(--bg-surface); border-top: 1px solid var(--border-gold); border-bottom: 1px solid var(--border-gold); padding: 30px 5%; text-align: center; }
-        .countdown-container { display: flex; justify-content: center; gap: 20px; margin-top: 15px; }
-        .flip-card { background: var(--bg-deep); border: 1px solid var(--border-gold); padding: 12px 18px; min-width: 75px; border-radius: 6px; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
-        .flip-num { font-size: 1.6rem; font-family: 'Cinzel', serif; color: var(--gold-primary); font-weight: 700; }
-        .flip-label { font-size: 0.65rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-top: 4px; }
-
-        /* Global Sections */
-        section { padding: 90px 8%; position: relative; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.3rem; color: var(--gold-primary); margin-bottom: 10px; }
-        .section-header p { color: var(--text-muted); font-style: italic; font-size: 0.95rem; }
-
-        /* Products Grid */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-        .product-card { background: var(--bg-glass); border: 1px solid var(--border-gold); backdrop-filter: blur(8px); padding: 20px; border-radius: 4px; position: relative; transition: all 0.4s ease; overflow: hidden; }
-        .product-card:hover { transform: translateY(-10px); border-color: var(--gold-primary); box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px var(--gold-glow); }
-        .product-badge { position: absolute; top: 15px; left: 15px; background: var(--gold-primary); color: #000; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; text-transform: uppercase; z-index: 3; }
-        .wishlist-btn { position: absolute; top: 15px; right: 15px; color: var(--text-muted); cursor: pointer; z-index: 3; transition: 0.3s; }
-        .wishlist-btn.active, .wishlist-btn:hover { color: #e11d48; }
-        .p-img-box { width: 100%; height: 260px; overflow: hidden; position: relative; margin-bottom: 15px; border: 1px solid rgba(212, 175, 55, 0.15); }
-        .p-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .product-card:hover .p-img-box img { transform: scale(1.1); }
-        .product-card h3 { font-size: 1.1rem; color: var(--gold-primary); margin-bottom: 5px; }
-        .product-card .desc { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 15px; }
-        .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
-        .price { font-size: 1.2rem; font-weight: 700; color: #fff; }
-
-        /* Quick View Button - Popup Trigger */
-        .btn-quick-view { display: block; width: 100%; text-align: center; padding: 10px; background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.4s; margin-top: 15px; }
-        .btn-quick-view:hover { background: rgba(212, 175, 55, 0.15); box-shadow: 0 0 10px var(--gold-glow); }
-
-        /* Quick View Modal POPUP Structure */
-        .quick-view-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 20000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.4s; visibility: hidden; }
-        .quick-view-modal.active { opacity: 1; pointer-events: auto; visibility: visible; }
-        
-        .qv-modal-content {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-gold);
-            width: 90%;
-            max-width: 900px;
-            max-height: 85vh;
-            position: relative;
+        /* HEADER & NAV */
+        header {
             display: flex;
-            gap: 0;
-            overflow: hidden;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=1920&q=80') center/cover;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        /* SECTION COMMON */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--gold);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* OUR STORY SECTION (OPTION 2 EMBEDDED) */
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 8px;
+        }
+
+        .story-img img {
+            width: 100%;
             border-radius: 6px;
-            transform: scale(0.9);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        .quick-view-modal.active .qv-modal-content { transform: scale(1); }
-
-        .qv-modal-close { position: absolute; top: 15px; right: 15px; color: var(--gold-primary); cursor: pointer; font-size: 1.4rem; z-index: 10; transition: 0.3s; }
-        .qv-modal-close:hover { transform: rotate(90deg); color: #fff; }
-
-        /* Modal Image Section (Left) */
-        .qv-media-side { flex: 0 0 50%; height: auto; position: relative; border-right: 1px solid var(--border-gold); background: #000; display: flex; align-items: center; justify-content: center; padding: 30px; }
-        .qv-main-img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6)); }
-
-        /* Modal Details Section (Right) */
-        .qv-details-side { flex: 1; padding: 40px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-        .qv-title { font-size: 1.8rem; color: var(--gold-primary); line-height: 1.2; }
-        .qv-subtitle { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 10px; }
-        .qv-price { font-size: 1.5rem; font-weight: 700; color: #fff; }
-        .qv-desc { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin: 10px 0; }
-
-        /* Fragrance Notes Box */
-        .qv-notes-box { border: 1px solid var(--border-gold); background: rgba(3, 7, 18, 0.5); padding: 15px; margin: 15px 0; border-radius: 4px; }
-        .qv-notes-title { font-size: 0.8rem; text-transform: uppercase; color: var(--gold-light); letter-spacing: 2px; margin-bottom: 10px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 5px; }
-        .qv-notes-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .qv-notes-list li { font-size: 0.85rem; color: var(--text-muted); }
-        .qv-notes-list li strong { color: var(--gold-primary); margin-right: 5px; }
-
-        .qv-action-row { display: flex; gap: 15px; margin-top: 25px; }
-
-        /* Responsive Adjustments for Modal */
-        @media (max-width: 768px) {
-            .qv-modal-content { flex-direction: column; max-height: 90vh; }
-            .qv-media-side { flex: 0 0 40%; border-right: none; border-bottom: 1px solid var(--border-gold); padding: 20px; }
-            .qv-details-side { padding: 25px; }
-            .qv-title { font-size: 1.4rem; }
+            filter: grayscale(20%) contrast(110%);
         }
 
-        /* Fragrance Finder Quiz */
-        .finder-card { max-width: 650px; margin: 0 auto; background: var(--bg-glass); border: 1px solid var(--border-gold); padding: 40px; border-radius: 6px; text-align: center; backdrop-filter: blur(10px); }
-        .quiz-option { display: block; width: 100%; padding: 15px; margin: 12px 0; background: var(--bg-surface); border: 1px solid var(--border-gold); color: var(--text-light); cursor: pointer; transition: 0.3s; font-size: 0.9rem; border-radius: 4px; }
-        .quiz-option:hover { border-color: var(--gold-primary); background: rgba(212, 175, 55, 0.15); }
+        .story-text blockquote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--gold-light);
+            border-left: 3px solid var(--gold);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
 
-        /* 5 Energy Cards Grid */
-        .energy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 25px; }
-        .flip-container { perspective: 1000px; height: 360px; }
-        .flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; cursor: pointer; }
-        .flip-container:hover .flip-inner { transform: rotateY(180deg); }
-        .flip-front, .flip-back { position: absolute; inset: 0; backface-visibility: hidden; border: 1px solid var(--border-gold); padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--bg-surface); border-radius: 4px; }
-        .flip-front img { width: 100%; height: 80%; object-fit: cover; margin-bottom: 12px; border: 1px solid var(--border-gold); }
-        .flip-back { background: linear-gradient(145deg, #0e1a38, #050a18); transform: rotateY(180deg); }
-        .flip-back h4 { color: var(--gold-primary); margin-bottom: 10px; font-size: 1rem; }
-        .flip-back p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+        .story-text p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
 
-        /* Single Page Weekly Ritual Section */
-        .single-ritual-container { max-width: 900px; margin: 0 auto; text-align: center; }
-        .ritual-image-box { width: 100%; border: 1px solid var(--border-gold); background: var(--bg-surface); padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 6px; }
-        .ritual-image-box img { width: 100%; height: auto; display: block; border: 1px solid rgba(212, 175, 55, 0.2); }
+        /* PRODUCTS SECTION */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
 
-        /* Reviews Carousel */
-        .reviews-container { max-width: 700px; margin: 0 auto; overflow: hidden; position: relative; }
-        .reviews-track { display: flex; transition: transform 0.5s ease-in-out; }
-        .review-slide { min-width: 100%; background: var(--bg-glass); border: 1px solid var(--border-gold); padding: 40px; text-align: center; }
-        .stars { color: var(--gold-primary); margin-bottom: 15px; font-size: 1.1rem; }
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
 
-        /* Instagram Gallery Masonry */
-        .insta-masonry { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-        .insta-item { position: relative; height: 220px; overflow: hidden; border: 1px solid var(--border-gold); }
-        .insta-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .insta-overlay { position: absolute; inset: 0; background: rgba(7, 13, 30, 0.7); display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; color: var(--gold-primary); font-size: 1.5rem; }
-        .insta-item:hover .insta-overlay { opacity: 1; }
-        .insta-item:hover img { transform: scale(1.1); }
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
 
-        /* Floating Quick Action Buttons */
-        .floating-actions { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
-        .float-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border-gold); color: var(--gold-primary); display: flex; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s; }
-        .float-btn:hover { transform: scale(1.1); background: var(--gold-primary); color: #000; }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
 
-        /* Footer */
-        footer { background: #02040a; border-top: 1px solid var(--border-gold); padding: 80px 8% 30px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
-        .footer-col h4 { color: var(--gold-primary); margin-bottom: 20px; font-size: 1rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 10px; }
-        .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
-        .footer-col a:hover { color: var(--gold-primary); }
-        .newsletter-box { display: flex; margin-top: 15px; }
-        .newsletter-box input { padding: 10px; background: var(--bg-deep); border: 1px solid var(--border-gold); color: #fff; outline: none; width: 70%; }
-        .gold-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-gold), transparent); margin: 30px 0; }
+        .product-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
 
-        /* Reveal Animations */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .product-card .price {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
 
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            nav ul { position: fixed; top: 75px; right: -100%; width: 70%; height: 100vh; background: var(--bg-surface); flex-direction: column; padding: 40px; transition: 0.4s; border-left: 1px solid var(--border-gold); }
-            nav ul.active { right: 0; }
-            .hero { flex-direction: column; text-align: center; padding-top: 130px; }
-            .hero-title { font-size: 2.2rem; }
-            .hero-slider-wrapper { width: 250px; height: 300px; margin-top: 30px; }
-            .hero-btns { justify-content: center; }
-            .custom-cursor, .cursor-follower { display: none; }
+        /* POPUP MODAL (QUICK VIEW WITH FRAGRANCE NOTES) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--gold);
+            max-width: 700px;
+            width: 100%;
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        @media (max-width: 600px) {
+            .story-container, .modal-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .modal-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .notes-box {
+            background: #111;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+
+        .notes-box div {
+            margin-bottom: 8px;
+        }
+
+        .notes-box strong {
+            color: var(--gold);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #222;
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress"></div>
-
-    <!-- Mouse Glow Effect -->
-    <div class="mouse-glow" id="mouseGlow"></div>
-
-    <!-- Custom Cursor -->
-    <div class="custom-cursor" id="cursor"></div>
-    <div class="cursor-follower" id="follower"></div>
-
-    <!-- Preloader -->
-    <div id="loader">
-        <div class="loader-spin"></div>
-        <p class="serif" style="margin-top: 20px; color: var(--gold-primary); letter-spacing: 3px;">HOUSE OF SUKOON OFFICIAL</p>
-    </div>
-
-    <!-- Header Navigation -->
+    <!-- NAVBAR -->
     <header>
-        <div class="logo-container">
-            <img src="logo.jpg" alt="House of Sukoon Official Logo" class="logo-img">
-            <div class="brand-text-box">
-                <span class="serif brand-title">HOUSE OF SUKOON</span>
-                <span class="brand-tag">OFFICIAL</span>
-            </div>
-        </div>
+        <div class="logo">House of Sukoon</div>
         <nav>
-            <ul id="navLinks">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#products">Collection</a></li>
-                <li><a href="#finder">Fragrance Finder</a></li>
-                <li><a href="#energy">Energy Cards</a></li>
-                <li><a href="#rituals">Weekly Ritual</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#home">Home</a>
+            <a href="#story">Our Story</a>
+            <a href="#collection">Collection</a>
         </nav>
-        <div class="hamburger" id="menuToggle"><i class="fas fa-bars"></i></div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-content reveal">
-            <h1 class="hero-title">Aura of Elegance <span>House of Sukoon Official</span></h1>
-            <p class="hero-subtitle">Handcrafted fragrances infused with Vedic planetary vibrations, luxurious botanical oils, and deep spiritual intentions.</p>
-            <div class="hero-btns">
-                <a href="#products" class="btn-gold">Shop Collection</a>
-                <a href="#finder" class="btn-outline">Fragrance Quiz</a>
-            </div>
-        </div>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <h1>House of Sukoon Official</h1>
+        <p>Wear Your Intention. Experience Sacred Tranquility.</p>
+        <a href="#collection" class="btn">Explore Collection</a>
+    </section>
 
-        <!-- Hero Automatic Slider -->
-        <div class="hero-visual reveal">
-            <div class="hero-slider-wrapper">
-                <img src="shukra.jpg" alt="Shukra Udgam" class="hero-slide-img active">
-                <img src="mann.jpg" alt="Mann Shanti" class="hero-slide-img">
-                <img src="surya.jpg" alt="Surya Tej" class="hero-slide-img">
-                <img src="aura.jpg" alt="Aura Shuddhi" class="hero-slide-img">
-                <img src="kismat.jpg" alt="Kismat Connection" class="hero-slide-img">
+    <!-- OUR STORY SECTION (OPTION 2 SCRIPT) -->
+    <section id="story">
+        <div class="section-header">
+            <h2>Our Ancient Heritage</h2>
+            <p>The Sacred Art of Intention & Alchemy</p>
+        </div>
+        <div class="story-container">
+            <div class="story-img">
+                <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80" alt="Ancient Perfumery">
             </div>
-            <div class="slider-dots">
-                <span class="dot active" onclick="setSlide(0)"></span>
-                <span class="dot" onclick="setSlide(1)"></span>
-                <span class="dot" onclick="setSlide(2)"></span>
-                <span class="dot" onclick="setSlide(3)"></span>
-                <span class="dot" onclick="setSlide(4)"></span>
+            <div class="story-text">
+                <blockquote>"Before perfumes were bottled, scents were sacred."</blockquote>
+                <p>Across the golden sands of Egypt, the sacred altars of Mesopotamia, and the royal courts of Vedic India, aromatics were crafted to heal the mind and awaken the spirit.</p>
+                <p>At <strong>House of Sukoon Official</strong>, we bring that lost ancient alchemy back to life.</p>
+                <p>Blending rare botanical oils with high luxury perfumery, each of our signature fragrances is more than a scent—it is an invisible aura of balance, power, and peace.</p>
             </div>
         </div>
     </section>
 
-    <!-- Launch Countdown -->
-    <div class="countdown-section">
-        <h3 class="serif" style="color: var(--gold-primary); font-size: 1rem;">OFFICIAL GRAND LAUNCH</h3>
-        <div class="countdown-container">
-            <div class="flip-card"><div class="flip-num" id="d">00</div><div class="flip-label">Days</div></div>
-            <div class="flip-card"><div class="flip-num" id="h">00</div><div class="flip-label">Hours</div></div>
-            <div class="flip-card"><div class="flip-num" id="m">00</div><div class="flip-label">Mins</div></div>
-            <div class="flip-card"><div class="flip-num" id="s">00</div><div class="flip-label">Secs</div></div>
-        </div>
-    </div>
-
-    <!-- Products Collection -->
-    <section id="products">
-        <div class="section-header reveal">
-            <h2>Signature Collection</h2>
-            <p>5 Intention-Based Luxurious Formulations</p>
+    <!-- PRODUCTS COLLECTION SECTION -->
+    <section id="collection">
+        <div class="section-header">
+            <h2>Luxury Collection</h2>
+            <p>Discover Your Signature Aura</p>
         </div>
         <div class="product-grid">
 
-            <!-- Discovery Pack 5x10ml with Quick View Popup Trigger -->
-            <div class="product-card reveal" style="border: 1px solid rgba(243, 229, 171, 0.4); box-shadow: 0 0 15px rgba(243, 229, 171, 0.1);">
-                <span class="product-badge" style="background: var(--gold-light);">Premium</span>
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <!-- image_1.png has been renamed to discoverpack.jpg for consistency -->
-                <div class="p-img-box"><img src="discoverpack.jpg" alt="Discovery Combo Pack" loading="lazy"></div>
-                <h3>Discovery Pack</h3>
-                <p class="desc">5 x 10ml Energy Editions</p>
-                <div class="price-row">
-                    <span class="price">₹1,999</span>
-                    <a href="https://wa.me/918871493221" target="_blank" class="btn-gold" style="padding: 8px 15px; font-size:0.7rem;">Buy Now</a>
-                </div>
-                <!-- Popup Trigger Button -->
-                <button class="btn-quick-view" onclick="openPopup('Discovery Pack')">View Full Details</button>
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80" alt="Royal Oud">
+                <h3>Royal Oud Alchemy</h3>
+                <p class="price">₹2,499</p>
+                <button class="btn" onclick="openModal(
+                    'Royal Oud Alchemy',
+                    '₹2,499',
+                    'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80',
+                    'A deep, majestic oud crafted to align inner power and confidence.',
+                    'Cambodian Agarwood, Saffron',
+                    'Damask Rose, Amber Resin',
+                    'Aged Oud, Vetiver, Dark Musk'
+                )">Quick View</button>
             </div>
 
-            <div class="product-card reveal">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="shukra.jpg" alt="Shukra Udgam" loading="lazy"></div>
-                <h3>Shukra Udgam</h3>
-                <p class="desc">Attraction • Elegance • Prosperity</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Shukra Udgam')">View Details</button>
-                </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=80" alt="Vedic Mogra">
+                <h3>Vedic Mogra Bliss</h3>
+                <p class="price">₹1,999</p>
+                <button class="btn" onclick="openModal(
+                    'Vedic Mogra Bliss',
+                    '₹1,999',
+                    'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=80',
+                    'Inspired by ancient temple flora to bring tranquility and heart clarity.',
+                    'Indian Jasmine, Neroli',
+                    'White Mogra Blossom, Gardenia',
+                    'Sandalwood, Creamy Vanilla'
+                )">Quick View</button>
             </div>
 
-            <div class="product-card reveal">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="mann.jpg" alt="Mann Shanti" loading="lazy"></div>
-                <h3>Mann Shanti</h3>
-                <p class="desc">Peace • Clarity • Calmness</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Mann Shanti')">View Details</button>
-                </div>
-            </div>
-
-            <div class="product-card reveal">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="surya.jpg" alt="Surya Tej" loading="lazy"></div>
-                <h3>Surya Tej</h3>
-                <p class="desc">Confidence • Success • Leadership</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Surya Tej')">View Details</button>
-                </div>
-            </div>
-
-            <div class="product-card reveal">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="aura.jpg" alt="Aura Shuddhi" loading="lazy"></div>
-                <h3>Aura Shuddhi</h3>
-                <p class="desc">Protection • Balance • Energy</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Aura Shuddhi')">View Details</button>
-                </div>
-            </div>
-
-            <div class="product-card reveal">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box"><img src="kismat.jpg" alt="Kismat Connection" loading="lazy"></div>
-                <h3>Kismat Connection</h3>
-                <p class="desc">Growth • Opportunity • Expansion</p>
-                <div class="price-row">
-                    <span class="price">₹1,099</span>
-                    <button class="btn-quick-view" onclick="openPopup('Kismat Connection')">View Details</button>
-                </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80" alt="Mystic Amber">
+                <h3>Mystic Amber Aura</h3>
+                <p class="price">₹2,199</p>
+                <button class="btn" onclick="openModal(
+                    'Mystic Amber Aura',
+                    '₹2,199',
+                    'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80',
+                    'Warm resinous notes to shield your aura and ground your mind.',
+                    'Bergamot, Cardamom',
+                    'Golden Amber, Patchouli',
+                    'Cedarwood, Benzoin, Frankincense'
+                )">Quick View</button>
             </div>
 
         </div>
     </section>
 
-    <!-- Fragrance Finder -->
-    <section id="finder" style="background: var(--bg-surface);">
-        <div class="section-header reveal">
-            <h2>Fragrance Finder</h2>
-            <p>Discover the perfect planetary scent aligned with your desire</p>
-        </div>
-        <div class="finder-card reveal">
-            <div id="quiz-step-1">
-                <h3 style="color: var(--gold-primary); margin-bottom: 20px;">What energy do you wish to invite today?</h3>
-                <button class="quiz-option" onclick="recommendFragrance('Shukra Udgam')">✨ Attraction, Elegance & Luxury</button>
-                <button class="quiz-option" onclick="recommendFragrance('Mann Shanti')">🌿 Peace, Mental Calmness & Balance</button>
-                <button class="quiz-option" onclick="recommendFragrance('Surya Tej')">🔥 Confidence, Energy & Success</button>
-                <button class="quiz-option" onclick="recommendFragrance('Aura Shuddhi')">🛡️ Protection, Grounding & Cleansing</button>
-                <button class="quiz-option" onclick="recommendFragrance('Kismat Connection')">🌟 Good Luck, Opportunity & Growth</button>
+    <!-- QUICK VIEW POPUP MODAL -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-img">
+                <img id="modalImg" src="" alt="Product Image">
             </div>
-            <div id="quiz-result" style="display: none;">
-                <h3 style="color: var(--gold-primary); margin-bottom: 10px;">Your Matched Fragrance:</h3>
-                <h2 id="result-title" class="serif" style="color: #fff; font-size: 2rem; margin-bottom: 15px;"></h2>
-                <p id="result-desc" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;"></p>
-                <button class="btn-gold" onclick="resetQuiz()">Take Quiz Again</button>
-            </div>
-        </div>
-    </section>
+            <div>
+                <h3 id="modalTitle" class="serif">Product Name</h3>
+                <p id="modalPrice" style="color: var(--gold); margin: 5px 0 10px; font-weight:600;"></p>
+                <p id="modalDesc" style="font-size:0.9rem; color:#bbb;"></p>
 
-    <!-- 5 Cosmic Energy Cards Section -->
-    <section id="energy">
-        <div class="section-header reveal">
-            <h2>Cosmic Energy Cards</h2>
-            <p>Hover or Tap to reveal the planetary energy principles</p>
-        </div>
-        <div class="energy-grid">
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-shukra.jpg" alt="Shukra Card"><h4 class="serif">Shukra Udgam</h4></div><div class="flip-back"><h4>Venus Energy</h4><p>Invokes beauty, magnetism, prosperity, and pure attraction to elevate your vibe.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-mann.jpg" alt="Mann Shanti Card"><h4 class="serif">Mann Shanti</h4></div><div class="flip-back"><h4>Lunar Peace</h4><p>Calms mental noise, enhances emotional balance, and fosters quiet clarity.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-surya.jpg" alt="Surya Tej Card"><h4 class="serif">Surya Tej</h4></div><div class="flip-back"><h4>Solar Power</h4><p>Activates leadership, courage, focus, and radiant inner strength.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-aura.jpg" alt="Aura Shuddhi Card"><h4 class="serif">Aura Shuddhi</h4></div><div class="flip-back"><h4>Energy Shield</h4><p>Cleanses negative frequencies and creates a protective field around you.</p></div></div></div>
-            <div class="flip-container reveal"><div class="flip-inner"><div class="flip-front"><img src="card-kismat.jpg" alt="Kismat Connection Card"><h4 class="serif">Kismat Connection</h4></div><div class="flip-back"><h4>Jupiter Expansion</h4><p>Opens doors to new possibilities, fortune, and synchronicity.</p></div></div></div>
-        </div>
-    </section>
-
-    <!-- Weekly Ritual Guide -->
-    <section id="rituals" style="background: var(--bg-surface);">
-        <div class="section-header reveal">
-            <h2>Weekly Ritual Guide</h2>
-            <p>Your week-at-a-glance guide for sensory application</p>
-        </div>
-        <div class="single-ritual-container reveal">
-            <div class="ritual-image-box"><img src="weekly-ritual.jpg" alt="Weekly Ritual Guide Master Infographic" loading="lazy"></div>
-        </div>
-    </section>
-
-    <!-- Instagram Gallery -->
-    <section style="background: var(--bg-surface);">
-        <div class="section-header reveal">
-            <h2>Instagram Gallery</h2>
-            <p>@houseofsukoon.official</p>
-        </div>
-        <div class="insta-masonry reveal">
-            <div class="insta-item"><img src="shukra.jpg" alt="Insta Post 1"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="discoverpack.jpg" alt="Insta Post 2"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="kismat.jpg" alt="Insta Post 3"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="mann.jpg" alt="Insta Post 4"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4 class="serif">House of Sukoon Official</h4>
-                <p style="font-size:0.85rem; color: var(--text-muted);">Luxury scents crafted with intention and ancient botanical knowledge.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#products">Fragrances</a></li>
-                    <li><a href="#energy">Energy Cards</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p style="font-size:0.85rem; color: var(--text-muted);">📱 +91 88714 93221</p>
-                <p style="font-size:0.85rem; color: var(--text-muted);">✉️ 25houseofsukoon@gmail.com</p>
-            </div>
-            <div class="footer-col">
-                <h4>Newsletter</h4>
-                <div class="newsletter-box">
-                    <input type="email" placeholder="Your Email">
-                    <button class="btn-gold" style="padding: 0 15px;"><i class="fas fa-paper-plane"></i></button>
+                <!-- FRAGRANCE NOTES POPUP SECTION -->
+                <div class="notes-box">
+                    <h4 style="color:var(--gold-light); margin-bottom: 8px;">Olfactory Pyramid (Notes)</h4>
+                    <div><strong>Top Notes:</strong> <span id="topNotes">-</span></div>
+                    <div><strong>Heart Notes:</strong> <span id="heartNotes">-</span></div>
+                    <div><strong>Base Notes:</strong> <span id="baseNotes">-</span></div>
                 </div>
+
+                <br>
+                <button class="btn" style="width: 100%;">Add To Cart</button>
             </div>
         </div>
-        <div class="gold-divider"></div>
-        <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">&copy; 2026 House of Sukoon Official. All Rights Reserved.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 House of Sukoon Official. All Rights Reserved.</p>
     </footer>
 
-    <!-- Quick View Modal Popup Window (Initially Hidden) -->
-    <div class="quick-view-modal" id="quickViewPopup">
-        <div class="qv-modal-content">
-            <span class="qv-modal-close" onclick="closePopup()">&times;</span>
-            
-            <!-- Left Side: Media -->
-            <div class="qv-media-side">
-                <img id="qvMainImg" src="" alt="Product View" class="qv-main-img">
-            </div>
-            
-            <!-- Right Side: Details -->
-            <div class="qv-details-side">
-                <h2 id="qvTitle" class="qv-title serif">Product Title</h2>
-                <span id="qvSubtitle" class="qv-subtitle">Subheading details</span>
-                <div class="qv-price" id="qvPrice">₹0,000</div>
-                
-                <p id="qvDesc" class="qv-desc">Full product description and benefits go here.</p>
-                
-                <div class="qv-notes-box">
-                    <h4 class="qv-notes-title serif">Fragrance Notes</h4>
-                    <ul class="qv-notes-list" id="qvNotesList">
-                        <!-- Notes populated via JS -->
-                    </ul>
-                </div>
-
-                <div class="qv-action-row">
-                    <a href="https://wa.me/918871493221" target="_blank" class="btn-gold">Order on WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating Buttons -->
-    <div class="floating-actions">
-        <a href="https://wa.me/918871493221" class="float-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="tel:+918871493221" class="float-btn"><i class="fas fa-phone"></i></a>
-        <a href="#hero" class="float-btn"><i class="fas fa-arrow-up"></i></a>
-    </div>
-
-    <!-- Scripts -->
+    <!-- JAVASCRIPT FOR QUICK VIEW POPUP -->
     <script>
-        // Loader
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => loader.style.visibility = 'hidden', 800);
-        });
-
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        const follower = document.getElementById('follower');
-        const mouseGlow = document.getElementById('mouseGlow');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-            follower.style.left = e.clientX + 'px'; follower.style.top = e.clientY + 'px';
-            mouseGlow.style.left = e.clientX + 'px'; mouseGlow.style.top = e.clientY + 'px';
-        });
-
-        // Hero Slider
-        let currentHeroSlide = 0;
-        const heroSlides = document.querySelectorAll('.hero-slide-img');
-        const heroDots = document.querySelectorAll('.slider-dots .dot');
-        function setSlide(index) {
-            heroSlides[currentHeroSlide].classList.remove('active'); heroDots[currentHeroSlide].classList.remove('active');
-            currentHeroSlide = index;
-            heroSlides[currentHeroSlide].classList.add('active'); heroDots[currentHeroSlide].classList.add('active');
-        }
-        setInterval(() => { setSlide((currentHeroSlide + 1) % heroSlides.length); }, 3000);
-
-        // Scroll Progress
-        window.addEventListener('scroll', () => {
-            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            document.getElementById('scroll-progress').style.width = scrolled + '%';
-        });
-
-        // Mobile Nav
-        document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('active'); });
-
-        // Countdown Timer
-        const targetDate = new Date("August 25, 2026 00:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime(); const diff = targetDate - now;
-            if(diff > 0) {
-                document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-                document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
-            }
-        }, 1000);
-
-        // Reveal animations
-        const reveals = document.querySelectorAll('.reveal');
-        function revealOnScroll() {
-            reveals.forEach(r => { if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add('active'); });
-        }
-        window.addEventListener('scroll', revealOnScroll); revealOnScroll();
-
-        // Fragrance Finder
-        function recommendFragrance(name) {
-            document.getElementById('quiz-step-1').style.display = 'none';
-            document.getElementById('quiz-result').style.display = 'block';
-            document.getElementById('result-title').innerText = name;
-            let descs = { 'Shukra Udgam': 'Venusian charm to elevate your presence.', 'Mann Shanti': 'Fosters deep emotional composure.', 'Surya Tej': 'Unleashes confidence for vital energy.', 'Aura Shuddhi': 'Shields personal energy.', 'Kismat Connection': 'Aligns you with growth.' };
-            document.getElementById('result-desc').innerText = descs[name] || '';
-        }
-        function resetQuiz() { document.getElementById('quiz-step-1').style.display = 'block'; document.getElementById('quiz-result').style.display = 'none'; }
-
-        // Products Data for Popup
-        const productData = {
-            'Discovery Pack': {
-                subtitle: 'Discovery Combo Pack | 5 x 10ml Bottles',
-                price: '₹1,999',
-                img: 'discoverpack.jpg',
-                desc: 'Experience all 5 cosmic energies. Perfect for gifting or discovering your aligned scent. Each 10ml travel spray is handcrafted for portability and spiritual intention.',
-                notes: [
-                    { type: 'Includes', note: 'Shukra Udgam, Mann Shanti, Surya Tej, Aura Shuddhi, Kismat Connection.' },
-                    { type: 'Format', note: '5 x Eau de Parfum Travel Sprays' }
-                ]
-            },
-            'Shukra Udgam': {
-                subtitle: '50ml EDP | Attraction & Elegance',
-                price: '₹1,099',
-                img: 'shukra.jpg',
-                desc: 'A mesmerizing Venusian blend designed to invoke love, luxury, and magnetic prosperity. Perfect for special moments and evening wear.',
-                notes: [
-                    { type: 'Key Energy', note: 'Venus Attraction' },
-                    { type: 'Notes', note: 'Exotic Rose, Warm Sandalwood, Deep Musk, Amber' }
-                ]
-            },
-            'Mann Shanti': {
-                subtitle: '50ml EDP | Peace & Clarity',
-                price: '₹1,099',
-                img: 'mann.jpg',
-                desc: 'Calms the mind, enhances focus, and fosters emotional balance. Ideal for meditation, study, or reducing daily stress.',
-                notes: [
-                    { type: 'Key Energy', note: 'Lunar Peace' },
-                    { type: 'Notes', note: 'Crisp Aquatics, Blue Lotus, Jasmine, White Musk' }
-                ]
-            },
-            'Surya Tej': {
-                subtitle: '50ml EDP | Confidence & Success',
-                price: '₹1,099',
-                img: 'surya.jpg',
-                desc: 'Boosts leadership qualities, courage, and radiant willpower. Commands immediate presence and focus for vital energy.',
-                notes: [
-                    { type: 'Key Energy', note: 'Solar Willpower' },
-                    { type: 'Notes', note: 'Bright Citrus, Black Pepper, Cedarwood, Vetiver' }
-                ]
-            },
-            'Aura Shuddhi': {
-                subtitle: '50ml EDP | Protection & Balance',
-                price: '₹1,099',
-                img: 'aura.jpg',
-                desc: 'Cleanses environmental negativity and shields your personal aura. Grounding, protective, and spiritually harmonizing.',
-                notes: [
-                    { type: 'Key Energy', note: 'Energy Cleansing' },
-                    { type: 'Notes', note: 'Smoky Lavender, Clary Sage, Palo Santo, Oud' }
-                ]
-            },
-            'Kismat Connection': {
-                subtitle: '50ml EDP | Growth & Opportunity',
-                price: '₹1,099',
-                img: 'kismat.jpg',
-                desc: 'Opens doors to synchronicity, fortune, and professional growth. High-contrast, executive confidence vibe.',
-                notes: [
-                    { type: 'Key Energy', note: 'Jupiter Expansion' },
-                    { type: 'Notes', note: 'Dark Woods, Cinnamon, Saffron, Tobacco Leaf' }
-                ]
-            }
-        };
-
-        // Quick View Popup Logic
-        const popup = document.getElementById('quickViewPopup');
-        function openPopup(productName) {
-            const data = productData[productName];
-            if(!data) return;
-            document.getElementById('qvTitle').innerText = productName;
-            document.getElementById('qvSubtitle').innerText = data.subtitle;
-            document.getElementById('qvPrice').innerText = data.price;
-            document.getElementById('qvMainImg').src = data.img;
-            document.getElementById('qvDesc').innerText = data.desc;
+        function openModal(title, price, imgSrc, desc, top, heart, base) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalDesc').innerText = desc;
             
-            const notesList = document.getElementById('qvNotesList');
-            notesList.innerHTML = ''; 
-            data.notes.forEach(item => {
-                const li = document.createElement('li');
-                li.innerHTML = `<strong>${item.type}:</strong> ${item.note}`;
-                notesList.appendChild(li);
-            });
-            popup.classList.add('active');
-        }
-        function closePopup() { popup.classList.remove('active'); }
-        window.onclick = function(e) { if (e.target == popup) closePopup(); } // Close on background click
+            // Setting Fragrance Notes
+            document.getElementById('topNotes').innerText = top;
+            document.getElementById('heartNotes').innerText = heart;
+            document.getElementById('baseNotes').innerText = base;
 
-        // Wishlist
-        function toggleWishlist(btn) { btn.classList.toggle('fas'); btn.classList.toggle('far'); btn.classList.toggle('active'); }
+            document.getElementById('quickViewModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('quickViewModal').style.display = 'none';
+        }
+
+        // Close Modal on clicking outside
+        window.onclick = function(event) {
+            var modal = document.getElementById('quickViewModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
