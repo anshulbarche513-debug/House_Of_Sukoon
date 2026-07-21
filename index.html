@@ -105,14 +105,6 @@
         .section-header h2 { font-size: 2.3rem; color: var(--gold-primary); margin-bottom: 10px; }
         .section-header p { color: var(--text-muted); font-style: italic; font-size: 0.95rem; }
 
-        /* Our Story Section Styling */
-        .story-container { display: flex; align-items: center; gap: 50px; background: var(--bg-glass); border: 1px solid var(--border-gold); padding: 50px; border-radius: 6px; backdrop-filter: blur(10px); }
-        .story-img-box { flex: 1; position: relative; }
-        .story-img-box img { width: 100%; border-radius: 4px; border: 1px solid var(--border-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
-        .story-text-box { flex: 1.2; }
-        .story-text-box h3 { font-size: 1.8rem; color: var(--gold-primary); margin-bottom: 20px; }
-        .story-text-box p { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 15px; }
-
         /* Products Grid */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
         .product-card { background: var(--bg-glass); border: 1px solid var(--border-gold); backdrop-filter: blur(8px); padding: 20px; border-radius: 4px; position: relative; transition: all 0.4s ease; overflow: hidden; }
@@ -128,7 +120,7 @@
         .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
         .price { font-size: 1.2rem; font-weight: 700; color: #fff; }
 
-        /* Quick View Button */
+        /* Quick View Button - Popup Trigger */
         .btn-quick-view { display: block; width: 100%; text-align: center; padding: 10px; background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.4s; margin-top: 15px; }
         .btn-quick-view:hover { background: rgba(212, 175, 55, 0.15); box-shadow: 0 0 10px var(--gold-glow); }
 
@@ -140,7 +132,7 @@
             background: var(--bg-surface);
             border: 1px solid var(--border-gold);
             width: 90%;
-            max-width: 920px;
+            max-width: 900px;
             max-height: 85vh;
             position: relative;
             display: flex;
@@ -155,25 +147,33 @@
         .qv-modal-close { position: absolute; top: 15px; right: 15px; color: var(--gold-primary); cursor: pointer; font-size: 1.4rem; z-index: 10; transition: 0.3s; }
         .qv-modal-close:hover { transform: rotate(90deg); color: #fff; }
 
-        /* Modal Left Image */
-        .qv-media-side { flex: 0 0 45%; height: auto; position: relative; border-right: 1px solid var(--border-gold); background: #000; display: flex; align-items: center; justify-content: center; padding: 30px; }
+        /* Modal Image Section (Left) */
+        .qv-media-side { flex: 0 0 50%; height: auto; position: relative; border-right: 1px solid var(--border-gold); background: #000; display: flex; align-items: center; justify-content: center; padding: 30px; }
         .qv-main-img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6)); }
 
-        /* Modal Right Details */
-        .qv-details-side { flex: 1; padding: 35px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        /* Modal Details Section (Right) */
+        .qv-details-side { flex: 1; padding: 40px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
         .qv-title { font-size: 1.8rem; color: var(--gold-primary); line-height: 1.2; }
-        .qv-subtitle { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
-        .qv-price { font-size: 1.4rem; font-weight: 700; color: #fff; }
-        .qv-desc { font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); }
+        .qv-subtitle { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 10px; }
+        .qv-price { font-size: 1.5rem; font-weight: 700; color: #fff; }
+        .qv-desc { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin: 10px 0; }
 
-        /* Fragrance Notes Box Styling */
-        .qv-notes-box { border: 1px solid var(--border-gold); background: rgba(3, 7, 18, 0.6); padding: 15px; border-radius: 4px; margin-top: 5px; }
+        /* Fragrance Notes Box */
+        .qv-notes-box { border: 1px solid var(--border-gold); background: rgba(3, 7, 18, 0.5); padding: 15px; margin: 15px 0; border-radius: 4px; }
         .qv-notes-title { font-size: 0.8rem; text-transform: uppercase; color: var(--gold-light); letter-spacing: 2px; margin-bottom: 10px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 5px; }
         .qv-notes-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .qv-notes-list li { font-size: 0.82rem; color: var(--text-muted); }
+        .qv-notes-list li { font-size: 0.85rem; color: var(--text-muted); }
         .qv-notes-list li strong { color: var(--gold-primary); margin-right: 5px; }
 
-        .qv-action-row { display: flex; gap: 15px; margin-top: 15px; }
+        .qv-action-row { display: flex; gap: 15px; margin-top: 25px; }
+
+        /* Responsive Adjustments for Modal */
+        @media (max-width: 768px) {
+            .qv-modal-content { flex-direction: column; max-height: 90vh; }
+            .qv-media-side { flex: 0 0 40%; border-right: none; border-bottom: 1px solid var(--border-gold); padding: 20px; }
+            .qv-details-side { padding: 25px; }
+            .qv-title { font-size: 1.4rem; }
+        }
 
         /* Fragrance Finder Quiz */
         .finder-card { max-width: 650px; margin: 0 auto; background: var(--bg-glass); border: 1px solid var(--border-gold); padding: 40px; border-radius: 6px; text-align: center; backdrop-filter: blur(10px); }
@@ -195,6 +195,12 @@
         .single-ritual-container { max-width: 900px; margin: 0 auto; text-align: center; }
         .ritual-image-box { width: 100%; border: 1px solid var(--border-gold); background: var(--bg-surface); padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 6px; }
         .ritual-image-box img { width: 100%; height: auto; display: block; border: 1px solid rgba(212, 175, 55, 0.2); }
+
+        /* Reviews Carousel */
+        .reviews-container { max-width: 700px; margin: 0 auto; overflow: hidden; position: relative; }
+        .reviews-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .review-slide { min-width: 100%; background: var(--bg-glass); border: 1px solid var(--border-gold); padding: 40px; text-align: center; }
+        .stars { color: var(--gold-primary); margin-bottom: 15px; font-size: 1.1rem; }
 
         /* Instagram Gallery Masonry */
         .insta-masonry { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
@@ -225,7 +231,7 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Responsive Adjustments */
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             nav ul { position: fixed; top: 75px; right: -100%; width: 70%; height: 100vh; background: var(--bg-surface); flex-direction: column; padding: 40px; transition: 0.4s; border-left: 1px solid var(--border-gold); }
@@ -234,10 +240,6 @@
             .hero-title { font-size: 2.2rem; }
             .hero-slider-wrapper { width: 250px; height: 300px; margin-top: 30px; }
             .hero-btns { justify-content: center; }
-            .story-container { flex-direction: column; padding: 25px; gap: 25px; }
-            .qv-modal-content { flex-direction: column; max-height: 90vh; }
-            .qv-media-side { flex: 0 0 35%; border-right: none; border-bottom: 1px solid var(--border-gold); padding: 15px; }
-            .qv-details-side { padding: 20px; }
             .custom-cursor, .cursor-follower { display: none; }
         }
     </style>
@@ -272,7 +274,6 @@
         <nav>
             <ul id="navLinks">
                 <li><a href="#hero">Home</a></li>
-                <li><a href="#story">Our Story</a></li>
                 <li><a href="#products">Collection</a></li>
                 <li><a href="#finder">Fragrance Finder</a></li>
                 <li><a href="#energy">Energy Cards</a></li>
@@ -324,37 +325,19 @@
         </div>
     </div>
 
-    <!-- OUR STORY SECTION (Re-added) -->
-    <section id="story">
-        <div class="section-header reveal">
-            <h2>Our Story</h2>
-            <p>Where Sacred Ancient Wisdom Meets Modern High-End Perfumery</p>
-        </div>
-        <div class="story-container reveal">
-            <div class="story-img-box">
-                <img src="logo.jpg" alt="House of Sukoon Official Heritage">
-            </div>
-            <div class="story-text-box">
-                <h3 class="serif">Crafted with Intention & Energy</h3>
-                <p><strong>House of Sukoon Official</strong> was born from a vision to go beyond regular fragrances. We believe scent is an Invisible Energy Field—a powerful bridge between your inner vibe and the cosmic world around you.</p>
-                <p>Drawing deep inspiration from ancient Vedic traditions and planetary alignments, each of our 5 signature formulations is carefully blended with rare botanical oils, warm spices, and calming woods. Every bottle is crafted to invite specific life intentions—Attraction, Peace, Power, Protection, and Success.</p>
-                <p>Step into a world of sensory luxury, where every spritz aligns your aura with peace, purpose, and elegance.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Products Collection -->
-    <section id="products" style="background: var(--bg-surface);">
+    <section id="products">
         <div class="section-header reveal">
             <h2>Signature Collection</h2>
             <p>5 Intention-Based Luxurious Formulations</p>
         </div>
         <div class="product-grid">
 
-            <!-- Discovery Pack -->
+            <!-- Discovery Pack 5x10ml with Quick View Popup Trigger -->
             <div class="product-card reveal" style="border: 1px solid rgba(243, 229, 171, 0.4); box-shadow: 0 0 15px rgba(243, 229, 171, 0.1);">
                 <span class="product-badge" style="background: var(--gold-light);">Premium</span>
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
+                <!-- image_1.png has been renamed to discoverpack.jpg for consistency -->
                 <div class="p-img-box"><img src="discoverpack.jpg" alt="Discovery Combo Pack" loading="lazy"></div>
                 <h3>Discovery Pack</h3>
                 <p class="desc">5 x 10ml Energy Editions</p>
@@ -362,63 +345,59 @@
                     <span class="price">₹1,999</span>
                     <a href="https://wa.me/918871493221" target="_blank" class="btn-gold" style="padding: 8px 15px; font-size:0.7rem;">Buy Now</a>
                 </div>
+                <!-- Popup Trigger Button -->
                 <button class="btn-quick-view" onclick="openPopup('Discovery Pack')">View Full Details</button>
             </div>
 
-            <!-- Shukra Udgam -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box"><img src="shukra.jpg" alt="Shukra Udgam" loading="lazy"></div>
                 <h3>Shukra Udgam</h3>
-                <p class="desc">Luxury Attraction • Romance • Elegance</p>
+                <p class="desc">Attraction • Elegance • Prosperity</p>
                 <div class="price-row">
                     <span class="price">₹1,099</span>
                     <button class="btn-quick-view" onclick="openPopup('Shukra Udgam')">View Details</button>
                 </div>
             </div>
 
-            <!-- Mann Shanti -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box"><img src="mann.jpg" alt="Mann Shanti" loading="lazy"></div>
                 <h3>Mann Shanti</h3>
-                <p class="desc">Peace • Calm • Meditation</p>
+                <p class="desc">Peace • Clarity • Calmness</p>
                 <div class="price-row">
                     <span class="price">₹1,099</span>
                     <button class="btn-quick-view" onclick="openPopup('Mann Shanti')">View Details</button>
                 </div>
             </div>
 
-            <!-- Surya Tej -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box"><img src="surya.jpg" alt="Surya Tej" loading="lazy"></div>
                 <h3>Surya Tej</h3>
-                <p class="desc">Confidence • Leadership • Power</p>
+                <p class="desc">Confidence • Success • Leadership</p>
                 <div class="price-row">
                     <span class="price">₹1,099</span>
                     <button class="btn-quick-view" onclick="openPopup('Surya Tej')">View Details</button>
                 </div>
             </div>
 
-            <!-- Aura Shuddhi -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box"><img src="aura.jpg" alt="Aura Shuddhi" loading="lazy"></div>
                 <h3>Aura Shuddhi</h3>
-                <p class="desc">Healing • Positive Energy • Protection</p>
+                <p class="desc">Protection • Balance • Energy</p>
                 <div class="price-row">
                     <span class="price">₹1,099</span>
                     <button class="btn-quick-view" onclick="openPopup('Aura Shuddhi')">View Details</button>
                 </div>
             </div>
 
-            <!-- Kismat Connection -->
             <div class="product-card reveal">
                 <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
                 <div class="p-img-box"><img src="kismat.jpg" alt="Kismat Connection" loading="lazy"></div>
                 <h3>Kismat Connection</h3>
-                <p class="desc">Luck • Growth • Success</p>
+                <p class="desc">Growth • Opportunity • Expansion</p>
                 <div class="price-row">
                     <span class="price">₹1,099</span>
                     <button class="btn-quick-view" onclick="openPopup('Kismat Connection')">View Details</button>
@@ -429,7 +408,7 @@
     </section>
 
     <!-- Fragrance Finder -->
-    <section id="finder">
+    <section id="finder" style="background: var(--bg-surface);">
         <div class="section-header reveal">
             <h2>Fragrance Finder</h2>
             <p>Discover the perfect planetary scent aligned with your desire</p>
@@ -437,11 +416,11 @@
         <div class="finder-card reveal">
             <div id="quiz-step-1">
                 <h3 style="color: var(--gold-primary); margin-bottom: 20px;">What energy do you wish to invite today?</h3>
-                <button class="quiz-option" onclick="recommendFragrance('Shukra Udgam')">✨ Attraction, Elegance & Romance</button>
+                <button class="quiz-option" onclick="recommendFragrance('Shukra Udgam')">✨ Attraction, Elegance & Luxury</button>
                 <button class="quiz-option" onclick="recommendFragrance('Mann Shanti')">🌿 Peace, Mental Calmness & Balance</button>
-                <button class="quiz-option" onclick="recommendFragrance('Surya Tej')">🔥 Confidence, Power & Leadership</button>
+                <button class="quiz-option" onclick="recommendFragrance('Surya Tej')">🔥 Confidence, Energy & Success</button>
                 <button class="quiz-option" onclick="recommendFragrance('Aura Shuddhi')">🛡️ Protection, Grounding & Cleansing</button>
-                <button class="quiz-option" onclick="recommendFragrance('Kismat Connection')">🌟 Luck, Opportunity & Growth</button>
+                <button class="quiz-option" onclick="recommendFragrance('Kismat Connection')">🌟 Good Luck, Opportunity & Growth</button>
             </div>
             <div id="quiz-result" style="display: none;">
                 <h3 style="color: var(--gold-primary); margin-bottom: 10px;">Your Matched Fragrance:</h3>
@@ -452,8 +431,8 @@
         </div>
     </section>
 
-    <!-- Cosmic Energy Cards Section -->
-    <section id="energy" style="background: var(--bg-surface);">
+    <!-- 5 Cosmic Energy Cards Section -->
+    <section id="energy">
         <div class="section-header reveal">
             <h2>Cosmic Energy Cards</h2>
             <p>Hover or Tap to reveal the planetary energy principles</p>
@@ -468,7 +447,7 @@
     </section>
 
     <!-- Weekly Ritual Guide -->
-    <section id="rituals">
+    <section id="rituals" style="background: var(--bg-surface);">
         <div class="section-header reveal">
             <h2>Weekly Ritual Guide</h2>
             <p>Your week-at-a-glance guide for sensory application</p>
@@ -503,7 +482,6 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="#hero">Home</a></li>
-                    <li><a href="#story">Our Story</a></li>
                     <li><a href="#products">Fragrances</a></li>
                     <li><a href="#energy">Energy Cards</a></li>
                 </ul>
@@ -525,17 +503,17 @@
         <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">&copy; 2026 House of Sukoon Official. All Rights Reserved.</p>
     </footer>
 
-    <!-- Quick View Modal Popup Window -->
+    <!-- Quick View Modal Popup Window (Initially Hidden) -->
     <div class="quick-view-modal" id="quickViewPopup">
         <div class="qv-modal-content">
             <span class="qv-modal-close" onclick="closePopup()">&times;</span>
             
-            <!-- Left Image -->
+            <!-- Left Side: Media -->
             <div class="qv-media-side">
                 <img id="qvMainImg" src="" alt="Product View" class="qv-main-img">
             </div>
             
-            <!-- Right Details -->
+            <!-- Right Side: Details -->
             <div class="qv-details-side">
                 <h2 id="qvTitle" class="qv-title serif">Product Title</h2>
                 <span id="qvSubtitle" class="qv-subtitle">Subheading details</span>
@@ -543,11 +521,10 @@
                 
                 <p id="qvDesc" class="qv-desc">Full product description and benefits go here.</p>
                 
-                <!-- Detailed Notes Pyramid -->
                 <div class="qv-notes-box">
-                    <h4 class="qv-notes-title serif">Olfactory Pyramid & Details</h4>
+                    <h4 class="qv-notes-title serif">Fragrance Notes</h4>
                     <ul class="qv-notes-list" id="qvNotesList">
-                        <!-- Dynamic Notes Injected via JS -->
+                        <!-- Notes populated via JS -->
                     </ul>
                 </div>
 
@@ -628,104 +605,80 @@
             document.getElementById('quiz-step-1').style.display = 'none';
             document.getElementById('quiz-result').style.display = 'block';
             document.getElementById('result-title').innerText = name;
-            let descs = { 
-                'Shukra Udgam': 'Venusian charm, romance and royal elegance.', 
-                'Mann Shanti': 'Peaceful aquatic notes to calm mental noise.', 
-                'Surya Tej': 'Solar power, leadership and commanding presence.', 
-                'Aura Shuddhi': 'Woody sanctuary vibe to shield your aura.', 
-                'Kismat Connection': 'Fruity chypre luxury scent for success and luck.' 
-            };
+            let descs = { 'Shukra Udgam': 'Venusian charm to elevate your presence.', 'Mann Shanti': 'Fosters deep emotional composure.', 'Surya Tej': 'Unleashes confidence for vital energy.', 'Aura Shuddhi': 'Shields personal energy.', 'Kismat Connection': 'Aligns you with growth.' };
             document.getElementById('result-desc').innerText = descs[name] || '';
         }
         function resetQuiz() { document.getElementById('quiz-step-1').style.display = 'block'; document.getElementById('quiz-result').style.display = 'none'; }
 
-        // Dynamic Product Data With Exact Notes
+        // Products Data for Popup
         const productData = {
             'Discovery Pack': {
-                subtitle: 'Discovery Combo Pack | 5 x 10ml EDP',
+                subtitle: 'Discovery Combo Pack | 5 x 10ml Bottles',
                 price: '₹1,999',
                 img: 'discoverpack.jpg',
-                desc: 'Experience all 5 cosmic planetary fragrances in travel-friendly 10ml bottles. Ideal for gifting or finding your personal daily alignment.',
+                desc: 'Experience all 5 cosmic energies. Perfect for gifting or discovering your aligned scent. Each 10ml travel spray is handcrafted for portability and spiritual intention.',
                 notes: [
-                    { label: 'Includes', val: 'Shukra Udgam, Mann Shanti, Surya Tej, Aura Shuddhi, Kismat Connection' },
-                    { label: 'Family', val: 'Oriental, Aquatic, Woody Spicy, Aromatic, Fruity Chypre' },
-                    { label: 'Volume', val: '5 x 10ml Spray Bottles' }
+                    { type: 'Includes', note: 'Shukra Udgam, Mann Shanti, Surya Tej, Aura Shuddhi, Kismat Connection.' },
+                    { type: 'Format', note: '5 x Eau de Parfum Travel Sprays' }
                 ]
             },
             'Shukra Udgam': {
-                subtitle: 'Luxury Attraction • Romance • Elegance',
+                subtitle: '50ml EDP | Attraction & Elegance',
                 price: '₹1,099',
                 img: 'shukra.jpg',
-                desc: 'A heavy, royal, and sensual fragrance designed to evoke Venusian beauty, magnetic romance, and luxurious presence.',
+                desc: 'A mesmerizing Venusian blend designed to invoke love, luxury, and magnetic prosperity. Perfect for special moments and evening wear.',
                 notes: [
-                    { label: 'Family', val: 'Oriental Floral Woody' },
-                    { label: 'Top Notes', val: 'Pink Pepper, Bergamot, Pear, Saffron' },
-                    { label: 'Heart Notes', val: 'Turkish Rose, Jasmine Sambac, White Lily, Saffron' },
-                    { label: 'Base Notes', val: 'Sandalwood, Vanilla, Amber, White Musk, Patchouli' },
-                    { label: 'Performance', val: '★ ★ ★ ★ ★ (10-12 Hours)' }
+                    { type: 'Key Energy', note: 'Venus Attraction' },
+                    { type: 'Notes', note: 'Exotic Rose, Warm Sandalwood, Deep Musk, Amber' }
                 ]
             },
             'Mann Shanti': {
-                subtitle: 'Peace • Calm • Meditation',
+                subtitle: '50ml EDP | Peace & Clarity',
                 price: '₹1,099',
                 img: 'mann.jpg',
-                desc: 'A crisp, aquatic, and soothing blend designed to calm mental chatter, restore balance, and evoke a luxury spa experience.',
+                desc: 'Calms the mind, enhances focus, and fosters emotional balance. Ideal for meditation, study, or reducing daily stress.',
                 notes: [
-                    { label: 'Family', val: 'Fresh Aquatic Floral' },
-                    { label: 'Top Notes', val: 'Bergamot, Lemon, Mint, Marine Notes' },
-                    { label: 'Heart Notes', val: 'Lavender, Lotus, White Tea, Jasmine' },
-                    { label: 'Base Notes', val: 'White Musk, Cedarwood, Sandalwood, Ambergris Accord' },
-                    { label: 'Performance', val: '★ ★ ★ ★ ☆ (8-10 Hours)' }
+                    { type: 'Key Energy', note: 'Lunar Peace' },
+                    { type: 'Notes', note: 'Crisp Aquatics, Blue Lotus, Jasmine, White Musk' }
                 ]
             },
             'Surya Tej': {
-                subtitle: 'Confidence • Leadership • Power',
+                subtitle: '50ml EDP | Confidence & Success',
                 price: '₹1,099',
                 img: 'surya.jpg',
-                desc: 'A powerful, warm-spicy, and commanding scent that exudes authority, radiant confidence, and executive power.',
+                desc: 'Boosts leadership qualities, courage, and radiant willpower. Commands immediate presence and focus for vital energy.',
                 notes: [
-                    { label: 'Family', val: 'Amber Woody Spicy' },
-                    { label: 'Top Notes', val: 'Orange, Bergamot, Black Pepper, Cardamom' },
-                    { label: 'Heart Notes', val: 'Cinnamon, Nutmeg, Lavender, Geranium' },
-                    { label: 'Base Notes', val: 'Leather Accord, Amber, Sandalwood, Vetiver, Tonka Bean' },
-                    { label: 'Performance', val: '★ ★ ★ ★ ★ (12+ Hours)' }
+                    { type: 'Key Energy', note: 'Solar Willpower' },
+                    { type: 'Notes', note: 'Bright Citrus, Black Pepper, Cedarwood, Vetiver' }
                 ]
             },
             'Aura Shuddhi': {
-                subtitle: 'Healing • Positive Energy • Protection',
-                price: '🛡️ Protection & Cleansing',
+                subtitle: '50ml EDP | Protection & Balance',
                 price: '₹1,099',
                 img: 'aura.jpg',
-                desc: 'A creamy, spiritual, and grounding sandalwood-based sanctuary perfume crafted to cleanse negativity and shield your aura.',
+                desc: 'Cleanses environmental negativity and shields your personal aura. Grounding, protective, and spiritually harmonizing.',
                 notes: [
-                    { label: 'Family', val: 'Woody Aromatic' },
-                    { label: 'Top Notes', val: 'Lavender, Eucalyptus, Sage, Bergamot' },
-                    { label: 'Heart Notes', val: 'Violet, Iris, Frankincense, White Rose' },
-                    { label: 'Base Notes', val: 'Palo Santo Accord, Sandalwood, White Musk, Cedar, Cashmere Wood' },
-                    { label: 'Performance', val: '★ ★ ★ ★ ☆ (9-11 Hours)' }
+                    { type: 'Key Energy', note: 'Energy Cleansing' },
+                    { type: 'Notes', note: 'Smoky Lavender, Clary Sage, Palo Santo, Oud' }
                 ]
             },
             'Kismat Connection': {
-                subtitle: 'Luck • Growth • Money & Success',
+                subtitle: '50ml EDP | Growth & Opportunity',
                 price: '₹1,099',
                 img: 'kismat.jpg',
-                desc: 'An energetic, ultra-modern fruity-chypre fragrance designed to attract opportunity, growth, and high-status prosperity.',
+                desc: 'Opens doors to synchronicity, fortune, and professional growth. High-contrast, executive confidence vibe.',
                 notes: [
-                    { label: 'Family', val: 'Woody Green Oriental (Fruity Chypre)' },
-                    { label: 'Top Notes', val: 'Juicy Pineapple, Bergamot, Apple, Blackcurrant' },
-                    { label: 'Heart Notes', val: 'Birch Wood, Jasmine, Patchouli, Pink Pepper' },
-                    { label: 'Base Notes', val: 'Oakmoss, Musk, Ambergris Accord, Vanilla, Cedarwood' },
-                    { label: 'Performance', val: '★ ★ ★ ★ ★ (12-14 Hours)' }
+                    { type: 'Key Energy', note: 'Jupiter Expansion' },
+                    { type: 'Notes', note: 'Dark Woods, Cinnamon, Saffron, Tobacco Leaf' }
                 ]
             }
         };
 
-        // Modal Quick View Control
+        // Quick View Popup Logic
         const popup = document.getElementById('quickViewPopup');
         function openPopup(productName) {
             const data = productData[productName];
             if(!data) return;
-            
             document.getElementById('qvTitle').innerText = productName;
             document.getElementById('qvSubtitle').innerText = data.subtitle;
             document.getElementById('qvPrice').innerText = data.price;
@@ -736,16 +689,15 @@
             notesList.innerHTML = ''; 
             data.notes.forEach(item => {
                 const li = document.createElement('li');
-                li.innerHTML = `<strong>${item.label}:</strong> ${item.val}`;
+                li.innerHTML = `<strong>${item.type}:</strong> ${item.note}`;
                 notesList.appendChild(li);
             });
             popup.classList.add('active');
         }
-        
         function closePopup() { popup.classList.remove('active'); }
-        window.onclick = function(e) { if (e.target == popup) closePopup(); }
+        window.onclick = function(e) { if (e.target == popup) closePopup(); } // Close on background click
 
-        // Wishlist Toggle
+        // Wishlist
         function toggleWishlist(btn) { btn.classList.toggle('fas'); btn.classList.toggle('far'); btn.classList.toggle('active'); }
     </script>
 </body>
