@@ -249,6 +249,88 @@
         .float-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border-gold); color: var(--gold-primary); display: flex; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s; }
         .float-btn:hover { background: var(--gold-primary); color: #000; }
 
+        <!-- ================= REVIEWS SECTION ================= -->
+<section class="reviews-section">
+  <h2>What Our Customers Say</h2>
+  <p class="review-subtitle">
+    Real experiences from people who chose House of Sukoon.
+  </p>
+
+  <div class="review-container">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>
+        "Surya Tej has become my everyday business fragrance.
+        Amazing projection and premium quality."
+      </p>
+      <h3>Rohan Sharma</h3>
+      <span>Business Owner</span>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>
+        "Mann Shanti is incredibly calming.
+        Perfect for office and meditation."
+      </p>
+      <h3>Priya Verma</h3>
+      <span>Interior Designer</span>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>
+        "Kismat Connection smells luxurious and lasts the entire day.
+        Definitely worth it."
+      </p>
+      <h3>Ankit Patel</h3>
+      <span>Entrepreneur</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERT SECTION ================= -->
+<section class="expert-section">
+  <h2>Expert Perspective</h2>
+  <div class="expert-box">
+    <div class="expert-icon">🔮</div>
+    <h3>Inspired by Tradition. Crafted with Modern Perfumery.</h3>
+    <p>
+      House of Sukoon fragrances are inspired by timeless symbolism,
+      emotions and intentional fragrance rituals.<br><br>
+      Every perfume is designed around a unique mood and premium
+      olfactive profile while remaining suitable for everyday luxury wear.<br><br>
+      Our Weekly Ritual Guide and Energy Cards are creative lifestyle
+      companions created to enhance the fragrance experience.
+    </p>
+  </div>
+</section>
+
+<!-- ================= TRUST SECTION ================= -->
+<section class="trust-section">
+  <div class="trust-box">
+    <h2>Why Customers Love Sukoon</h2>
+    <div class="trust-grid">
+      <div>
+        <h3>★ 4.9</h3>
+        <p>Customer Rating</p>
+      </div>
+      <div>
+        <h3>8-14 Hr</h3>
+        <p>Long Lasting</p>
+      </div>
+      <div>
+        <h3>Premium</h3>
+        <p>Imported Oils</p>
+      </div>
+      <div>
+        <h3>Luxury</h3>
+        <p>Gift Packaging</p>
+      </div>
+    </div>
+  </div>
+</section>
+        
         /* Footer */
         footer { background: #02040a; border-top: 1px solid var(--border-gold); padding: 60px 8% 30px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
@@ -613,6 +695,200 @@
         </div>
     </section>
 
+    /* ================= REVIEWS SECTION ================= */
+.reviews-section {
+  padding: 90px 8%;
+  background: #071425;
+  text-align: center;
+}
+
+.reviews-section h2 {
+  font-size: 42px;
+  color: #D4AF37;
+  margin-bottom: 15px;
+  font-family: serif;
+}
+
+.review-subtitle {
+  color: #ddd;
+  margin-bottom: 50px;
+  font-size: 16px;
+}
+
+.review-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 20px;
+  padding: 30px;
+  width: 340px;
+  transition: all 0.5s ease;
+  text-align: center;
+}
+
+.review-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25);
+}
+
+.review-card p {
+  color: #ddd;
+  line-height: 1.8;
+  margin: 20px 0;
+  font-size: 15px;
+}
+
+.review-card h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.review-card span {
+  color: #D4AF37;
+  font-size: 14px;
+}
+
+.stars {
+  font-size: 24px;
+  color: #FFD700;
+}
+
+/* ================= EXPERT SECTION ================= */
+.expert-section {
+  padding: 90px 8%;
+  background: #091b30;
+  text-align: center;
+}
+
+.expert-section h2 {
+  font-size: 42px;
+  color: #D4AF37;
+  margin-bottom: 40px;
+  font-family: serif;
+}
+
+.expert-box {
+  max-width: 900px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 50px;
+  border-radius: 25px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.expert-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.expert-box h3 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.expert-box p {
+  color: #ddd;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* ================= TRUST SECTION ================= */
+.trust-section {
+  padding: 80px 8%;
+  background: #07111E;
+}
+
+.trust-box {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.trust-box h2 {
+  color: #D4AF37;
+  font-size: 40px;
+  margin-bottom: 40px;
+  font-family: serif;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.trust-grid div {
+  padding: 35px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.trust-grid div:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.trust-grid h3 {
+  font-size: 30px;
+  color: #D4AF37;
+  margin-bottom: 10px;
+}
+
+.trust-grid p {
+  color: #ffffff;
+  font-size: 15px;
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+@media (max-width: 768px) {
+  .reviews-section, .expert-section, .trust-section {
+    padding: 60px 5%;
+  }
+
+  .reviews-section h2, .expert-section h2, .trust-box h2 {
+    font-size: 32px;
+  }
+
+  .review-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .review-card {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .expert-box {
+    padding: 30px 20px;
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .trust-grid div {
+    padding: 20px 10px;
+  }
+
+  .trust-grid h3 {
+    font-size: 24px;
+  }
+}
+    
     <!-- Footer -->
     <footer id="contact">
         <div class="footer-grid">
