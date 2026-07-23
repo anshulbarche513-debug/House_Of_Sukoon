@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - HOUSE OF SUKOON OFFICIAL</title>
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0b0d10;
+      --card-bg: #14171d;
+      --gold: #d4af37;
+      --gold-hover: #b89628;
+      --text-light: #f4f4f4;
+      --text-muted: #a0a0a0;
+      --border: #262a33;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text-light); min-height: 100vh; display: flex; flex-direction: column; }
+
+    header {
+      background-color: #050608;
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    header h1 { font-family: 'Cinzel', serif; color: var(--gold); letter-spacing: 3px; font-size: 1.5rem; }
+    header p { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px; margin-top: 4px; }
+
+    .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; width: 100%; }
+
+    .grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .card h2 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+    input, textarea {
+      width: 100%; padding: 0.75rem; background: #0c0e12; border: 1px solid var(--border);
+      color: #fff; border-radius: 4px; font-size: 0.9rem;
+    }
+    input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+
+    button {
+      width: 100%; padding: 0.8rem; background: var(--gold); border: none; color: #000;
+      font-weight: 600; font-size: 0.9rem; border-radius: 4px; cursor: pointer; transition: 0.3s;
+      letter-spacing: 1px;
+    }
+    button:hover { background: var(--gold-hover); }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
+    th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--gold); font-weight: 600; font-family: 'Cinzel', serif; }
+    td img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; }
+
+    .badge { padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+    .badge-success { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+    .badge-pending { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>HOUSE OF SUKOON OFFICIAL</h1>
+    <p>ADMIN PANEL • LUXURY FRAGRANCES</p>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+      
+      <!-- Add Product Form -->
+      <div class="card">
+        <h2>Add New Product</h2>
+        <form id="productForm">
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" id="pName" placeholder="e.g. Shukra Udgam" required>
+          </div>
+          <div class="form-group">
+            <label>Tagline / Energy Notes</label>
+            <input type="text" id="pTagline" placeholder="e.g. Attraction • Elegance" required>
+          </div>
+          <div class="form-group">
+            <label>Price (₹)</label>
+            <input type="number" id="pPrice" placeholder="1099" required>
+          </div>
+          <div class="form-group">
+            <label>Image File Path</label>
+            <input type="text" id="pImage" placeholder="card-shukra.jpg" required>
+          </div>
+          <button type="submit">ADD PRODUCT</button>
+        </form>
+      </div>
+
+      <!-- Products & Orders Table -->
+      <div>
+        <div class="card" style="margin-bottom: 2rem;">
+          <h2>Products Catalog</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="productsTable">
+              <tr><td colspan="4">Loading products...</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h2>Recent Orders</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Item</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTable">
+              <tr><td colspan="4">No orders received yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 1. SUPABASE CONFIGURATION
+    const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_Ggq0UmDjFo45xceZi33Xqg_w0yK4"; // Publishable Key
+
+    const { createClient } = supabase;
+    const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // 2. FETCH PRODUCTS FROM DATABASE
+    async function loadProducts() {
+      const { data, error } = await db.from('products').select('*').order('id', { ascending: true });
+      const tbody = document.getElementById('productsTable');
+      
+      if (error) {
+        tbody.innerHTML = <tr><td colspan="4">Error loading products</td></tr>;
+        return;
+      }
+
+      tbody.innerHTML = data.map(p => `
+        <tr>
+          <td><img src="${p.image_url}" alt="${p.name}"></td>
+          <td><strong>${p.name}</strong><br><small style="color:#aaa">${p.tagline || ''}</small></td>
+          <td>₹${p.price}</td>
+          <td><button style="padding:0.3rem 0.6rem; font-size:0.75rem; background:#e74c3c; color:#fff;" onclick="deleteProduct(${p.id})">Delete</button></td>
+        </tr>
+      `).join('');
+    }
+
+    // 3. ADD PRODUCT TO DATABASE
+    document.getElementById('productForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('pName').value;
+      const tagline = document.getElementById('pTagline').value;
+      const price = parseFloat(document.getElementById('pPrice').value);
+      const image_url = document.getElementById('pImage').value;
+
+      const { error } = await db.from('products').insert([{ name, tagline, price, image_url }]);
+      if (error) {
+        alert("Error adding product: " + error.message);
+      } else {
+        alert("Product added successfully!");
+        document.getElementById('productForm').reset();
+        loadProducts();
+      }
+    });
+
+    // 4. DELETE PRODUCT
+    async function deleteProduct(id) {
+      if(confirm("Are you sure you want to delete this product?")) {
+        await db.from('products').delete().eq('id', id);
+        loadProducts();
+      }
+    }
+
+    // INITIAL LOAD
+    loadProducts();
+  </script>
+</body>
+</html>
