@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel - HOUSE OF SUKOON OFFICIAL</title>
+  <!-- Supabase Official SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -135,71 +137,80 @@
     const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
     const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxYmVvcXV6YXh3ZWV3bG92Y3BsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyOTIwNjUsImV4cCI6MjA2ODg2ODA2NX0.9lq9e8-W8X0P9M_N-Nq8E6K";
 
-    const customHeaders = {
-      "apikey": API_KEY,
-      "Authorization": "Bearer " + API_KEY,
-      "Content-Type": "application/json"
-    };
+    // Initialize Supabase Client
+    const supabaseClient = supabase.createClient(SUPABASE_URL, API_KEY);
 
     // FETCH PRODUCTS
     async function loadProducts() {
+      const tbody = document.getElementById('productsTable');
       try {
-        const response = await fetch(`${SUPABASE_URL}/rest/v1/products?select=*&order=id.asc`, {
-          method: "GET",
-          headers: customHeaders
-        });
-        const data = await response.json();
-        const tbody = document.getElementById('productsTable');
+        const { data, error } = await supabaseClient
+          .from('products')
+          .select('*')
+          .order('id', { ascending: true });
 
-        if (!Array.isArray(data) || data.length === 0) {
+        if (error) {
+          console.error("Supabase Error:", error);
+          tbody.innerHTML = '<tr><td colspan="4" style="color:#e74c3c;">Error: ' + error.message + '</td></tr>';
+          return;
+        }
+
+        if (!data || data.length === 0) {
           tbody.innerHTML = '<tr><td colspan="4">No products found in database. Add one on the left!</td></tr>';
           return;
         }
 
-        tbody.innerHTML = data.map(p => `
-          <tr>
-            <td><img src="${p.image_url}" alt="${p.name}" onerror="this.src='logo.jpg'"></td>
-            <td><strong>${p.name}</strong><br><small style="color:#aaa">${p.tagline || ''}</small></td>
-            <td>₹${p.price}</td>
-            <td><button style="padding:0.3rem 0.6rem; font-size:0.75rem; background:#e74c3c; color:#fff;" onclick="deleteProduct(${p.id})">Delete</button></td>
-          </tr>
-        `).join('');
+        let html = '';
+        data.forEach(function(p) {
+          html += '<tr>' +
+            '<td><img src="' + p.image_url + '" alt="' + p.name + '" onerror="this.src=\'logo.jpg\'"></td>' +
+            '<td><strong>' + p.name + '</strong><br><small style="color:#aaa">' + (p.tagline || '') + '</small></td>' +
+            '<td>₹' + p.price + '</td>' +
+            '<td><button style="padding:0.3rem 0.6rem; font-size:0.75rem; background:#e74c3c; color:#fff;" onclick="deleteProduct(' + p.id + ')">Delete</button></td>' +
+          '</tr>';
+        });
+
+        tbody.innerHTML = html;
       } catch (err) {
-        document.getElementById('productsTable').innerHTML = '<tr><td colspan="4" style="color:#e74c3c;">Error connecting to database.</td></tr>';
+        console.error("Error:", err);
+        tbody.innerHTML = '<tr><td colspan="4" style="color:#e74c3c;">Connection Error. Check console.</td></tr>';
       }
     }
 
-   // ADD PRODUCT
-    document.getElementById('productForm').addEventListener('submit', async (e) => {
+    // ADD PRODUCT
+    document.getElementById('productForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const name = document.getElementById('pName').value;
       const tagline = document.getElementById('pTagline').value;
       const price = parseFloat(document.getElementById('pPrice').value);
       const image_url = document.getElementById('pImage').value;
 
-      const response = await fetch(${SUPABASE_URL}/rest/v1/products, {
-        method: "POST",
-        headers: customHeaders, // Yahan customHeaders hona chahiye
-        body: JSON.stringify({ name, tagline, price, image_url })
-      });
+      const { data, error } = await supabaseClient
+        .from('products')
+        .insert([{ name: name, tagline: tagline, price: price, image_url: image_url }]);
 
-      if (response.ok) {
+      if (error) {
+        alert("Failed to add product: " + error.message);
+      } else {
         alert("Product added successfully!");
         document.getElementById('productForm').reset();
         loadProducts();
-      } else {
-        alert("Failed to add product. Check database connection.");
       }
     });
-    
+
     // DELETE PRODUCT
     async function deleteProduct(id) {
       if (confirm("Are you sure you want to delete this product?")) {
-        await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${id}`, {
-          method: "DELETE",
-          headers: customHeaders
-        });
-        loadProducts();
+        const { error } = await supabaseClient
+          .from('products')
+          .delete()
+          .eq('id', id);
+
+        if (error) {
+          alert("Error deleting product: " + error.message);
+        } else {
+          loadProducts();
+        }
       }
     }
 
