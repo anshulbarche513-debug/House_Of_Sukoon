@@ -3,78 +3,495 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel - HOUSE OF SUKOON OFFICIAL</title>
-  <!-- Supabase Official SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>HOUSE OF SUKOON OFFICIAL • Business OS</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     :root {
-      --bg-color: #0b0d10;
-      --card-bg: #14171d;
-      --gold: #d4af37;
-      --gold-hover: #b89628;
-      --text-light: #f4f4f4;
-      --text-muted: #a0a0a0;
-      --border: #262a33;
+      --bg-dark: #07090e;
+      --bg-glass: rgba(18, 22, 31, 0.65);
+      --bg-glass-card: rgba(22, 27, 38, 0.75);
+      --gold-primary: #d4af37;
+      --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+      --text-light: #f8f9fa;
+      --text-muted: #8e95a5;
+      --border-glass: rgba(212, 175, 55, 0.18);
+      --radius-main: 20px;
+      --radius-sm: 12px;
+      --shadow-luxury: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.05);
+      --transition-fast: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-    body { background-color: var(--bg-color); color: var(--text-light); min-height: 100vh; display: flex; flex-direction: column; }
 
-    header {
-      background-color: #050608;
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2rem;
+    body {
+      background: radial-gradient(circle at top right, #111622, #07090e);
+      color: var(--text-light);
+      min-height: 100vh;
+      display: flex;
+      overflow-x: hidden;
+    }
+
+    /* GLASS SIDEBAR */
+    aside {
+      width: 280px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-right: 1px solid var(--border-glass);
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.2rem;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    .brand-header {
       text-align: center;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 1.5rem;
     }
-    header h1 { font-family: 'Cinzel', serif; color: var(--gold); letter-spacing: 3px; font-size: 1.5rem; }
-    header p { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px; margin-top: 4px; }
 
-    .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; width: 100%; }
-
-    .grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
-    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-
-    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
-    .card h2 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-
-    .form-group { margin-bottom: 1rem; }
-    label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem; }
-    input {
-      width: 100%; padding: 0.75rem; background: #0c0e12; border: 1px solid var(--border);
-      color: #fff; border-radius: 4px; font-size: 0.9rem;
+    .brand-header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
     }
-    input:focus { border-color: var(--gold); outline: none; }
 
-    button {
-      width: 100%; padding: 0.8rem; background: var(--gold); border: none; color: #000;
-      font-weight: 600; font-size: 0.9rem; border-radius: 4px; cursor: pointer; transition: 0.3s;
+    .brand-header p {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      overflow-y: auto;
+    }
+
+    .nav-item a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: var(--transition-fast);
+    }
+
+    .nav-item a i { font-size: 1.1rem; width: 22px; text-align: center; }
+
+    .nav-item.active a, .nav-item a:hover {
+      background: rgba(212, 175, 55, 0.12);
+      color: var(--gold-primary);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    /* MAIN CONTENT WRAPPER */
+    main {
+      margin-left: 280px;
+      flex: 1;
+      padding: 2rem 2.5rem;
+      min-height: 100vh;
+    }
+
+    /* TOP BAR */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .search-bar {
+      position: relative;
+      width: 380px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.8rem;
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 30px;
+      color: #fff;
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+      outline: none;
+    }
+
+    .search-bar i {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold-primary);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .notification-icon {
+      position: relative;
+      background: var(--bg-glass-card);
+      padding: 0.7rem;
+      border-radius: 50%;
+      border: 1px solid var(--border-glass);
+      color: var(--gold-primary);
+      cursor: pointer;
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      background: #e74c3c;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .profile-info {
+      text-align: right;
+    }
+
+    .profile-info h4 { font-size: 0.9rem; font-weight: 600; color: var(--text-light); }
+    .profile-info p { font-size: 0.75rem; color: var(--gold-primary); }
+
+    /* GREETING */
+    .greeting-box {
+      margin-bottom: 2rem;
+    }
+
+    .greeting-box h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: var(--text-light);
+    }
+
+    .greeting-box p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* METRICS GRID */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .metric-card {
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-main);
+      padding: 1.5rem;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-luxury);
+      transition: var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold-primary);
+    }
+
+    .metric-card .icon-box {
+      width: 45px;
+      height: 45px;
+      border-radius: var(--radius-sm);
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-primary);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .metric-card h3 {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
       letter-spacing: 1px;
     }
-    button:hover { background: var(--gold-hover); }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
-    th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid var(--border); }
-    th { color: var(--gold); font-weight: 600; font-family: 'Cinzel', serif; }
-    td img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; }
+    .metric-card .value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-top: 5px;
+      font-family: 'Cinzel', serif;
+    }
+
+    /* CONTENT SECTIONS */
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: var(--gold-primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* LUXURY PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .product-card {
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-main);
+      padding: 1.2rem;
+      backdrop-filter: blur(20px);
+      transition: var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 25px rgba(212, 175, 55, 0.15);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 1rem;
+    }
+
+    .product-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      font-weight: 700;
+    }
+
+    .product-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 4px 0 1rem 0;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .product-price {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: var(--gold-primary);
+      font-weight: 700;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--text-light);
+      padding: 0.5rem 0.8rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: var(--transition-fast);
+    }
+
+    .btn-action:hover {
+      background: var(--gold-primary);
+      color: #000;
+    }
+
+    .btn-delete:hover {
+      background: #e74c3c;
+      color: #fff;
+      border-color: #e74c3c;
+    }
+
+    /* FORM MODAL / CARD */
+    .glass-form {
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-main);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      backdrop-filter: blur(20px);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(7, 9, 14, 0.8);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      color: #fff;
+      outline: none;
+      font-size: 0.85rem;
+    }
+
+    .btn-gold {
+      background: var(--gold-gradient);
+      border: none;
+      color: #000;
+      font-weight: 700;
+      padding: 0.9rem 1.8rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      transition: var(--transition-fast);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    @media (max-width: 992px) {
+      aside { width: 80px; padding: 1.5rem 0.5rem; }
+      .brand-header h1, .brand-header p, .nav-item span { display: none; }
+      main { margin-left: 80px; padding: 1.5rem; }
+      .search-bar { width: 200px; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>HOUSE OF SUKOON OFFICIAL</h1>
-    <p>ADMIN PANEL • LUXURY FRAGRANCES</p>
-  </header>
+  <!-- SIDEBAR DOCK -->
+  <aside>
+    <div class="brand-header">
+      <h1>HOUSE OF SUKOON</h1>
+      <p>BUSINESS OS</p>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item active"><a href="#"><i class="fa-solid fa-chart-pie"></i> <span>Dashboard</span></a></li>
+      <li class="nav-item"><a href="#products"><i class="fa-solid fa-bottle-droplet"></i> <span>Products</span></a></li>
+      <li class="nav-item"><a href="#orders"><i class="fa-solid fa-bag-shopping"></i> <span>Orders</span></a></li>
+      <li class="nav-item"><a href="#"><i class="fa-solid fa-users"></i> <span>Customers</span></a></li>
+      <li class="nav-item"><a href="#"><i class="fa-solid fa-wand-magic-sparkles"></i> <span>Discovery Quiz</span></a></li>
+      <li class="nav-item"><a href="#"><i class="fa-solid fa-star"></i> <span>Reviews</span></a></li>
+      <li class="nav-item"><a href="#"><i class="fa-solid fa-box-open"></i> <span>Inventory</span></a></li>
+      <li class="nav-item"><a href="#"><i class="fa-solid fa-gear"></i> <span>Settings</span></a></li>
+    </ul>
+  </aside>
 
-  <div class="container">
-    <div class="grid">
-      
-      <!-- Add Product Form -->
-      <div class="card">
-        <h2>Add New Product</h2>
-        <form id="productForm">
+  <!-- MAIN DASHBOARD -->
+  <main>
+    
+    <!-- TOP BAR -->
+    <header>
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search orders, perfumes, customers... (Ctrl+K)">
+      </div>
+      <div class="user-profile">
+        <div class="notification-icon">
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-badge"></span>
+        </div>
+        <div class="profile-info">
+          <h4>Anshul Barche</h4>
+          <p>Founder & Admin</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- GREETING -->
+    <div class="greeting-box">
+      <h2 id="greetingText">Good Evening, Anshul 👋</h2>
+      <p>Welcome to HOUSE OF SUKOON OFFICIAL Business Operating System.</p>
+    </div>
+
+    <!-- METRICS METERS -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="icon-box"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+        <h3>Today's Revenue</h3>
+        <div class="value">₹26,850</div>
+      </div>
+      <div class="metric-card">
+        <div class="icon-box"><i class="fa-solid fa-cart-flatbed"></i></div>
+        <h3>Today's Orders</h3>
+        <div class="value">18</div>
+      </div>
+      <div class="metric-card">
+        <div class="icon-box"><i class="fa-solid fa-eye"></i></div>
+        <h3>Store Visitors</h3>
+        <div class="value">586</div>
+      </div>
+      <div class="metric-card">
+        <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>Conversion Rate</h3>
+        <div class="value">4.8%</div>
+      </div>
+    </div>
+
+    <!-- ADD PRODUCT FORM -->
+    <div class="glass-form" id="addProduct">
+      <h2 class="section-title"><span>+ Add New Perfume</span></h2>
+      <form id="productForm">
+        <div class="form-grid">
           <div class="form-group">
-            <label>Product Name</label>
+            <label>Perfume Name</label>
             <input type="text" id="pName" placeholder="e.g. Shukra Udgam" required>
           </div>
           <div class="form-group">
@@ -86,130 +503,113 @@
             <input type="number" id="pPrice" placeholder="1099" required>
           </div>
           <div class="form-group">
-            <label>Image File Path</label>
+            <label>Image File Path / URL</label>
             <input type="text" id="pImage" placeholder="card-shukra.jpg" required>
           </div>
-          <button type="submit">ADD PRODUCT</button>
-        </form>
-      </div>
-
-      <!-- Products & Orders Table -->
-      <div>
-        <div class="card" style="margin-bottom: 2rem;">
-          <h2>Products Catalog</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="productsTable">
-              <tr><td colspan="4">Loading products...</td></tr>
-            </tbody>
-          </table>
         </div>
-
-        <div class="card">
-          <h2>Recent Orders</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Customer</th>
-                <th>Item</th>
-                <th>Amount</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="ordersTable">
-              <tr><td colspan="4">No orders received yet.</td></tr>
-            </tbody>
-          </table>
+        <div style="margin-top: 1.5rem; text-align: right;">
+          <button type="submit" class="btn-gold"><i class="fa-solid fa-plus"></i> PUBLISH PERFUME</button>
         </div>
-      </div>
-
+      </form>
     </div>
-  </div>
 
+    <!-- PRODUCTS CATALOG GRID -->
+    <div id="products">
+      <div class="section-title">
+        <span>Signature Fragrances Catalog</span>
+        <small style="font-size:0.8rem; color:var(--text-muted);" id="productCount">Loading...</small>
+      </div>
+      <div class="product-grid" id="productContainer">
+        <!-- Live products from Supabase will render here -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SUPABASE INTEGRATION SCRIPT -->
   <script>
     const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
-    const API_KEY = "sb_publishable_Ggq0UmDjFo45xceZi33Xqg_w0yK4_D4";
-    // Initialize Supabase Client
-    const supabaseClient = supabase.createClient(SUPABASE_URL, API_KEY);
+    const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxYmVvcXV6YXh3ZWV3bG92Y3BsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyOTIwNjUsImV4cCI6MjA2ODg2ODA2NX0.9lq9e8-W8X0P9M_N-Nq8E6K";
+
+    const customHeaders = {
+      "apikey": API_KEY,
+      "Authorization": "Bearer " + API_KEY,
+      "Content-Type": "application/json"
+    };
+
+    // Greeting according to time
+    const hour = new Date().getHours();
+    const greetingText = document.getElementById('greetingText');
+    if (hour < 12) greetingText.innerText = "Good Morning, Anshul 👋";
+    else if (hour < 17) greetingText.innerText = "Good Afternoon, Anshul 👋";
+    else greetingText.innerText = "Good Evening, Anshul 👋";
 
     // FETCH PRODUCTS
     async function loadProducts() {
-      const tbody = document.getElementById('productsTable');
+      const container = document.getElementById('productContainer');
       try {
-        const { data, error } = await supabaseClient
-          .from('products')
-          .select('*')
-          .order('id', { ascending: true });
-
-        if (error) {
-          console.error("Supabase Error:", error);
-          tbody.innerHTML = '<tr><td colspan="4" style="color:#e74c3c;">Error: ' + error.message + '</td></tr>';
-          return;
-        }
-
-        if (!data || data.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="4">No products found in database. Add one on the left!</td></tr>';
-          return;
-        }
-
-        let html = '';
-        data.forEach(function(p) {
-          html += '<tr>' +
-            '<td><img src="' + p.image_url + '" alt="' + p.name + '" onerror="this.src=\'logo.jpg\'"></td>' +
-            '<td><strong>' + p.name + '</strong><br><small style="color:#aaa">' + (p.tagline || '') + '</small></td>' +
-            '<td>₹' + p.price + '</td>' +
-            '<td><button style="padding:0.3rem 0.6rem; font-size:0.75rem; background:#e74c3c; color:#fff;" onclick="deleteProduct(' + p.id + ')">Delete</button></td>' +
-          '</tr>';
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/products?select=*&order=id.asc`, {
+          method: "GET",
+          headers: customHeaders
         });
+        const data = await response.json();
 
-        tbody.innerHTML = html;
+        if (!Array.isArray(data) || data.length === 0) {
+          container.innerHTML = '<p style="color:var(--text-muted);">No products found in database.</p>';
+          return;
+        }
+
+        document.getElementById('productCount').innerText = `${data.length} Fragrances Active`;
+
+        container.innerHTML = data.map(p => `
+          <div class="product-card">
+            <img src="${p.image_url}" class="product-img" alt="${p.name}" onerror="this.src='logo.jpg'">
+            <div class="product-title">${p.name}</div>
+            <div class="product-tagline">${p.tagline || 'Luxury Fragrance'}</div>
+            <div class="product-meta">
+              <div class="product-price">₹${p.price}</div>
+              <div class="card-actions">
+                <button class="btn-action btn-delete" onclick="deleteProduct(${p.id})"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+        `).join('');
       } catch (err) {
-        console.error("Error:", err);
-        tbody.innerHTML = '<tr><td colspan="4" style="color:#e74c3c;">Connection Error. Check console.</td></tr>';
+        container.innerHTML = '<p style="color:#e74c3c;">Failed to connect to Supabase Database.</p>';
       }
     }
 
     // ADD PRODUCT
-    document.getElementById('productForm').addEventListener('submit', async function(e) {
+    document.getElementById('productForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('pName').value;
       const tagline = document.getElementById('pTagline').value;
       const price = parseFloat(document.getElementById('pPrice').value);
       const image_url = document.getElementById('pImage').value;
 
-      const { data, error } = await supabaseClient
-        .from('products')
-        .insert([{ name: name, tagline: tagline, price: price, image_url: image_url }]);
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/products`, {
+        method: "POST",
+        headers: customHeaders,
+        body: JSON.stringify({ name, tagline, price, image_url })
+      });
 
-      if (error) {
-        alert("Failed to add product: " + error.message);
-      } else {
-        alert("Product added successfully!");
+      if (response.ok) {
+        alert("Perfume added successfully to HOUSE OF SUKOON OFFICIAL catalog!");
         document.getElementById('productForm').reset();
         loadProducts();
+      } else {
+        alert("Failed to add product. Please check console.");
       }
     });
 
     // DELETE PRODUCT
     async function deleteProduct(id) {
-      if (confirm("Are you sure you want to delete this product?")) {
-        const { error } = await supabaseClient
-          .from('products')
-          .delete()
-          .eq('id', id);
-
-        if (error) {
-          alert("Error deleting product: " + error.message);
-        } else {
-          loadProducts();
-        }
+      if (confirm("Are you sure you want to remove this perfume from the catalog?")) {
+        await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${id}`, {
+          method: "DELETE",
+          headers: customHeaders
+        });
+        loadProducts();
       }
     }
 
