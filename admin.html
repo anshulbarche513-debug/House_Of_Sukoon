@@ -1,32 +1,4 @@
-[5:07 PM, 7/23/2026] Anshul Barche: <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel - HOUSE OF SUKOON OFFICIAL</title>
-  <!-- Supabase JS Client -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #0b0d10;
-      --card-bg: #14171d;
-      --gold: #d4af37;
-      --gold-hover: #b89628;
-      --text-light: #f4f4f4;
-      --text-muted: #a0a0a0;
-      --border: #262a33;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', …
-[5:08 PM, 7/23/2026] Anshul Barche: https://anshulbarche513-debug.github.io/House_Of_Sukoon/admin.html
-[5:22 PM, 7/23/2026] Anshul Barche: const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxYmVvcXV6YXh3ZWV3bG92Y3BsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyOTIwNjUsImV4cCI6MjA2ODg2ODA2NX0.9lq9e8-W8X0P9M_N-Nq8E6K";
-[5:27 PM, 7/23/2026] Anshul Barche: -- Disable RLS temporarily so admin & website can read/write data easily
-ALTER TABLE products DISABLE ROW LEVEL SECURITY;
-ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
-[5:30 PM, 7/23/2026] Anshul Barche: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -160,7 +132,7 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
   </div>
 
   <script>
-   const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
+    const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
     const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxYmVvcXV6YXh3ZWV3bG92Y3BsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyOTIwNjUsImV4cCI6MjA2ODg2ODA2NX0.9lq9e8-W8X0P9M_N-Nq8E6K";
 
     const customHeaders = {
@@ -172,7 +144,7 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
     // FETCH PRODUCTS
     async function loadProducts() {
       try {
-        const response = await fetch(${SUPABASE_URL}/rest/v1/products?select=*&order=id.asc, {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/products?select=*&order=id.asc`, {
           method: "GET",
           headers: customHeaders
         });
@@ -180,7 +152,7 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
         const tbody = document.getElementById('productsTable');
 
         if (!Array.isArray(data) || data.length === 0) {
-          tbody.innerHTML = <tr><td colspan="4">No products found in database. Add one on the left!</td></tr>;
+          tbody.innerHTML = '<tr><td colspan="4">No products found in database. Add one on the left!</td></tr>';
           return;
         }
 
@@ -193,17 +165,7 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
           </tr>
         `).join('');
       } catch (err) {
-        document.getElementById('productsTable').innerHTML = <tr><td colspan="4" style="color:#e74c3c;">Error connecting to database.</td></tr>;
-      }
-    }
-            <td><img src="${p.image_url}" alt="${p.name}" onerror="this.src='logo.jpg'"></td>
-            <td><strong>${p.name}</strong><br><small style="color:#aaa">${p.tagline || ''}</small></td>
-            <td>₹${p.price}</td>
-            <td><button style="padding:0.3rem 0.6rem; font-size:0.75rem; background:#e74c3c; color:#fff;" onclick="deleteProduct(${p.id})">Delete</button></td>
-          </tr>
-        `).join('');
-      } catch (err) {
-        document.getElementById('productsTable').innerHTML = <tr><td colspan="4" style="color:#e74c3c;">Error connecting to database.</td></tr>;
+        document.getElementById('productsTable').innerHTML = '<tr><td colspan="4" style="color:#e74c3c;">Error connecting to database.</td></tr>';
       }
     }
 
@@ -215,9 +177,9 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
       const price = parseFloat(document.getElementById('pPrice').value);
       const image_url = document.getElementById('pImage').value;
 
-      const response = await fetch(${SUPABASE_URL}/rest/v1/products, {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/products`, {
         method: "POST",
-        headers,
+        headers: customHeaders,
         body: JSON.stringify({ name, tagline, price, image_url })
       });
 
@@ -233,9 +195,9 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
     // DELETE PRODUCT
     async function deleteProduct(id) {
       if (confirm("Are you sure you want to delete this product?")) {
-        await fetch(${SUPABASE_URL}/rest/v1/products?id=eq.${id}, {
+        await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${id}`, {
           method: "DELETE",
-          headers
+          headers: customHeaders
         });
         loadProducts();
       }
