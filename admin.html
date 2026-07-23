@@ -160,19 +160,22 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
   </div>
 
   <script>
-    const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
-    const API_KEY = "sb_publishable_Ggq0UmDjFo45xceZi33Xqg_w0yK4";
+   const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
+    const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxYmVvcXV6YXh3ZWV3bG92Y3BsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyOTIwNjUsImV4cCI6MjA2ODg2ODA2NX0.9lq9e8-W8X0P9M_N-Nq8E6K";
 
-    const headers = {
+    const customHeaders = {
       "apikey": API_KEY,
-      "Authorization": Bearer ${API_KEY},
+      "Authorization": "Bearer " + API_KEY,
       "Content-Type": "application/json"
     };
 
     // FETCH PRODUCTS
     async function loadProducts() {
       try {
-        const response = await fetch(${SUPABASE_URL}/rest/v1/products?select=*&order=id.asc, { headers });
+        const response = await fetch(${SUPABASE_URL}/rest/v1/products?select=*&order=id.asc, {
+          method: "GET",
+          headers: customHeaders
+        });
         const data = await response.json();
         const tbody = document.getElementById('productsTable');
 
@@ -183,6 +186,16 @@ ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
 
         tbody.innerHTML = data.map(p => `
           <tr>
+            <td><img src="${p.image_url}" alt="${p.name}" onerror="this.src='logo.jpg'"></td>
+            <td><strong>${p.name}</strong><br><small style="color:#aaa">${p.tagline || ''}</small></td>
+            <td>₹${p.price}</td>
+            <td><button style="padding:0.3rem 0.6rem; font-size:0.75rem; background:#e74c3c; color:#fff;" onclick="deleteProduct(${p.id})">Delete</button></td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        document.getElementById('productsTable').innerHTML = <tr><td colspan="4" style="color:#e74c3c;">Error connecting to database.</td></tr>;
+      }
+    }
             <td><img src="${p.image_url}" alt="${p.name}" onerror="this.src='logo.jpg'"></td>
             <td><strong>${p.name}</strong><br><small style="color:#aaa">${p.tagline || ''}</small></td>
             <td>₹${p.price}</td>
