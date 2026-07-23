@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+[5:07 PM, 7/23/2026] Anshul Barche: <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,6 +7,31 @@
   <!-- Supabase JS Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0b0d10;
+      --card-bg: #14171d;
+      --gold: #d4af37;
+      --gold-hover: #b89628;
+      --text-light: #f4f4f4;
+      --text-muted: #a0a0a0;
+      --border: #262a33;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', …
+[5:08 PM, 7/23/2026] Anshul Barche: https://anshulbarche513-debug.github.io/House_Of_Sukoon/admin.html
+[5:22 PM, 7/23/2026] Anshul Barche: const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxYmVvcXV6YXh3ZWV3bG92Y3BsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyOTIwNjUsImV4cCI6MjA2ODg2ODA2NX0.9lq9e8-W8X0P9M_N-Nq8E6K";
+[5:27 PM, 7/23/2026] Anshul Barche: -- Disable RLS temporarily so admin & website can read/write data easily
+ALTER TABLE products DISABLE ROW LEVEL SECURITY;
+ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
+[5:30 PM, 7/23/2026] Anshul Barche: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - HOUSE OF SUKOON OFFICIAL</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -41,11 +66,11 @@
 
     .form-group { margin-bottom: 1rem; }
     label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem; }
-    input, textarea {
+    input {
       width: 100%; padding: 0.75rem; background: #0c0e12; border: 1px solid var(--border);
       color: #fff; border-radius: 4px; font-size: 0.9rem;
     }
-    input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+    input:focus { border-color: var(--gold); outline: none; }
 
     button {
       width: 100%; padding: 0.8rem; background: var(--gold); border: none; color: #000;
@@ -58,10 +83,6 @@
     th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid var(--border); }
     th { color: var(--gold); font-weight: 600; font-family: 'Cinzel', serif; }
     td img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; }
-
-    .badge { padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
-    .badge-success { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
-    .badge-pending { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
   </style>
 </head>
 <body>
@@ -139,34 +160,41 @@
   </div>
 
   <script>
-    // 1. SUPABASE CONFIGURATION
     const SUPABASE_URL = "https://qqbeoquzaxweewlovcpl.supabase.co";
-   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxYmVvcXV6YXh3ZWV3bG92Y3BsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyOTIwNjUsImV4cCI6MjA2ODg2ODA2NX0.9lq9e8-W8X0P9M_N-Nq8E6K";
+    const API_KEY = "sb_publishable_Ggq0UmDjFo45xceZi33Xqg_w0yK4";
 
-    const { createClient } = supabase;
-    const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+    const headers = {
+      "apikey": API_KEY,
+      "Authorization": Bearer ${API_KEY},
+      "Content-Type": "application/json"
+    };
 
-    // 2. FETCH PRODUCTS FROM DATABASE
+    // FETCH PRODUCTS
     async function loadProducts() {
-      const { data, error } = await db.from('products').select('*').order('id', { ascending: true });
-      const tbody = document.getElementById('productsTable');
-      
-      if (error) {
-        tbody.innerHTML = <tr><td colspan="4">Error loading products</td></tr>;
-        return;
-      }
+      try {
+        const response = await fetch(${SUPABASE_URL}/rest/v1/products?select=*&order=id.asc, { headers });
+        const data = await response.json();
+        const tbody = document.getElementById('productsTable');
 
-      tbody.innerHTML = data.map(p => `
-        <tr>
-          <td><img src="${p.image_url}" alt="${p.name}"></td>
-          <td><strong>${p.name}</strong><br><small style="color:#aaa">${p.tagline || ''}</small></td>
-          <td>₹${p.price}</td>
-          <td><button style="padding:0.3rem 0.6rem; font-size:0.75rem; background:#e74c3c; color:#fff;" onclick="deleteProduct(${p.id})">Delete</button></td>
-        </tr>
-      `).join('');
+        if (!Array.isArray(data) || data.length === 0) {
+          tbody.innerHTML = <tr><td colspan="4">No products found in database. Add one on the left!</td></tr>;
+          return;
+        }
+
+        tbody.innerHTML = data.map(p => `
+          <tr>
+            <td><img src="${p.image_url}" alt="${p.name}" onerror="this.src='logo.jpg'"></td>
+            <td><strong>${p.name}</strong><br><small style="color:#aaa">${p.tagline || ''}</small></td>
+            <td>₹${p.price}</td>
+            <td><button style="padding:0.3rem 0.6rem; font-size:0.75rem; background:#e74c3c; color:#fff;" onclick="deleteProduct(${p.id})">Delete</button></td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        document.getElementById('productsTable').innerHTML = <tr><td colspan="4" style="color:#e74c3c;">Error connecting to database.</td></tr>;
+      }
     }
 
-    // 3. ADD PRODUCT TO DATABASE
+    // ADD PRODUCT
     document.getElementById('productForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('pName').value;
@@ -174,20 +202,28 @@
       const price = parseFloat(document.getElementById('pPrice').value);
       const image_url = document.getElementById('pImage').value;
 
-      const { error } = await db.from('products').insert([{ name, tagline, price, image_url }]);
-      if (error) {
-        alert("Error adding product: " + error.message);
-      } else {
+      const response = await fetch(${SUPABASE_URL}/rest/v1/products, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ name, tagline, price, image_url })
+      });
+
+      if (response.ok) {
         alert("Product added successfully!");
         document.getElementById('productForm').reset();
         loadProducts();
+      } else {
+        alert("Failed to add product. Check database connection.");
       }
     });
 
-    // 4. DELETE PRODUCT
+    // DELETE PRODUCT
     async function deleteProduct(id) {
-      if(confirm("Are you sure you want to delete this product?")) {
-        await db.from('products').delete().eq('id', id);
+      if (confirm("Are you sure you want to delete this product?")) {
+        await fetch(${SUPABASE_URL}/rest/v1/products?id=eq.${id}, {
+          method: "DELETE",
+          headers
+        });
         loadProducts();
       }
     }
