@@ -169,7 +169,7 @@
       }
     }
 
-    // ADD PRODUCT
+   // ADD PRODUCT
     document.getElementById('productForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('pName').value;
@@ -177,9 +177,9 @@
       const price = parseFloat(document.getElementById('pPrice').value);
       const image_url = document.getElementById('pImage').value;
 
-      const response = await fetch(`${SUPABASE_URL}/rest/v1/products`, {
+      const response = await fetch(${SUPABASE_URL}/rest/v1/products, {
         method: "POST",
-        headers: customHeaders,
+        headers: customHeaders, // Yahan customHeaders hona chahiye
         body: JSON.stringify({ name, tagline, price, image_url })
       });
 
@@ -191,7 +191,7 @@
         alert("Failed to add product. Check database connection.");
       }
     });
-
+    
     // DELETE PRODUCT
     async function deleteProduct(id) {
       if (confirm("Are you sure you want to delete this product?")) {
