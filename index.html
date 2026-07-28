@@ -16,6 +16,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Supabase JS Client SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
         :root {
             --bg-deep: #030712;
@@ -156,9 +159,11 @@
         .p-img-box img { 
             width: 100%; 
             max-width: 100%;
-            height: auto; 
+            height: 220px; 
+            object-fit: contain;
             display: block;
             border-radius: 2px;
+            margin: 0 auto;
         }
         
         .product-info-box { flex-grow: 1; display: flex; flex-direction: column; }
@@ -249,88 +254,6 @@
         .float-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border-gold); color: var(--gold-primary); display: flex; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s; }
         .float-btn:hover { background: var(--gold-primary); color: #000; }
 
-        <!-- ================= REVIEWS SECTION ================= -->
-<section class="reviews-section">
-  <h2>What Our Customers Say</h2>
-  <p class="review-subtitle">
-    Real experiences from people who chose House of Sukoon.
-  </p>
-
-  <div class="review-container">
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p>
-        "Surya Tej has become my everyday business fragrance.
-        Amazing projection and premium quality."
-      </p>
-      <h3>Rohan Sharma</h3>
-      <span>Business Owner</span>
-    </div>
-
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p>
-        "Mann Shanti is incredibly calming.
-        Perfect for office and meditation."
-      </p>
-      <h3>Priya Verma</h3>
-      <span>Interior Designer</span>
-    </div>
-
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p>
-        "Kismat Connection smells luxurious and lasts the entire day.
-        Definitely worth it."
-      </p>
-      <h3>Ankit Patel</h3>
-      <span>Entrepreneur</span>
-    </div>
-  </div>
-</section>
-
-<!-- ================= EXPERT SECTION ================= -->
-<section class="expert-section">
-  <h2>Expert Perspective</h2>
-  <div class="expert-box">
-    <div class="expert-icon">🔮</div>
-    <h3>Inspired by Tradition. Crafted with Modern Perfumery.</h3>
-    <p>
-      House of Sukoon fragrances are inspired by timeless symbolism,
-      emotions and intentional fragrance rituals.<br><br>
-      Every perfume is designed around a unique mood and premium
-      olfactive profile while remaining suitable for everyday luxury wear.<br><br>
-      Our Weekly Ritual Guide and Energy Cards are creative lifestyle
-      companions created to enhance the fragrance experience.
-    </p>
-  </div>
-</section>
-
-<!-- ================= TRUST SECTION ================= -->
-<section class="trust-section">
-  <div class="trust-box">
-    <h2>Why Customers Love Sukoon</h2>
-    <div class="trust-grid">
-      <div>
-        <h3>★ 4.9</h3>
-        <p>Customer Rating</p>
-      </div>
-      <div>
-        <h3>8-14 Hr</h3>
-        <p>Long Lasting</p>
-      </div>
-      <div>
-        <h3>Premium</h3>
-        <p>Imported Oils</p>
-      </div>
-      <div>
-        <h3>Luxury</h3>
-        <p>Gift Packaging</p>
-      </div>
-    </div>
-  </div>
-</section>
-        
         /* Footer */
         footer { background: #02040a; border-top: 1px solid var(--border-gold); padding: 60px 8% 30px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
@@ -434,111 +357,18 @@
         </div>
     </div>
 
-    <!-- Products Collection -->
+    <!-- Products Collection (Rendered Dynamically from Supabase) -->
     <section id="products">
         <div class="section-header">
             <h2>Signature Collection</h2>
             <p>5 Intention-Based Luxurious Formulations</p>
         </div>
-        <div class="product-grid">
-
-            <!-- Discovery Pack Product Card -->
-            <div class="product-card">
-                <span class="product-badge">Premium</span>
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box">
-                    <img src="discoverpack.jpg" alt="Discovery Pack" loading="lazy" onerror="this.onerror=null; this.src='discoverpack.png'; if(this.src.includes('.png')) { this.onerror=null; this.src='discoverypack.jpg'; }">
-                </div>
-                <div class="product-info-box">
-                    <h3>Discovery Pack</h3>
-                    <p class="desc">5 x 10ml Energy Editions Set</p>
-                    <div class="price-row">
-                        <span class="price">₹1,999</span>
-                    </div>
-                </div>
-                <button class="btn-quick-view" onclick="openPopup('Discovery Pack')">View Details</button>
+        
+        <!-- Dynamic Product Container -->
+        <div class="product-grid" id="productContainer">
+            <div style="text-align:center; grid-column: 1/-1; color: var(--gold-primary);">
+                <i class="fas fa-spinner fa-spin"></i> Loading Luxury Collection...
             </div>
-
-            <!-- Shukra Udgam -->
-            <div class="product-card">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box">
-                    <img src="shukra.jpg" alt="Shukra Udgam" loading="lazy" onerror="this.onerror=null; this.src='shukra.png';">
-                </div>
-                <div class="product-info-box">
-                    <h3>Shukra Udgam</h3>
-                    <p class="desc">Attraction • Elegance • Prosperity</p>
-                    <div class="price-row">
-                        <span class="price">₹1,099</span>
-                    </div>
-                </div>
-                <button class="btn-quick-view" onclick="openPopup('Shukra Udgam')">View Details</button>
-            </div>
-
-            <!-- Mann Shanti -->
-            <div class="product-card">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box">
-                    <img src="mann.jpg" alt="Mann Shanti" loading="lazy" onerror="this.onerror=null; this.src='mann.png';">
-                </div>
-                <div class="product-info-box">
-                    <h3>Mann Shanti</h3>
-                    <p class="desc">Peace • Clarity • Calmness</p>
-                    <div class="price-row">
-                        <span class="price">₹1,099</span>
-                    </div>
-                </div>
-                <button class="btn-quick-view" onclick="openPopup('Mann Shanti')">View Details</button>
-            </div>
-
-            <!-- Surya Tej -->
-            <div class="product-card">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box">
-                    <img src="surya.jpg" alt="Surya Tej" loading="lazy" onerror="this.onerror=null; this.src='surya.png';">
-                </div>
-                <div class="product-info-box">
-                    <h3>Surya Tej</h3>
-                    <p class="desc">Confidence • Success • Leadership</p>
-                    <div class="price-row">
-                        <span class="price">₹1,099</span>
-                    </div>
-                </div>
-                <button class="btn-quick-view" onclick="openPopup('Surya Tej')">View Details</button>
-            </div>
-
-            <!-- Aura Shuddhi -->
-            <div class="product-card">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box">
-                    <img src="aura.jpg" alt="Aura Shuddhi" loading="lazy" onerror="this.onerror=null; this.src='aura.png';">
-                </div>
-                <div class="product-info-box">
-                    <h3>Aura Shuddhi</h3>
-                    <p class="desc">Protection • Balance • Energy</p>
-                    <div class="price-row">
-                        <span class="price">₹1,099</span>
-                    </div>
-                </div>
-                <button class="btn-quick-view" onclick="openPopup('Aura Shuddhi')">View Details</button>
-            </div>
-
-            <!-- Kismat Connection -->
-            <div class="product-card">
-                <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
-                <div class="p-img-box">
-                    <img src="kismat.jpg" alt="Kismat Connection" loading="lazy" onerror="this.onerror=null; this.src='kismat.png';">
-                </div>
-                <div class="product-info-box">
-                    <h3>Kismat Connection</h3>
-                    <p class="desc">Growth • Opportunity • Expansion</p>
-                    <div class="price-row">
-                        <span class="price">₹1,099</span>
-                    </div>
-                </div>
-                <button class="btn-quick-view" onclick="openPopup('Kismat Connection')">View Details</button>
-            </div>
-
         </div>
     </section>
 
@@ -739,12 +569,8 @@
                 <span id="qvSubtitle" class="qv-subtitle">Subheading details</span>
                 <div class="qv-price" id="qvPrice">₹0,000</div>
                 <p id="qvDesc" class="qv-desc">Full product description and benefits go here.</p>
-                <div class="qv-notes-box">
-                    <h4 class="qv-notes-title serif">Fragrance Notes</h4>
-                    <ul class="qv-notes-list" id="qvNotesList"></ul>
-                </div>
-                <div style="margin-top: 10px;">
-                    <a href="https://wa.me/918871493221" target="_blank" class="btn-gold">Order on WhatsApp</a>
+                <div style="margin-top: 15px;">
+                    <a id="qvWhatsappBtn" href="https://wa.me/918871493221" target="_blank" class="btn-gold">Order on WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -759,17 +585,89 @@
 
     <!-- Scripts -->
     <script>
+        // -------------------------------------------------------------
+        // 1. SUPABASE INITIALIZATION
+        // -------------------------------------------------------------
+        // Replace with your real Supabase URL & Anon Key from Settings > API
+        const SUPABASE_URL = 'https://qqbeoquzaxweewlovcpl.supabase.co'; 
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY_HERE'; // <-- Put your Anon Key here
+
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let globalProducts = [];
+
+        // Fetch products from Supabase
+        async function loadSupabaseProducts() {
+            const container = document.getElementById('productContainer');
+            try {
+                const { data, error } = await supabaseClient
+                    .from('products')
+                    .select('*');
+
+                if (error) throw error;
+
+                if (data && data.length > 0) {
+                    globalProducts = data;
+                    renderProducts(data);
+                } else {
+                    container.innerHTML = `<p style="text-align:center; grid-column: 1/-1;">No products found in Database.</p>`;
+                }
+            } catch (err) {
+                console.error('Error fetching products:', err.message);
+                // Fallback UI if keys are not configured yet
+                container.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: var(--gold-light);">Connect your Supabase Anon Key in index.html to render products live!</p>`;
+            }
+        }
+
+        function renderProducts(products) {
+            const container = document.getElementById('productContainer');
+            container.innerHTML = '';
+
+            products.forEach(p => {
+                // Generate Image URL (Handles full Supabase URL or relative paths)
+                let imgSrc = p.image_url;
+                if (imgSrc && !imgSrc.startsWith('http')) {
+                    imgSrc = `${SUPABASE_URL}/storage/v1/object/public/product-images/${p.image_url}`;
+                }
+
+                const cardHtml = `
+                    <div class="product-card">
+                        ${p.is_featured ? '<span class="product-badge">Featured</span>' : ''}
+                        <i class="far fa-heart wishlist-btn" onclick="toggleWishlist(this)"></i>
+                        <div class="p-img-box">
+                            <img src="${imgSrc}" alt="${p.name}" loading="lazy" onerror="this.onerror=null; this.src='discoverpack.jpg';">
+                        </div>
+                        <div class="product-info-box">
+                            <h3>${p.name}</h3>
+                            <p class="desc">${p.tagline || ''}</p>
+                            <div class="price-row">
+                                <span class="price">₹${p.price}</span>
+                            </div>
+                        </div>
+                        <button class="btn-quick-view" onclick="openPopupById(${p.id})">View Details</button>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        // -------------------------------------------------------------
+        // 2. WEBSITE INTERACTION & UI LOGIC
+        // -------------------------------------------------------------
+
         // Preloader
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             loader.style.opacity = '0';
             setTimeout(() => loader.style.visibility = 'hidden', 800);
+            loadSupabaseProducts(); // Fetch Supabase Data on Load
         });
 
         // Mouse Glow
         const mouseGlow = document.getElementById('mouseGlow');
         document.addEventListener('mousemove', (e) => {
-            mouseGlow.style.left = e.clientX + 'px'; mouseGlow.style.top = e.clientY + 'px';
+            mouseGlow.style.left = e.clientX + 'px'; 
+            mouseGlow.style.top = e.clientY + 'px';
         });
 
         // Hero Slider
@@ -777,9 +675,11 @@
         const heroSlides = document.querySelectorAll('.hero-slide-img');
         const heroDots = document.querySelectorAll('.slider-dots .dot');
         function setSlide(index) {
-            heroSlides[currentHeroSlide].classList.remove('active'); heroDots[currentHeroSlide].classList.remove('active');
+            heroSlides[currentHeroSlide].classList.remove('active'); 
+            heroDots[currentHeroSlide].classList.remove('active');
             currentHeroSlide = index;
-            heroSlides[currentHeroSlide].classList.add('active'); heroDots[currentHeroSlide].classList.add('active');
+            heroSlides[currentHeroSlide].classList.add('active'); 
+            heroDots[currentHeroSlide].classList.add('active');
         }
         setInterval(() => { setSlide((currentHeroSlide + 1) % heroSlides.length); }, 3000);
 
@@ -790,7 +690,9 @@
         });
 
         // Mobile Menu Nav
-        document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('active'); });
+        document.getElementById('menuToggle').addEventListener('click', () => { 
+            document.getElementById('navLinks').classList.toggle('active'); 
+        });
 
         // Countdown Timer with 3D Flip Animation
         const targetDate = new Date("August 25, 2026 00:00:00").getTime();
@@ -811,7 +713,8 @@
         }
 
         setInterval(() => {
-            const now = new Date().getTime(); const diff = targetDate - now;
+            const now = new Date().getTime(); 
+            const diff = targetDate - now;
             if(diff > 0) {
                 updateFlip('d', Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0'));
                 updateFlip('h', Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0'));
@@ -820,7 +723,9 @@
             }
         }, 1000);
 
-        /* Sukoon AuraMatch Quiz Logic */
+        // -------------------------------------------------------------
+        // 3. SUKOON AURAMATCH QUIZ LOGIC
+        // -------------------------------------------------------------
         let quizAnswers = {};
 
         function nextStep(stepNum) {
@@ -887,31 +792,32 @@
             nextStep(1);
         }
 
-        // Product Details Popup Data
-        const productData = {
-            'Discovery Pack': { subtitle: '5 x 10ml Bottles Set', price: '₹1,999', img: 'discoverpack.jpg', desc: 'Experience all 5 cosmic energies in travel size.', notes: { 'Includes': 'Shukra Udgam, Mann Shanti, Surya Tej, Aura Shuddhi, Kismat Connection' } },
-            'Shukra Udgam': { subtitle: '50ml EDP | Attraction', price: '₹1,099', img: 'shukra.jpg', desc: 'A mesmerizing Venusian blend.', notes: { 'Top Notes': 'Damask Rose, Saffron', 'Base Notes': 'White Sandalwood, Musk' } },
-            'Mann Shanti': { subtitle: '50ml EDP | Peace', price: '₹1,099', img: 'mann.jpg', desc: 'Calms the mind and enhances emotional composure.', notes: { 'Top Notes': 'Neroli, Water Accord', 'Base Notes': 'White Musk, Cedarwood' } },
-            'Surya Tej': { subtitle: '50ml EDP | Confidence', price: '₹1,099', img: 'surya.jpg', desc: 'Boosts leadership, courage, and willpower.', notes: { 'Top Notes': 'Grapefruit, Black Pepper', 'Base Notes': 'Cedarwood, Leather' } },
-            'Aura Shuddhi': { subtitle: '50ml EDP | Protection', price: '₹1,099', img: 'aura.jpg', desc: 'Cleanses environmental negativity.', notes: { 'Top Notes': 'Clary Sage, Lavender', 'Base Notes': 'Cambodian Oud, Patchouli' } },
-            'Kismat Connection': { subtitle: '50ml EDP | Opportunity', price: '₹1,099', img: 'kismat.jpg', desc: 'Opens doors to fortune and expansion.', notes: { 'Top Notes': 'Saffron, Orange', 'Base Notes': 'Oud Wood, Tonka Bean' } }
-        };
-
+        // -------------------------------------------------------------
+        // 4. QUICK VIEW POPUP LOGIC
+        // -------------------------------------------------------------
         const popup = document.getElementById('quickViewPopup');
-        function openPopup(productName) {
-            const data = productData[productName];
-            if(!data) return;
-            document.getElementById('qvTitle').innerText = productName;
-            document.getElementById('qvSubtitle').innerText = data.subtitle;
-            document.getElementById('qvPrice').innerText = data.price;
-            document.getElementById('qvMainImg').src = data.img;
-            document.getElementById('qvDesc').innerText = data.desc;
-            const notesList = document.getElementById('qvNotesList'); notesList.innerHTML = ''; 
-            for (const [key, value] of Object.entries(data.notes)) {
-                const li = document.createElement('li'); li.innerHTML = `<strong>${key}:</strong> ${value}`; notesList.appendChild(li);
+
+        function openPopupById(productId) {
+            const product = globalProducts.find(p => p.id === productId);
+            if (!product) return;
+
+            let imgSrc = product.image_url;
+            if (imgSrc && !imgSrc.startsWith('http')) {
+                imgSrc = `${SUPABASE_URL}/storage/v1/object/public/product-images/${product.image_url}`;
             }
+
+            document.getElementById('qvTitle').innerText = product.name;
+            document.getElementById('qvSubtitle').innerText = product.tagline || '50ml EDP';
+            document.getElementById('qvPrice').innerText = `₹${product.price}`;
+            document.getElementById('qvMainImg').src = imgSrc;
+            document.getElementById('qvDesc').innerText = product.description || 'Exclusive luxury perfume handcrafted with natural botanical oils.';
+
+            const waMsg = `Hi House of Sukoon, I am interested in purchasing *${product.name}* (Price: ₹${product.price}). Please share ordering details.`;
+            document.getElementById('qvWhatsappBtn').href = `https://wa.me/918871493221?text=${encodeURIComponent(waMsg)}`;
+
             popup.classList.add('active');
         }
+
         function closePopup() { popup.classList.remove('active'); }
         window.onclick = function(e) { if (e.target == popup) closePopup(); }
         function toggleWishlist(btn) { btn.classList.toggle('fas'); btn.classList.toggle('far'); btn.classList.toggle('active'); }
