@@ -1,0 +1,326 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap");
+:root {
+  --ink: #181613;
+  --cream: #f4efe5;
+  --paper: #fbfaf7;
+  --gold: #a8844b;
+  --line: #ddd4c5;
+  --muted: #777064;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font:
+    14px "DM Sans",
+    sans-serif;
+}
+.login {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.login-art {
+  background: #171511 url("../assets/kismat.jpg") center/cover;
+  position: relative;
+}
+.login-art:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+.login-art-copy {
+  position: absolute;
+  z-index: 2;
+  left: 8%;
+  bottom: 9%;
+  color: #fff;
+}
+.login-art-copy h1 {
+  font: 600 80px "Cormorant Garamond";
+  line-height: 0.85;
+  margin: 15px 0;
+}
+.login-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.form-box {
+  width: min(430px, 100%);
+}
+.logo {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.kicker {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+h2,
+h3 {
+  font-family: "Cormorant Garamond";
+  font-weight: 400;
+}
+.form-box h2 {
+  font-size: 52px;
+  margin: 10px 0;
+}
+.form-box p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+.field {
+  margin: 18px 0;
+}
+.field label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 7px;
+}
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font: inherit;
+}
+.btn {
+  border: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 14px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 10px;
+  cursor: pointer;
+}
+.btn.gold {
+  background: var(--gold);
+}
+.error {
+  color: #a13b32 !important;
+  font-size: 12px;
+}
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+.sidebar {
+  background: #171511;
+  color: #eee7da;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.admin-brand {
+  font: 600 28px "Cormorant Garamond";
+  margin: 10px 0 35px;
+}
+.sidebar a,
+.sidebar button {
+  color: #c5bdaf;
+  text-decoration: none;
+  background: none;
+  border: 0;
+  text-align: left;
+  padding: 13px 10px;
+  cursor: pointer;
+  font: inherit;
+}
+.sidebar a:hover,
+.sidebar button:hover {
+  color: #fff;
+  background: #29251f;
+}
+.main {
+  padding: 35px 4%;
+  overflow: auto;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.top h1 {
+  font: 400 48px "Cormorant Garamond";
+  margin: 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+.stat {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 20px;
+}
+.stat small {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 9px;
+}
+.stat strong {
+  display: block;
+  font: 400 38px "Cormorant Garamond";
+  margin-top: 10px;
+}
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 25px;
+  margin-bottom: 25px;
+}
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.panel h2 {
+  font-size: 32px;
+  margin: 0;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  text-align: left;
+  padding: 14px 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.thumb {
+  width: 50px;
+  height: 60px;
+  object-fit: cover;
+}
+.actions {
+  display: flex;
+  gap: 7px;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 5;
+}
+.modal.open {
+  display: flex;
+}
+.modal-box {
+  background: var(--paper);
+  width: min(850px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  padding: 30px;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.full {
+  grid-column: 1/-1;
+}
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+@media (max-width: 900px) {
+  .login {
+    grid-template-columns: 1fr;
+  }
+  .login-art {
+    display: none;
+  }
+  .shell {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    flex-direction: row;
+    overflow: auto;
+    align-items: center;
+  }
+  .admin-brand {
+    margin: 0 20px 0 0;
+  }
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+  .full {
+    grid-column: auto;
+  }
+}
+
+.image-upload {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid #ddd;
+  background: #faf8f3;
+}
+.image-preview-wrap {
+  width: 120px;
+  height: 120px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex: 0 0 120px;
+}
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.image-upload-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.image-upload-controls input[type="file"] {
+  max-width: 100%;
+}
+.image-upload-controls small {
+  color: #777;
+}
+
+.status-pill{display:inline-block;padding:5px 8px;border:1px solid var(--line);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.status-pill.paid{border-color:#6c9b72;color:#3c6b43}.status-pill.failed,.status-pill.payment_failed{border-color:#b66b61;color:#8b3f36}.status-pill.pending{color:#8b6c35}.table select{padding:7px;border:1px solid var(--line);background:#fff;font:inherit}
+.order-tools{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}.order-tools input,.order-tools select{padding:11px 13px;border:1px solid var(--line);background:#fff;font:inherit}.order-tools input{flex:1;min-width:260px}.notice{border:1px solid var(--line);background:#faf8f3;padding:18px;line-height:1.7}.summary-line{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)}

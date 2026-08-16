@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>House of Sukoon Official | Wear Your Intention</title>
+    <link rel="icon" href="assets/logo.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      Complimentary shipping on orders above ₹1,999 · Hand-blended in India
+    </div>
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><img src="assets/logo.jpg" alt="House of Sukoon" /><span
+          >HOUSE OF<br /><b>SUKOON</b></span
+        ></a
+      >
+      <nav class="navlinks">
+        <a href="collection.html">Collection</a
+        ><a href="philosophy.html">Philosophy</a
+        ><a href="ritual.html">The Ritual</a><a href="about.html">Our House</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="icon-btn" href="contact.html">Contact</a
+        ><button class="icon-btn" onclick="openCart()">
+          Bag <span class="bag-count">0</span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">HOUSE OF SUKOON OFFICIAL</p>
+          <h1>Wear your<br /><i>intention.</i></h1>
+          <p class="lead">
+            Ancient energies, crafted through modern fine perfumery. Five
+            signature fragrances. One quiet ritual of presence.
+          </p>
+          <a class="gold-btn" href="collection.html"
+            >Explore the collection ↗</a
+          >
+        </div>
+        <div class="hero-image">
+          <img src="" alt="Shukra Udgam" />
+          <div class="hero-label">
+            SHUKRA UDGAM<br /><small>THE RISE OF ATTRACTION</small>
+          </div>
+        </div>
+      </section>
+      <section class="statement">
+        <p class="kicker">THE SUKOON SIGNATURE</p>
+        <h2>Sandalwood. Amber.<br /><i>White musk.</i></h2>
+        <p>
+          Every House of Sukoon fragrance is built around a warm signature base
+          — designed to sit close to the skin and let the intention unfold
+          slowly.
+        </p>
+      </section>
+      <section class="section container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">THE COLLECTION</p>
+            <h2>Five energies.<br /><i>Find yours.</i></h2>
+          </div>
+          <a href="collection.html" class="text-link">View all fragrances →</a>
+        </div>
+        <div id="products" class="product-grid"></div>
+      </section>
+      <section class="feature">
+        <div class="feature-image">
+          <img src="" alt="Mann Shanti" />
+        </div>
+        <div class="feature-copy">
+          <p class="kicker">A DIFFERENT KIND OF PERFUME</p>
+          <h2>Fragrance as a<br /><i>daily intention.</i></h2>
+          <p>
+            House of Sukoon treats perfume as more than a scent. Each
+            composition is a small ritual — a way to arrive in a room, begin a
+            morning, or close a day with the energy you choose.
+          </p>
+          <a class="text-link" href="philosophy.html"
+            >Discover the philosophy →</a
+          >
+        </div>
+      </section>
+      <section class="ritual">
+        <div class="ritual-intro">
+          <p class="kicker">THE RITUAL</p>
+          <h2>Apply. Breathe.<br /><i>Arrive.</i></h2>
+          <p class="lead" style="margin: auto">
+            Choose an intention, apply with awareness, and let the fragrance
+            become a quiet anchor for the moment.
+          </p>
+        </div>
+        <div class="ritual-steps">
+          <div class="ritual-step">
+            <b>01</b>
+            <h3>Choose</h3>
+            <p>Select the energy that meets the moment.</p>
+          </div>
+          <div class="ritual-step">
+            <b>02</b>
+            <h3>Apply</h3>
+            <p>Pulse points — wrists, neck, behind the ears.</p>
+          </div>
+          <div class="ritual-step">
+            <b>03</b>
+            <h3>Set</h3>
+            <p>Take one breath. Let the intention settle.</p>
+          </div>
+        </div>
+        <a class="gold-btn" href="ritual.html">Enter the ritual ↗</a>
+      </section>
+      <section class="newsletter">
+        <p class="kicker">THE INNER CIRCLE</p>
+        <h2>New energies.<br /><i>Quietly delivered.</i></h2>
+        <p>
+          Early access to new releases, ritual guides and private collection
+          moments.
+        </p>
+        <form
+          onsubmit="
+            event.preventDefault();
+            this.reset();
+            alert('Thank you for joining the Inner Circle.');
+          "
+        >
+          <input
+            type="email"
+            placeholder="Your email address"
+            required
+          /><button>Subscribe</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <div>
+        <div class="footer-brand">HOUSE OF SUKOON</div>
+        <p>Fine perfumery for the energy you choose to carry.</p>
+        <div class="footer-social">
+          <a
+            href="https://instagram.com/houseofsukoon.official"
+            target="_blank"
+            rel="noopener"
+            >Instagram ↗</a
+          ><a href="https://wa.me/918871493221" target="_blank" rel="noopener"
+            >WhatsApp ↗</a
+          >
+        </div>
+      </div>
+      <div class="footer-col">
+        <strong>Explore</strong><a href="collection.html">Collection</a
+        ><a href="philosophy.html">Philosophy</a
+        ><a href="ritual.html">The Ritual</a>
+      </div>
+      <div class="footer-col">
+        <strong>House</strong><a href="about.html">Our House</a
+        ><a href="contact.html">Contact</a
+        ><a href="shipping.html">Shipping & Returns</a>
+      </div>
+      <div class="footer-col">
+        <strong>Account</strong><a href="admin/login.html">Admin Login</a
+        ><a href="checkout.html">Checkout</a>
+      </div>
+      <div class="footer-bottom">
+        <span
+          >© 2026 House of Sukoon Official · Hand-blended fine perfumery ·
+          India</span
+        ><span
+          >Follow
+          <a
+            href="https://instagram.com/houseofsukoon.official"
+            target="_blank"
+            rel="noopener"
+            >@houseofsukoon.official</a
+          ></span
+        >
+      </div>
+    </footer>
+    <div id="drawer" class="drawer">
+      <div class="drawer-panel">
+        <button class="close" onclick="closeCart()">×</button>
+        <p class="kicker">YOUR BAG</p>
+        <h2>Your selections</h2>
+        <div id="cartItems"></div>
+        <div
+          class="cart-total"
+          style="
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+            margin-top: 18px;
+          "
+        >
+          <span>Total</span><strong id="cartTotal">₹0</strong>
+        </div>
+        <div class="drawer-actions">
+          <a id="cartCheckout" class="gold-btn disabled" href="#"
+            >Proceed to checkout</a
+          >
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

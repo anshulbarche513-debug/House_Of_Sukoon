@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dashboard — House of Sukoon</title>
+    <link rel="stylesheet" href="admin.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../supabase-config.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="admin-brand">
+          SUKOON<br /><span style="font-size: 13px; letter-spacing: 0.2em"
+            >ADMIN</span
+          >
+        </div>
+        <a href="#dashboard">Overview</a><a href="#products">Products</a
+        ><a href="#orders">Orders</a><a href="#customers">Customers</a
+        ><a href="#content">Store content</a
+        ><a href="../index.html" target="_blank">View storefront ↗</a
+        ><button onclick="logout()">Sign out</button>
+      </aside>
+      <main class="main">
+        <div class="top">
+          <div>
+            <div class="kicker">HOUSE OF SUKOON / ADMIN</div>
+            <h1>Store control.</h1>
+          </div>
+          <button class="btn gold" onclick="newProduct()">+ Add product</button>
+        </div>
+        <section id="dashboard" class="cards">
+          <div class="stat">
+            <small>Products</small><strong id="count">0</strong>
+          </div>
+          <div class="stat">
+            <small>Featured</small><strong id="featured">0</strong>
+          </div>
+          <div class="stat">
+            <small>Inventory</small><strong id="stock">0</strong>
+          </div>
+          <div class="stat">
+            <small>Sale value</small><strong id="value">₹0</strong>
+          </div>
+        </section>
+        <section id="products" class="panel">
+          <div class="panel-head">
+            <h2>Products</h2>
+            <span style="font-size: 11px; color: #777"
+              >Edit prices, stock, content & images</span
+            >
+          </div>
+          <div id="table"></div>
+        </section>
+        <section id="orders" class="panel">
+          <div class="panel-head"><h2>Orders</h2><button class="btn" onclick="loadOrders()">Refresh</button></div>
+          <div class="order-tools"><input id="orderSearch" placeholder="Search order, customer, payment ID…" /><select id="orderFilter"><option value="all">All statuses</option><option value="paid">Paid</option><option value="pending">Pending</option><option value="failed">Failed payment</option><option value="confirmed">Confirmed</option><option value="processing">Processing</option><option value="shipped">Shipped</option><option value="delivered">Delivered</option><option value="cancelled">Cancelled</option></select></div>
+          <div id="ordersTable"><p style="color:#777">Loading orders…</p></div>
+        </section>
+        <section id="customers" class="panel">
+          <div class="panel-head"><h2>Customers</h2><button class="btn" onclick="loadCustomers()">Refresh</button></div>
+          <div id="customersTable"><p style="color:#777">Loading customers…</p></div>
+        </section>
+        <section id="content" class="panel">
+          <div class="panel-head"><h2>Store content</h2></div>
+          <div class="field">
+            <label>Homepage statement</label
+            ><textarea id="brandText" rows="5">
+Every House of Sukoon fragrance is built around a warm signature base — designed to sit close to the skin and let the intention unfold slowly.</textarea
+            >
+          </div>
+          <p style="color:#777">Homepage content editing is not connected yet. Keep this section read-only until a Supabase content table is added.</p>
+        </section>
+      </main>
+    </div>
+    <div id="editor" class="modal">
+      <div class="modal-box">
+        <div class="panel-head">
+          <h2 id="editorTitle">Edit product</h2>
+          <button class="btn" onclick="closeEditor()">Close</button>
+        </div>
+        <form id="productForm" class="grid2">
+          <input type="hidden" id="id" />
+          <div class="field">
+            <label>Name</label><input id="name" required />
+          </div>
+          <div class="field">
+            <label>Subtitle / Tagline</label><input id="subtitle" />
+          </div>
+          <div class="field full">
+            <label>Description</label
+            ><textarea id="description" rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label>MRP (₹)</label><input id="mrp" type="number" />
+          </div>
+          <div class="field">
+            <label>Selling price (₹)</label><input id="price" type="number" />
+          </div>
+          <div class="field">
+            <label>Stock</label><input id="stock" type="number" />
+          </div>
+          <div class="field">
+            <label>Category</label><input id="category" />
+          </div>
+          <div class="field"><label>Family</label><input id="family" /></div>
+          <div class="field">
+            <label>Top notes</label><input id="top_notes" />
+          </div>
+          <div class="field">
+            <label>Heart notes</label><input id="heart_notes" />
+          </div>
+          <div class="field">
+            <label>Base notes</label><input id="base_notes" />
+          </div>
+          <div class="field">
+            <label>Longevity</label><input id="longevity" />
+          </div>
+          <div class="field">
+            <label>Occasion</label><input id="occasion" />
+          </div>
+          <div class="field">
+            <label><input id="featuredInput" type="checkbox" /> Featured product</label>
+          </div>
+          <div class="field">
+            <label><input id="isActiveInput" type="checkbox" checked /> Visible on storefront</label>
+          </div>
+          <div class="field full">
+            <label>Product image</label>
+            <div class="image-upload">
+              <div class="image-preview-wrap">
+                <img
+                  id="imagePreview"
+                  class="image-preview"
+                  src=""
+                  alt="Product preview"
+                />
+              </div>
+              <div class="image-upload-controls">
+                <input
+                  id="imageFile"
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/avif"
+                />
+                <small id="imageUploadStatus"
+                  >Choose a new image, then save the product.</small
+                >
+                <input id="image_url" type="hidden" />
+              </div>
+            </div>
+          </div>
+          <div class="form-actions full">
+            <button class="btn" type="button" onclick="closeEditor()">
+              Cancel</button
+            ><button class="btn gold" type="submit">Save product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="admin.js"></script>
+  </body>
+</html>

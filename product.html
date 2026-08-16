@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fragrance — House of Sukoon</title>
+    <link rel="icon" href="assets/logo.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      Complimentary shipping on orders above ₹1,999 · Hand-blended in India
+    </div>
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><img src="assets/logo.jpg" alt="House of Sukoon" /><span
+          >HOUSE OF<br /><b>SUKOON</b></span
+        ></a
+      >
+      <nav class="navlinks">
+        <a href="collection.html">Collection</a
+        ><a href="philosophy.html">Philosophy</a
+        ><a href="ritual.html">The Ritual</a><a href="about.html">Our House</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="icon-btn" href="contact.html">Contact</a
+        ><button class="icon-btn" onclick="openCart()">
+          Bag <span class="bag-count">0</span>
+        </button>
+      </div>
+    </header>
+    <main id="productDetailPage" class="product-page"></main>
+    <footer>
+      <div>
+        <div class="footer-brand">HOUSE OF SUKOON</div>
+        <p>Fine perfumery for the energy you choose to carry.</p>
+        <div class="footer-social">
+          <a
+            href="https://instagram.com/houseofsukoon.official"
+            target="_blank"
+            rel="noopener"
+            >Instagram ↗</a
+          ><a href="https://wa.me/918871493221" target="_blank" rel="noopener"
+            >WhatsApp ↗</a
+          >
+        </div>
+      </div>
+      <div class="footer-col">
+        <strong>Explore</strong><a href="collection.html">Collection</a
+        ><a href="philosophy.html">Philosophy</a
+        ><a href="ritual.html">The Ritual</a>
+      </div>
+      <div class="footer-col">
+        <strong>House</strong><a href="about.html">Our House</a
+        ><a href="contact.html">Contact</a
+        ><a href="shipping.html">Shipping & Returns</a>
+      </div>
+      <div class="footer-col">
+        <strong>Account</strong><a href="admin/login.html">Admin Login</a
+        ><a href="checkout.html">Checkout</a>
+      </div>
+      <div class="footer-bottom">
+        <span
+          >© 2026 House of Sukoon Official · Hand-blended fine perfumery ·
+          India</span
+        ><span
+          >Follow
+          <a href="https://instagram.com/houseofsukoon.official" target="_blank"
+            >@houseofsukoon.official</a
+          ></span
+        >
+      </div>
+    </footer>
+    <div id="drawer" class="drawer">
+      <div class="drawer-panel">
+        <button class="close" onclick="closeCart()">×</button>
+        <p class="kicker">YOUR BAG</p>
+        <h2>Your selections</h2>
+        <div id="cartItems"></div>
+        <div
+          class="cart-total"
+          style="
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+            margin-top: 18px;
+          "
+        >
+          <span>Total</span><strong id="cartTotal">₹0</strong>
+        </div>
+        <div class="drawer-actions">
+          <a id="cartCheckout" class="gold-btn disabled" href="#"
+            >Proceed to checkout</a
+          >
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

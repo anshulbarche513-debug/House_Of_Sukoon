@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Checkout — House of Sukoon</title>
+    <link rel="icon" href="assets/logo.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      Complimentary shipping on orders above ₹1,999 · Hand-blended in India
+    </div>
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><img src="assets/logo.jpg" alt="House of Sukoon" /><span
+          >HOUSE OF<br /><b>SUKOON</b></span
+        ></a
+      >
+      <nav class="navlinks">
+        <a href="collection.html">Collection</a
+        ><a href="philosophy.html">Philosophy</a
+        ><a href="ritual.html">The Ritual</a><a href="about.html">Our House</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="icon-btn" href="contact.html">Contact</a
+        ><button class="icon-btn" onclick="openCart()">
+          Bag <span class="bag-count">0</span>
+        </button>
+      </div>
+    </header>
+    <section class="page-hero">
+      <div class="container">
+        <p class="breadcrumb">Home / Checkout</p>
+        <h1>Complete your<br /><i>order.</i></h1>
+        <p class="lead">
+          Choose how you'd like to continue. You can sign in for a faster
+          checkout or continue securely as a guest.
+        </p>
+      </div>
+    </section>
+    <main class="section container">
+      <div id="checkoutEmpty" class="empty-page hide">
+        <p class="kicker">YOUR BAG IS EMPTY</p>
+        <h2>Nothing to check out<br /><i>just yet.</i></h2>
+        <p class="lead" style="margin: auto">
+          Choose a fragrance from the collection and return here when you're
+          ready.
+        </p>
+        <a class="gold-btn" href="collection.html">Explore the collection ↗</a>
+      </div>
+      <div id="checkoutMain" class="checkout-layout">
+        <div class="checkout-card">
+          <p class="kicker">1 · YOUR DETAILS</p>
+          <div class="choice-grid">
+            <div
+              class="choice active"
+              data-mode="guest"
+              onclick="setMode('guest')"
+            >
+              <strong>Continue as guest</strong><span>No account required</span>
+            </div>
+            <div class="choice" data-mode="login" onclick="setMode('login')">
+              <strong>Sign in</strong
+              ><span>Use your House of Sukoon account</span>
+            </div>
+          </div>
+          <div id="guestForm">
+            <form
+              class="form"
+              id="orderForm"
+            >
+              <div class="notice">
+                We only use your details to process this order and provide
+                delivery updates.
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label>First Name</label
+                  ><input name="first" required autocomplete="given-name" />
+                </div>
+                <div class="field">
+                  <label>Last Name</label
+                  ><input name="last" required autocomplete="family-name" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label>Mobile Number</label
+                  ><input
+                    name="phone"
+                    type="tel"
+                    required
+                    placeholder="+91 98765 43210"
+                    autocomplete="tel"
+                  />
+                </div>
+                <div class="field">
+                  <label>Email Address</label
+                  ><input
+                    name="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+              </div>
+              <p class="kicker" style="margin-top: 20px">
+                2 · DELIVERY ADDRESS
+              </p>
+              <div class="field">
+                <label>Address Line 1</label
+                ><input name="address1" required autocomplete="address-line1" />
+              </div>
+              <div class="field">
+                <label>Address Line 2</label
+                ><input
+                  name="address2"
+                  autocomplete="address-line2"
+                  placeholder="Apartment, suite, landmark (optional)"
+                />
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label>City</label
+                  ><input name="city" required autocomplete="address-level2" />
+                </div>
+                <div class="field">
+                  <label>State</label
+                  ><input name="state" required autocomplete="address-level1" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label>PIN / ZIP Code</label
+                  ><input
+                    name="pin"
+                    required
+                    inputmode="numeric"
+                    autocomplete="postal-code"
+                  />
+                </div>
+                <div class="field">
+                  <label>Country</label
+                  ><select name="country">
+                    <option>India</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <p class="kicker" style="margin-top: 20px">3 · BILLING ADDRESS</p>
+              <label class="check-row"
+                ><input
+                  type="checkbox"
+                  id="sameBilling"
+                  checked
+                  onchange="toggleBilling()"
+                />
+                Billing address is the same as delivery address</label
+              >
+              <div id="billingFields" class="hide" style="margin-top: 15px">
+                <div class="field">
+                  <label>Billing Address</label><input name="billing1" />
+                </div>
+                <div class="field">
+                  <label>Billing Address Line 2</label><input name="billing2" />
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>City</label><input name="billingCity" />
+                  </div>
+                  <div class="field">
+                    <label>State</label><input name="billingState" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label>PIN / ZIP Code</label><input name="billingPin" />
+                </div>
+              </div>
+              <p class="kicker" style="margin-top: 24px">4 · PAYMENT</p>
+              <div class="choice active">
+                <strong>Online payment</strong
+                ><span
+                  >Razorpay / payment gateway can be connected here for
+                  production checkout.</span
+                >
+              </div>
+              <label class="check-row"
+                ><input type="checkbox" required /> I confirm my details are
+                correct and agree to the store's shipping and return
+                terms.</label>
+              <div id="paymentStatus" class="notice hide" style="margin-top:14px;" role="status" aria-live="polite"></div>
+              <button id="placeOrderButton" class="gold-btn" type="submit">Pay securely ↗</button>
+            </form>
+          </div>
+          <div id="loginForm" class="hide">
+            <div class="notice">
+              Customer login is prepared for the production authentication
+              layer. Enter your email to continue.
+            </div>
+            <form
+              class="form"
+              onsubmit="
+                event.preventDefault();
+                alert(
+                  'Customer authentication will be connected in the production backend.',
+                );
+              "
+            >
+              <div class="field">
+                <label>Email Address</label><input type="email" required />
+              </div>
+              <div class="field">
+                <label>Password</label><input type="password" required />
+              </div>
+              <button class="gold-btn" type="submit">Sign in ↗</button
+              ><a
+                class="text-link"
+                href="#"
+                onclick="
+                  setMode('guest');
+                  return false;
+                "
+                >Continue as guest instead</a
+              >
+            </form>
+          </div>
+        </div>
+        <aside class="checkout-card checkout-summary">
+          <p class="kicker">ORDER SUMMARY</p>
+          <h2>Your bag</h2>
+          <div id="checkoutSummary"></div>
+          <div class="summary-total">
+            <strong>Total</strong><strong id="checkoutTotal">₹0</strong>
+          </div>
+          <p style="font-size: 10px; color: var(--muted); line-height: 1.6">
+            Complimentary shipping on orders above ₹1,999.
+          </p>
+        </aside>
+      </div>
+    </main>
+    <footer>
+      <div>
+        <div class="footer-brand">HOUSE OF SUKOON</div>
+        <p>Fine perfumery for the energy you choose to carry.</p>
+        <div class="footer-social">
+          <a
+            href="https://instagram.com/houseofsukoon.official"
+            target="_blank"
+            rel="noopener"
+            >Instagram ↗</a
+          ><a href="https://wa.me/918871493221" target="_blank" rel="noopener"
+            >WhatsApp ↗</a
+          >
+        </div>
+      </div>
+      <div class="footer-col">
+        <strong>Explore</strong><a href="collection.html">Collection</a
+        ><a href="philosophy.html">Philosophy</a
+        ><a href="ritual.html">The Ritual</a>
+      </div>
+      <div class="footer-col">
+        <strong>House</strong><a href="about.html">Our House</a
+        ><a href="contact.html">Contact</a
+        ><a href="shipping.html">Shipping & Returns</a>
+      </div>
+      <div class="footer-col">
+        <strong>Account</strong><a href="admin/login.html">Admin Login</a
+        ><a href="checkout.html">Checkout</a>
+      </div>
+      <div class="footer-bottom">
+        <span
+          >© 2026 House of Sukoon Official · Hand-blended fine perfumery ·
+          India</span
+        ><span
+          >Follow
+          <a
+            href="https://instagram.com/houseofsukoon.official"
+            target="_blank"
+            rel="noopener"
+            >@houseofsukoon.official</a
+          ></span
+        >
+      </div>
+    </footer>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app.js"></script>
+    <script>
+      const checkoutMoney = (n) => "₹" + Number(n || 0).toLocaleString("en-IN");
+      const checkoutCart = JSON.parse(localStorage.getItem("hos-cart") || "[]");
+      let checkoutProducts = [];
+      let checkoutItems = [];
+      let activeLocalOrderId = null;
+      let activeRazorpayOrderId = null;
+      let activeRazorpay = null;
+      let paymentFinalizing = false;
+
+      function escapeCheckoutHtml(value) {
+        return String(value ?? "").replace(/[&<>'"]/g, (c) =>
+          ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[c],
+        );
+      }
+
+      async function loadCheckoutProducts(force = false) {
+        if (force) window.refreshProductsFromSupabase?.();
+        checkoutProducts = await window.loadProductsFromSupabase();
+        checkoutItems = checkoutCart
+          .map((i) => ({ i, p: checkoutProducts.find((x) => x.id === i.id) }))
+          .filter((x) => x.p && Number(x.i.qty) > 0);
+
+        const validIds = new Set(checkoutItems.map(({ i }) => i.id));
+        const cleanedCart = checkoutCart.filter((i) => validIds.has(i.id));
+        localStorage.setItem("hos-cart", JSON.stringify(cleanedCart));
+        renderCheckout();
+      }
+
+      function renderCheckout() {
+        if (!checkoutItems.length) {
+          document.getElementById("checkoutMain").classList.add("hide");
+          document.getElementById("checkoutEmpty").classList.remove("hide");
+          return;
+        }
+
+        let total = 0;
+        document.getElementById("checkoutSummary").innerHTML = checkoutItems.map(({ i, p }) => {
+          const qty = Number(i.qty) || 0;
+          const sub = Number(p.sale_price || 0) * qty;
+          total += sub;
+          return `<div class="summary-line"><span>${escapeCheckoutHtml(p.name)} × ${qty}</span><strong>${checkoutMoney(sub)}</strong></div>`;
+        }).join("");
+        document.getElementById("checkoutTotal").textContent = checkoutMoney(total);
+      }
+
+      function setMode(mode) {
+        document.querySelectorAll(".choice[data-mode]").forEach((x) => x.classList.toggle("active", x.dataset.mode === mode));
+        document.getElementById("guestForm").classList.toggle("hide", mode !== "guest");
+        document.getElementById("loginForm").classList.toggle("hide", mode !== "login");
+      }
+
+      function toggleBilling() {
+        document.getElementById("billingFields").classList.toggle("hide", document.getElementById("sameBilling").checked);
+      }
+
+      function showPaymentStatus(message, type = "info") {
+        const el = document.getElementById("paymentStatus");
+        if (!el) return;
+        el.classList.remove("hide");
+        el.textContent = message;
+        el.style.borderColor = type === "error" ? "#b44" : "var(--line)";
+      }
+
+      function setPayButtonBusy(busy, label = null) {
+        const button = document.getElementById("placeOrderButton");
+        if (!button) return;
+        button.disabled = busy;
+        button.style.opacity = busy ? "0.6" : "1";
+        button.textContent = label || (busy ? "Preparing secure payment…" : "Pay securely ↗");
+      }
+
+      function setRetryButton() {
+        const button = document.getElementById("placeOrderButton");
+        if (!button) return;
+        button.disabled = false;
+        button.style.opacity = "1";
+        button.textContent = "Retry payment ↗";
+        button.onclick = (event) => {
+          event.preventDefault();
+          if (activeRazorpay) {
+            showPaymentStatus("Opening secure payment…");
+            activeRazorpay.open();
+          } else {
+            button.onclick = null;
+            placeOrder();
+          }
+        };
+      }
+
+      function restorePayButton() {
+        const button = document.getElementById("placeOrderButton");
+        if (!button) return;
+        button.onclick = null;
+        button.textContent = "Pay securely ↗";
+      }
+
+      async function invokeFunction(name, body) {
+        if (!window.sukoonSupabase) throw new Error("Supabase is not configured.");
+        const { data, error } = await window.sukoonSupabase.functions.invoke(name, { body });
+        if (error) {
+          let details = error.message || "Request failed.";
+          if (error.context) {
+            try {
+              const payload = await error.context.json();
+              details = payload?.error || payload?.message || details;
+            } catch (_) {}
+          }
+          throw new Error(details);
+        }
+        if (data?.error) throw new Error(data.error);
+        return data;
+      }
+
+      async function waitForPaidOrder(orderNumber, email, attempts = 14, intervalMs = 2000) {
+        for (let attempt = 0; attempt < attempts; attempt++) {
+          await new Promise((resolve) => setTimeout(resolve, intervalMs));
+          showPaymentStatus(`Payment received. Confirming your order… (${attempt + 1}/${attempts})`);
+          try {
+            const result = await invokeFunction("track-order", { order_number: orderNumber, email });
+            if (result?.order?.payment_status === "paid") return true;
+            if (result?.order?.payment_status === "failed") return false;
+          } catch (_) {
+            // Order not found yet, or a transient network error — keep polling.
+          }
+        }
+        return false;
+      }
+
+      async function handlePaymentSuccess(response) {
+        if (paymentFinalizing) return;
+        paymentFinalizing = true;
+        setPayButtonBusy(true, "Confirming payment…");
+        showPaymentStatus("Payment received. Confirming your order…");
+        const orderNumber = window.__houseOfSukoonOrderNumber || "";
+        try {
+          if (!activeLocalOrderId) throw new Error("Missing local order reference. Please refresh and contact us with your payment ID.");
+          const result = await invokeFunction("verify-razorpay-payment", {
+            order_id: activeLocalOrderId,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          });
+          if (!result?.success) throw new Error("Payment verification failed.");
+          localStorage.removeItem("hos-cart");
+          window.location.href = `order-confirmation.html?order=${encodeURIComponent(result.order_number)}`;
+        } catch (error) {
+          // Surface the real error immediately (visible in the UI, not just the console)
+          // so it's obvious whether this is a real verification failure or just a slow response.
+          console.error("Payment verification error:", error);
+          showPaymentStatus(`We couldn't confirm the payment right away (${error?.message || "unknown error"}). Checking your order status…`);
+
+          const form = document.getElementById("orderForm");
+          const email = String(new FormData(form).get("email") || "").trim();
+          const paid = await waitForPaidOrder(orderNumber, email);
+          if (paid) {
+            localStorage.removeItem("hos-cart");
+            window.location.href = `order-confirmation.html?order=${encodeURIComponent(orderNumber)}`;
+            return;
+          }
+          setPayButtonBusy(false);
+          showPaymentStatus(
+            `Payment was received, but confirmation is taking longer than usual. Do not pay again. Your order ID is ${orderNumber || "shown above"} — use it on our Track Order page, or contact us if it does not update within a few minutes.`,
+            "error",
+          );
+        } finally {
+          paymentFinalizing = false;
+        }
+      }
+
+      async function placeOrder(event) {
+        if (event) event.preventDefault();
+        const form = document.getElementById("orderForm");
+        restorePayButton();
+        if (!form.reportValidity()) return;
+        const data = Object.fromEntries(new FormData(form).entries());
+        const sameBilling = document.getElementById("sameBilling").checked;
+        const customerName = `${data.first || ""} ${data.last || ""}`.trim();
+        const items = checkoutItems.map(({ i }) => ({ product_id: i.id, quantity: Number(i.qty) }));
+        if (!items.length) return;
+
+        setPayButtonBusy(true);
+        showPaymentStatus("Creating your secure order…");
+        try {
+          const created = await invokeFunction("create-razorpay-order", {
+            items,
+            billing_same_as_shipping: sameBilling,
+            customer: {
+              name: customerName,
+              email: data.email,
+              phone: data.phone,
+              address_line1: data.address1,
+              address_line2: data.address2 || "",
+              city: data.city,
+              state: data.state,
+              pincode: data.pin,
+              country: data.country || "India",
+              billing_address_line1: data.billing1 || "",
+              billing_address_line2: data.billing2 || "",
+              billing_city: data.billingCity || "",
+              billing_state: data.billingState || "",
+              billing_postal_code: data.billingPin || "",
+              billing_country: data.country || "India",
+            },
+          });
+
+          activeLocalOrderId = created.order_id;
+          activeRazorpayOrderId = created.razorpay_order_id;
+          window.__houseOfSukoonOrderNumber = created.order_number;
+          showPaymentStatus("Opening secure payment…");
+
+          if (typeof window.Razorpay !== "function") {
+            throw new Error("Razorpay Checkout did not load. Please refresh the page, disable ad blockers/privacy extensions for this site, and try again.");
+          }
+
+          let paymentFailed = false;
+          console.log("Razorpay order created:", created.razorpay_order_id);
+          activeRazorpay = new window.Razorpay({
+            key: created.key_id,
+            amount: created.amount,
+            currency: created.currency || "INR",
+            name: "House of Sukoon",
+            description: "House of Sukoon fragrance order",
+            order_id: created.razorpay_order_id,
+            handler: handlePaymentSuccess,
+            prefill: { name: customerName, email: data.email, contact: data.phone },
+            notes: { order_number: created.order_number },
+            theme: { color: "#a8844b" },
+            retry: { enabled: false },
+            timeout: 900,
+            modal: {
+              ondismiss: function () {
+                if (paymentFinalizing) return;
+                setPayButtonBusy(false);
+                if (paymentFailed) {
+                  setRetryButton();
+                  showPaymentStatus("Payment failed. You can retry the same payment securely.", "error");
+                } else {
+                  setPayButtonBusy(false);
+                  showPaymentStatus("Payment window closed. Your order is still pending. You can try again.", "error");
+                }
+              },
+            },
+          });
+
+          activeRazorpay.on("payment.failed", function (response) {
+            paymentFailed = true;
+            console.error("Razorpay payment failed:", response?.error);
+            try { activeRazorpay.close(); } catch (_) {}
+            setRetryButton();
+            showPaymentStatus(`Payment failed${response?.error?.description ? `: ${response.error.description}` : ". Please try again."}`, "error");
+          });
+
+          console.log("Opening Razorpay Checkout…");
+          activeRazorpay.open();
+        } catch (error) {
+          console.error("Checkout error:", error);
+          paymentFinalizing = false;
+          setPayButtonBusy(false);
+          showPaymentStatus(error.message || "Unable to start payment. Please try again.", "error");
+        }
+      }
+
+      document.getElementById("orderForm")?.addEventListener("submit", placeOrder);
+      loadCheckoutProducts().catch((error) => {
+        console.error("Checkout product load failed:", error);
+        document.getElementById("checkoutMain").classList.add("hide");
+        document.getElementById("checkoutEmpty").classList.remove("hide");
+      });
+    </script>
+    <div id="drawer" class="drawer">
+      <div class="drawer-panel">
+        <button class="close" onclick="closeCart()">×</button>
+        <p class="kicker">YOUR BAG</p>
+        <h2>Your selections</h2>
+        <div id="cartItems"></div>
+        <div
+          class="cart-total"
+          style="
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+            margin-top: 18px;
+          "
+        >
+          <span>Total</span><strong id="cartTotal">₹0</strong>
+        </div>
+        <div class="drawer-actions">
+          <a id="cartCheckout" class="gold-btn disabled" href="#"
+            >Proceed to checkout</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
